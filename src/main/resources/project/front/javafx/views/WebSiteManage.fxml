@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.front.javafx.controller.WebSiteManageController">
+   <children>
+      <SplitPane dividerPositions="0.5" layoutX="220.0" layoutY="160.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Label layoutX="105.0" layoutY="23.0" text="Gestion du site Web" />
+                  <Label layoutX="47.0" layoutY="73.0" text="API" />
+                  <Label layoutX="47.0" layoutY="141.0" text="Fonts" />
+                  <Label layoutX="47.0" layoutY="206.0" text="Images" />
+                  <Label layoutX="47.0" layoutY="296.0" text="Pages" />
+                  <ComboBox fx:id="ManageWebSite_ShowApi_CB" layoutX="133.0" layoutY="69.0" prefWidth="150.0" />
+                  <ComboBox fx:id="ManageWebSite_ShowFont_CB" layoutX="133.0" layoutY="137.0" prefWidth="150.0" />
+                  <ComboBox fx:id="ManageWebSite_ShowImages_CB" layoutX="133.0" layoutY="202.0" prefWidth="150.0" />
+                  <ComboBox fx:id="ManageWebSite_ShowPages_CB" layoutX="133.0" layoutY="292.0" prefWidth="150.0" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Label layoutX="79.0" layoutY="35.0" prefHeight="17.0" prefWidth="161.0" text="Association des préférences" />
+                  <Label layoutX="93.0" layoutY="81.0" prefHeight="17.0" prefWidth="107.0" text="Label" />
+                  <TreeView fx:id="ManageWebSite_AssocPreference_TreeView" layoutX="48.0" layoutY="114.0" prefHeight="156.0" prefWidth="200.0" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
