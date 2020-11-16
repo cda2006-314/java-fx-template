@@ -1,6 +1,10 @@
 
 package project.front.javafx;
 
+
+import com.aquafx_project.AquaFx;
+import com.aquafx_project.controls.skin.styles.ControlSizeVariant;
+import com.jfoenix.controls.JFXRippler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,6 +33,14 @@ import java.util.logging.Logger;
 public class FXMLDocumentController implements Initializable {
 
     private Label label;
+    @FXML
+    private Label labelU;
+
+    @FXML
+    private Label labelD;
+    @FXML
+    private Label labelDD;
+
     @FXML
     private Button main_AccountAdmin_Button;
     @FXML
@@ -61,6 +74,13 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+
+        AquaFx.createLabelStyler().setSizeVariant(ControlSizeVariant.REGULAR).style(labelD);
+        AquaFx.createLabelStyler().setSizeVariant(ControlSizeVariant.REGULAR).style(labelDD);
+        AquaFx.createLabelStyler().setSizeVariant(ControlSizeVariant.REGULAR).style(labelU);
+
+
         //Admin
         ImageView accountAdminImg = new ImageView(getClass().getResource("IMG/user.png").toString());
         accountAdminImg.setFitHeight(50);
@@ -104,8 +124,10 @@ public class FXMLDocumentController implements Initializable {
        main_AccountAdmin_Button.setOnAction((ActionEvent event) -> {
             try {
                 Stage stage = (Stage) main_AccountAdmin_Button.getScene().getWindow();
+
                 Parent root = FXMLLoader.load(getClass().getResource("views/ManageAccount.fxml"));
                 Scene scene = new Scene(root);
+
                 stage.setScene(scene);
                 stage.show();
             } catch (IOException ex) {
@@ -159,7 +181,7 @@ public class FXMLDocumentController implements Initializable {
         main_User_Button.setOnAction((ActionEvent event) -> {
             try {
                 Stage stage = (Stage) main_AccountAdmin_Button.getScene().getWindow();
-                Parent root = FXMLLoader.load(getClass().getResource("view/UserSceneMain.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("views/UserSceneMain.fxml"));
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
@@ -200,7 +222,7 @@ public class FXMLDocumentController implements Initializable {
         main_Api_Button.setOnAction((ActionEvent event) -> {
             try {
                 Stage stage = (Stage) main_AccountAdmin_Button.getScene().getWindow();
-                Parent root = FXMLLoader.load(getClass().getResource("views/WebSiteManage.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("views/ApiManager.fxml"));
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
@@ -212,7 +234,7 @@ public class FXMLDocumentController implements Initializable {
         main_Fonts_Button.setOnAction((ActionEvent event) -> {
             try {
                 Stage stage = (Stage) main_AccountAdmin_Button.getScene().getWindow();
-                Parent root = FXMLLoader.load(getClass().getResource("views/WebSiteManage.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("views/FontManager.fxml"));
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
