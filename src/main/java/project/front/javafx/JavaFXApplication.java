@@ -43,7 +43,7 @@ public class JavaFXApplication extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         AquaFx.style();
-       // AquaFx.styleStage(stage, StageStyle.UNIFIED);
+        AquaFx.styleStage(stage, StageStyle.UNIFIED);
 
         navigation.setStage(stage);
         navigation.showWelcomeView();
