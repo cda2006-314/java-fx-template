@@ -5,6 +5,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import com.aquafx_project.AquaFx;
+import com.aquafx_project.controls.skin.styles.ButtonType;
+import com.aquafx_project.controls.skin.styles.TextFieldType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,11 +21,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import org.springframework.stereotype.Component;
 
-/**
+ /**
  *
  * @author Charlène
  */
+
+
 public class FXMLDocumentController implements Initializable {
 
     private Label label;
@@ -51,6 +58,8 @@ public class FXMLDocumentController implements Initializable {
     private Color x4;
     @FXML
     private Font x3;
+    @FXML
+    private Button Back_Button;
 
     private void handleButtonAction(ActionEvent event) {
 
