@@ -5,6 +5,7 @@ package project.front.javafx;
 import com.aquafx_project.AquaFx;
 import com.aquafx_project.controls.skin.styles.ControlSizeVariant;
 import com.jfoenix.controls.JFXRippler;
+import com.sun.org.slf4j.internal.LoggerFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +20,10 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,8 +34,11 @@ import java.util.logging.Logger;
  *
  * @author Charlène
  */
+
+@Component
 // Please dont move this Controller around unless you know what you're doing
 public class FXMLDocumentController implements Initializable {
+
 
     private Label label;
     @FXML
@@ -122,6 +130,7 @@ public class FXMLDocumentController implements Initializable {
         //Attribution boutons 
         Button accountAdmin = (Button) main_AccountAdmin_Button;
        main_AccountAdmin_Button.setOnAction((ActionEvent event) -> {
+           System.out.println("test");
             try {
                 Stage stage = (Stage) main_AccountAdmin_Button.getScene().getWindow();
 

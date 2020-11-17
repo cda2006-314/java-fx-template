@@ -21,11 +21,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import org.springframework.stereotype.Component;
 
-/**
+ /**
  *
  * @author Charlène
  */
+
+
 public class FXMLDocumentController implements Initializable {
 
     private Label label;

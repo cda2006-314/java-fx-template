@@ -21,6 +21,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.springframework.stereotype.Component;
 import project.front.javafx.FXMLDocumentController;
 
  /**
@@ -28,6 +29,9 @@ import project.front.javafx.FXMLDocumentController;
  *
  * @author Charlène
  */
+
+
+ @Component
 public class GroupSceneMainController implements Initializable {
 
     @FXML

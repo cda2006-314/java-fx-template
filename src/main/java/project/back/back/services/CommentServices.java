@@ -35,6 +35,6 @@ CommentRepository commentRepository;
             //revenir quand la table de modération des employés aura été organisé.
         }
 
-
     }
+public void moderateComment(Integer memberId, Integer commentId){commentRepository.moderateComment(memberId, commentId);}
 }

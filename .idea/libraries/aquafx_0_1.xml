@@ -1,9 +1,11 @@
 <component name="libraryTable">
   <library name="aquafx-0.1">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../../Librairie Java/aquafx-0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../Librairie Java/aquafx-0.1.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ideaLibSources/aquafx-0.1-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

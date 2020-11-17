@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.web.HTMLEditor;
 import javafx.stage.Stage;
+import org.springframework.stereotype.Component;
 import project.front.javafx.FXMLDocumentController;
 
 import java.io.IOException;
@@ -22,6 +23,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+@Component
 public class FontManagerController implements Initializable {
     @FXML
     private HTMLEditor fontManage_htmlEditor_Editor;

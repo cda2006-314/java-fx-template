@@ -11,6 +11,8 @@ import project.back.back.repository.EmployeeRepository;
 import project.back.back.repository.EventstatusRepository;
 import project.back.back.repository.MemberstatusRepository;
 
+import java.util.List;
+
 @Service
 public class EmployeeServices {
 
@@ -43,6 +45,8 @@ public class EmployeeServices {
     public void accessSystem(){}
 
     public void accessLog(){}
+
+    public List<Employee> getList(){return employeeRepository.findAll();}
 
     public Member validateMember(MemberForm memberForm){return new Member();}
 }

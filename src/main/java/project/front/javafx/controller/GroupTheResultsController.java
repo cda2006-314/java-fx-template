@@ -19,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.springframework.stereotype.Component;
 import project.front.javafx.FXMLDocumentController;
 
  /**
@@ -26,6 +27,9 @@ import project.front.javafx.FXMLDocumentController;
  *
  * @author Charlène
  */
+
+
+ @Component
 public class GroupTheResultsController implements Initializable {
 
     @FXML

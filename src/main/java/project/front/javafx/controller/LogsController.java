@@ -17,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import org.springframework.stereotype.Component;
 import project.front.javafx.FXMLDocumentController;
 
  /**
@@ -24,6 +25,9 @@ import project.front.javafx.FXMLDocumentController;
  *
  * @author Charlène
  */
+
+
+ @Component
 public class LogsController implements Initializable {
 
     @FXML
