@@ -4,8 +4,6 @@ package project.front.javafx;
 
 import com.aquafx_project.AquaFx;
 import com.aquafx_project.controls.skin.styles.ControlSizeVariant;
-import com.jfoenix.controls.JFXRippler;
-import com.sun.org.slf4j.internal.LoggerFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,11 +16,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
 import java.net.URL;

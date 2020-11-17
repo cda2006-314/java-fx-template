@@ -2,9 +2,11 @@ package project.back.back.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 import project.back.back.model.Comment;
 import project.back.back.model.MemberReportsComment;
 
+@Repository
 public interface CommentRepository extends JpaRepository<Comment, Integer> {
 
     public static final String FIND_LIKE = "SELECT COMMENT_LIKES FROM comment c where c.COMMENT_ID = ?";

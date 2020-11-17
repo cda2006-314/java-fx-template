@@ -54,7 +54,7 @@ public class Navigation {
     @Autowired ManagePasswordController managePasswordController;
     @Autowired ModerateManegeMainController moderateManegeMainController;
     @Autowired StateSystemController stateSystemController;
-   /* @Autowired UserSceneMainController userSceneMainController;*/
+   @Autowired UserSceneMainController userSceneMainController;
     @Autowired UserTheResultsController userTheResultsController;
     @Autowired WebSiteManageController webSiteManageController;
 
@@ -113,7 +113,7 @@ public class Navigation {
             case ManagePassword_VIEW: return managePasswordController;
             case ModerateManageMain_VIEW: return moderateManegeMainController;
             case StateSystem_VIEW: return stateSystemController;
-            //case UserSceneMain_VIEW: return userSceneMainController;
+            case UserSceneMain_VIEW: return userSceneMainController;
             case UserTheResults_VIEW: return userTheResultsController;
             case WebSiteManage_VIEW: return webSiteManageController;
 

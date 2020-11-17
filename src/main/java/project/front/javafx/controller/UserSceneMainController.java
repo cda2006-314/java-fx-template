@@ -26,11 +26,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
-import project.back.back.model.Member;
-import project.back.back.repository.MemberRepository;
-import project.back.back.repository.MemberstatusRepository;
+import project.back.back.services.EmployeeServices;
 import project.back.back.services.MemberServices;
 import project.front.javafx.FXMLDocumentController;
 
@@ -57,11 +54,13 @@ public class UserSceneMainController implements Initializable {
     private TableView<?> user_AllUsers_Table;
     @FXML
     private Button Back_Button;
-
+     @Autowired
    private MemberServices memberServices;
+     @Autowired
+     private EmployeeServices employeeServices;
 
-   @Autowired
-   public void setMemberServices(MemberServices memberServices){this.memberServices = memberServices;}
+
+  // public void setMemberServices(MemberServices memberServices){this.memberServices = memberServices;}
 
 
     /**
@@ -73,10 +72,11 @@ public class UserSceneMainController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
 
-      /*  List listPrep = memberServices.listMemberStatus();
+         List listPrep = (List) memberServices.listMemberStatus();
+
         ObservableList list = FXCollections.observableArrayList(listPrep);
-        user_SearchStatus_CB.setItems((ObservableList) list);
-*/
+        user_SearchStatus_CB.setItems((ObservableList)list);
+
 
         AquaFx.createButtonStyler().setType(ButtonType.ROUND_RECT).style(user_SearchUser_Button);
         AquaFx.createTextFieldStyler().setType(TextFieldType.SEARCH).style(user_SearchLogin_TextField);

@@ -25,6 +25,9 @@ public void changeStatusMembre(int memberId){memberstatusRepository.updateMember
 
 public List<Member> listMember(){ return memberRepository.findAll(); }
 
-public List<Memberstatus> listMemberStatus(){ return memberstatusRepository.findAll(); }
+public List<Memberstatus> listMemberStatus(){
+    List<Memberstatus> memberL = null;
+    memberL =  (List<Memberstatus>) memberstatusRepository.findAll();
+    return memberL;}
 
 }
