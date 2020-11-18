@@ -43,8 +43,8 @@ public class JavaFXApplication extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         AquaFx.style();
-        // White screen issues (for some people) when this line is uncommented (
-        //AquaFx.styleStage(stage, StageStyle.UNIFIED);
+        // White screen issues (for some people) when this line is uncommented
+        AquaFx.styleStage(stage, StageStyle.UNIFIED);
 
         navigation.setStage(stage);
         navigation.showWelcomeView();
