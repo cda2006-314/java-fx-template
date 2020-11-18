@@ -9,7 +9,7 @@ public class CommentCanhaveMediaPK implements Serializable {
     private int mediaId;
     private int commentId;
 
-    @Column(name = "MEDIA_ID", nullable = false, precision = 0)
+    @Column(name = "MEDIA_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getMediaId() {
         return mediaId;
@@ -19,7 +19,7 @@ public class CommentCanhaveMediaPK implements Serializable {
         this.mediaId = mediaId;
     }
 
-    @Column(name = "COMMENT_ID", nullable = false, precision = 0)
+    @Column(name = "COMMENT_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getCommentId() {
         return commentId;

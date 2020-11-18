@@ -4,11 +4,13 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "WEBSITETHEME_HAS_PICTURE", schema = "dbo" )
+@Table(name = "WEBSITETHEME_HAS_PICTURE", schema = "dbo")
 @IdClass(WebsitethemeHasPicturePK.class)
 public class WebsitethemeHasPicture {
     private int websitethemeId;
     private int pictureId;
+    private Websitetheme websitethemeByWebsitethemeId;
+    private Picture pictureByPictureId;
 
     @Id
     @Column(name = "WEBSITETHEME_ID", nullable = false, precision = 0)
@@ -42,5 +44,25 @@ public class WebsitethemeHasPicture {
     @Override
     public int hashCode() {
         return Objects.hash(websitethemeId, pictureId);
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "WEBSITETHEME_ID", referencedColumnName = "WEBSITETHEME_ID", nullable = false)
+    public Websitetheme getWebsitethemeByWebsitethemeId() {
+        return websitethemeByWebsitethemeId;
+    }
+
+    public void setWebsitethemeByWebsitethemeId(Websitetheme websitethemeByWebsitethemeId) {
+        this.websitethemeByWebsitethemeId = websitethemeByWebsitethemeId;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PICTURE_ID", referencedColumnName = "PICTURE_ID", nullable = false)
+    public Picture getPictureByPictureId() {
+        return pictureByPictureId;
+    }
+
+    public void setPictureByPictureId(Picture pictureByPictureId) {
+        this.pictureByPictureId = pictureByPictureId;
     }
 }

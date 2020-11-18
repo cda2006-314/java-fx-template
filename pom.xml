@@ -55,12 +55,6 @@
             <artifactId>openjfx-78-backport-compat</artifactId>
             <version>1.8.0.1</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.aquafx-project/aquafx -->
-        <dependency>
-            <groupId>com.aquafx-project</groupId>
-            <artifactId>aquafx</artifactId>
-            <version>0.2</version>
-        </dependency>
         <dependency>
             <groupId>com.aquafx-project</groupId>
             <artifactId>aquafx</artifactId>

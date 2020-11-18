@@ -4,11 +4,13 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "TEAM_HAS_TEAMSTATUS", schema = "dbo" )
+@Table(name = "TEAM_HAS_TEAMSTATUS", schema = "dbo")
 @IdClass(TeamHasTeamstatusPK.class)
 public class TeamHasTeamstatus {
     private int groupstatusId;
     private int teamId;
+    private Groupstatus groupstatusByGroupstatusId;
+    private Team teamByTeamId;
 
     @Id
     @Column(name = "GROUPSTATUS_ID", nullable = false, precision = 0)
@@ -42,5 +44,25 @@ public class TeamHasTeamstatus {
     @Override
     public int hashCode() {
         return Objects.hash(groupstatusId, teamId);
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "GROUPSTATUS_ID", referencedColumnName = "GROUPSTATUS_ID", nullable = false)
+    public Groupstatus getGroupstatusByGroupstatusId() {
+        return groupstatusByGroupstatusId;
+    }
+
+    public void setGroupstatusByGroupstatusId(Groupstatus groupstatusByGroupstatusId) {
+        this.groupstatusByGroupstatusId = groupstatusByGroupstatusId;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "TEAM_ID", referencedColumnName = "TEAM_ID", nullable = false)
+    public Team getTeamByTeamId() {
+        return teamByTeamId;
+    }
+
+    public void setTeamByTeamId(Team teamByTeamId) {
+        this.teamByTeamId = teamByTeamId;
     }
 }

@@ -1,9 +1,7 @@
 package project.back.back.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -11,8 +9,11 @@ public class Media {
     private int mediaId;
     private String mediaLabel;
     private String mediaExtension;
+    private Collection<CommentCanhaveMedia> commentCanhaveMediaByMediaId;
+    private Collection<EventHasMedia> eventHasMediaByMediaId;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MEDIA_ID", nullable = false, precision = 0)
     public int getMediaId() {
         return mediaId;
@@ -55,5 +56,23 @@ public class Media {
     @Override
     public int hashCode() {
         return Objects.hash(mediaId, mediaLabel, mediaExtension);
+    }
+
+    @OneToMany(mappedBy = "mediaByMediaId")
+    public Collection<CommentCanhaveMedia> getCommentCanhaveMediaByMediaId() {
+        return commentCanhaveMediaByMediaId;
+    }
+
+    public void setCommentCanhaveMediaByMediaId(Collection<CommentCanhaveMedia> commentCanhaveMediaByMediaId) {
+        this.commentCanhaveMediaByMediaId = commentCanhaveMediaByMediaId;
+    }
+
+    @OneToMany(mappedBy = "mediaByMediaId")
+    public Collection<EventHasMedia> getEventHasMediaByMediaId() {
+        return eventHasMediaByMediaId;
+    }
+
+    public void setEventHasMediaByMediaId(Collection<EventHasMedia> eventHasMediaByMediaId) {
+        this.eventHasMediaByMediaId = eventHasMediaByMediaId;
     }
 }

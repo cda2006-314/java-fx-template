@@ -9,7 +9,7 @@ public class MemberHasKeywordPK implements Serializable {
     private String keywordLabel;
     private int memberId;
 
-    @Column(name = "KEYWORD_LABEL", nullable = false, length = 100)
+    @Column(name = "KEYWORD_LABEL", insertable = false, updatable = false, nullable = false, length = 100)
     @Id
     public String getKeywordLabel() {
         return keywordLabel;
@@ -19,7 +19,7 @@ public class MemberHasKeywordPK implements Serializable {
         this.keywordLabel = keywordLabel;
     }
 
-    @Column(name = "MEMBER_ID", nullable = false, precision = 0)
+    @Column(name = "MEMBER_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getMemberId() {
         return memberId;

@@ -9,7 +9,7 @@ public class WebsitethemeHasFontsPK implements Serializable {
     private int websitethemeId;
     private int fontsId;
 
-    @Column(name = "WEBSITETHEME_ID", nullable = false, precision = 0)
+    @Column(name = "WEBSITETHEME_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getWebsitethemeId() {
         return websitethemeId;
@@ -19,7 +19,7 @@ public class WebsitethemeHasFontsPK implements Serializable {
         this.websitethemeId = websitethemeId;
     }
 
-    @Column(name = "FONTS_ID", nullable = false, precision = 0)
+    @Column(name = "FONTS_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getFontsId() {
         return fontsId;

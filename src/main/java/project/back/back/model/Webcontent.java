@@ -1,17 +1,17 @@
 package project.back.back.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 public class Webcontent {
     private int webcontentId;
     private String webcontentLabel;
+    private Collection<EmployeeAdministratesWebcontent> employeeAdministratesWebcontentsByWebcontentId;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "WEBCONTENT_ID", nullable = false, precision = 0)
     public int getWebcontentId() {
         return webcontentId;
@@ -43,5 +43,14 @@ public class Webcontent {
     @Override
     public int hashCode() {
         return Objects.hash(webcontentId, webcontentLabel);
+    }
+
+    @OneToMany(mappedBy = "webcontentByWebcontentId")
+    public Collection<EmployeeAdministratesWebcontent> getEmployeeAdministratesWebcontentsByWebcontentId() {
+        return employeeAdministratesWebcontentsByWebcontentId;
+    }
+
+    public void setEmployeeAdministratesWebcontentsByWebcontentId(Collection<EmployeeAdministratesWebcontent> employeeAdministratesWebcontentsByWebcontentId) {
+        this.employeeAdministratesWebcontentsByWebcontentId = employeeAdministratesWebcontentsByWebcontentId;
     }
 }

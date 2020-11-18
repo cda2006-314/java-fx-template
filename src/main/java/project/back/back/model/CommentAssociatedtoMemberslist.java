@@ -11,6 +11,8 @@ public class CommentAssociatedtoMemberslist {
     private int commentId;
     private int memberslistId;
     private Timestamp commentAssociatedtoMemberslistDate;
+    private Comment commentByCommentId;
+    private Memberslist memberslistByMemberslistId;
 
     @Id
     @Column(name = "COMMENT_ID", nullable = false, precision = 0)
@@ -55,5 +57,25 @@ public class CommentAssociatedtoMemberslist {
     @Override
     public int hashCode() {
         return Objects.hash(commentId, memberslistId, commentAssociatedtoMemberslistDate);
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "COMMENT_ID", referencedColumnName = "COMMENT_ID", nullable = false)
+    public Comment getCommentByCommentId() {
+        return commentByCommentId;
+    }
+
+    public void setCommentByCommentId(Comment commentByCommentId) {
+        this.commentByCommentId = commentByCommentId;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MEMBERSLIST_ID", referencedColumnName = "MEMBERSLIST_ID", nullable = false)
+    public Memberslist getMemberslistByMemberslistId() {
+        return memberslistByMemberslistId;
+    }
+
+    public void setMemberslistByMemberslistId(Memberslist memberslistByMemberslistId) {
+        this.memberslistByMemberslistId = memberslistByMemberslistId;
     }
 }

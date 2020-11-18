@@ -9,7 +9,7 @@ public class EventHasMediaPK implements Serializable {
     private int eventId;
     private int mediaId;
 
-    @Column(name = "EVENT_ID", nullable = false, precision = 0)
+    @Column(name = "EVENT_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getEventId() {
         return eventId;
@@ -19,7 +19,7 @@ public class EventHasMediaPK implements Serializable {
         this.eventId = eventId;
     }
 
-    @Column(name = "MEDIA_ID", nullable = false, precision = 0)
+    @Column(name = "MEDIA_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getMediaId() {
         return mediaId;

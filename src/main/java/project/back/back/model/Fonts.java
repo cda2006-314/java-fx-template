@@ -1,9 +1,7 @@
 package project.back.back.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -11,8 +9,10 @@ public class Fonts {
     private int fontsId;
     private String fontsLabel;
     private String fontsUrl;
+    private Collection<WebsitethemeHasFonts> websitethemeHasFontsByFontsId;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "FONTS_ID", nullable = false, precision = 0)
     public int getFontsId() {
         return fontsId;
@@ -55,5 +55,14 @@ public class Fonts {
     @Override
     public int hashCode() {
         return Objects.hash(fontsId, fontsLabel, fontsUrl);
+    }
+
+    @OneToMany(mappedBy = "fontsByFontsId")
+    public Collection<WebsitethemeHasFonts> getWebsitethemeHasFontsByFontsId() {
+        return websitethemeHasFontsByFontsId;
+    }
+
+    public void setWebsitethemeHasFontsByFontsId(Collection<WebsitethemeHasFonts> websitethemeHasFontsByFontsId) {
+        this.websitethemeHasFontsByFontsId = websitethemeHasFontsByFontsId;
     }
 }

@@ -1,9 +1,7 @@
 package project.back.back.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -11,8 +9,10 @@ public class Picture {
     private int pictureId;
     private String pictureLabel;
     private String pictureUrl;
+    private Collection<WebsitethemeHasPicture> websitethemeHasPicturesByPictureId;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PICTURE_ID", nullable = false, precision = 0)
     public int getPictureId() {
         return pictureId;
@@ -55,5 +55,14 @@ public class Picture {
     @Override
     public int hashCode() {
         return Objects.hash(pictureId, pictureLabel, pictureUrl);
+    }
+
+    @OneToMany(mappedBy = "pictureByPictureId")
+    public Collection<WebsitethemeHasPicture> getWebsitethemeHasPicturesByPictureId() {
+        return websitethemeHasPicturesByPictureId;
+    }
+
+    public void setWebsitethemeHasPicturesByPictureId(Collection<WebsitethemeHasPicture> websitethemeHasPicturesByPictureId) {
+        this.websitethemeHasPicturesByPictureId = websitethemeHasPicturesByPictureId;
     }
 }

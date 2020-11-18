@@ -9,7 +9,7 @@ public class MessageboxSendsMessagePK implements Serializable {
     private int messageboxId;
     private int messageId;
 
-    @Column(name = "MESSAGEBOX_ID", nullable = false, precision = 0)
+    @Column(name = "MESSAGEBOX_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getMessageboxId() {
         return messageboxId;
@@ -19,7 +19,7 @@ public class MessageboxSendsMessagePK implements Serializable {
         this.messageboxId = messageboxId;
     }
 
-    @Column(name = "MESSAGE_ID", nullable = false, precision = 0)
+    @Column(name = "MESSAGE_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getMessageId() {
         return messageId;
