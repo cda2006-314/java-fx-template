@@ -9,7 +9,7 @@ public class LibraryHasMediastockPK implements Serializable {
     private int libraryId;
     private String mediastockLinkid;
 
-    @Column(name = "LIBRARY_ID", nullable = false, precision = 0)
+    @Column(name = "LIBRARY_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getLibraryId() {
         return libraryId;
@@ -19,7 +19,7 @@ public class LibraryHasMediastockPK implements Serializable {
         this.libraryId = libraryId;
     }
 
-    @Column(name = "MEDIASTOCK_LINKID", nullable = false, length = 1)
+    @Column(name = "MEDIASTOCK_LINKID", insertable = false, updatable = false, nullable = false, length = 250)
     @Id
     public String getMediastockLinkid() {
         return mediastockLinkid;

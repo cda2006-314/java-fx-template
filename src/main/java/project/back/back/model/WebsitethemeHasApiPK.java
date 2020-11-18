@@ -9,7 +9,7 @@ public class WebsitethemeHasApiPK implements Serializable {
     private int websitethemeId;
     private int apiId;
 
-    @Column(name = "WEBSITETHEME_ID", nullable = false, precision = 0)
+    @Column(name = "WEBSITETHEME_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getWebsitethemeId() {
         return websitethemeId;
@@ -19,7 +19,7 @@ public class WebsitethemeHasApiPK implements Serializable {
         this.websitethemeId = websitethemeId;
     }
 
-    @Column(name = "API_ID", nullable = false, precision = 0)
+    @Column(name = "API_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getApiId() {
         return apiId;

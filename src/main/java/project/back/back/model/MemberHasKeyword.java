@@ -4,11 +4,13 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "MEMBER_HAS_KEYWORD", schema = "dbo" )
+@Table(name = "MEMBER_HAS_KEYWORD", schema = "dbo")
 @IdClass(MemberHasKeywordPK.class)
 public class MemberHasKeyword {
     private String keywordLabel;
     private int memberId;
+    private Keyword keywordByKeywordLabel;
+    private Member memberByMemberId;
 
     @Id
     @Column(name = "KEYWORD_LABEL", nullable = false, length = 100)
@@ -42,5 +44,25 @@ public class MemberHasKeyword {
     @Override
     public int hashCode() {
         return Objects.hash(keywordLabel, memberId);
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "KEYWORD_LABEL", referencedColumnName = "KEYWORD_LABEL", nullable = false)
+    public Keyword getKeywordByKeywordLabel() {
+        return keywordByKeywordLabel;
+    }
+
+    public void setKeywordByKeywordLabel(Keyword keywordByKeywordLabel) {
+        this.keywordByKeywordLabel = keywordByKeywordLabel;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MEMBER_ID", referencedColumnName = "MEMBER_ID", nullable = false)
+    public Member getMemberByMemberId() {
+        return memberByMemberId;
+    }
+
+    public void setMemberByMemberId(Member memberByMemberId) {
+        this.memberByMemberId = memberByMemberId;
     }
 }

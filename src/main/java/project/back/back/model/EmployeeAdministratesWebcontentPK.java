@@ -9,7 +9,7 @@ public class EmployeeAdministratesWebcontentPK implements Serializable {
     private int employeeId;
     private int webcontentId;
 
-    @Column(name = "EMPLOYEE_ID", nullable = false, precision = 0)
+    @Column(name = "EMPLOYEE_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getEmployeeId() {
         return employeeId;
@@ -19,7 +19,7 @@ public class EmployeeAdministratesWebcontentPK implements Serializable {
         this.employeeId = employeeId;
     }
 
-    @Column(name = "WEBCONTENT_ID", nullable = false, precision = 0)
+    @Column(name = "WEBCONTENT_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getWebcontentId() {
         return webcontentId;

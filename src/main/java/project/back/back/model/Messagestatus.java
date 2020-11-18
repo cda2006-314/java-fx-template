@@ -1,15 +1,14 @@
 package project.back.back.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 public class Messagestatus {
     private int statusId;
     private String statusLabel;
+    private Collection<MessageHasMessagestatus> messageHasMessagestatusesByStatusId;
 
     @Id
     @Column(name = "STATUS_ID", nullable = false, precision = 0)
@@ -43,5 +42,14 @@ public class Messagestatus {
     @Override
     public int hashCode() {
         return Objects.hash(statusId, statusLabel);
+    }
+
+    @OneToMany(mappedBy = "messagestatusByStatusId")
+    public Collection<MessageHasMessagestatus> getMessageHasMessagestatusesByStatusId() {
+        return messageHasMessagestatusesByStatusId;
+    }
+
+    public void setMessageHasMessagestatusesByStatusId(Collection<MessageHasMessagestatus> messageHasMessagestatusesByStatusId) {
+        this.messageHasMessagestatusesByStatusId = messageHasMessagestatusesByStatusId;
     }
 }

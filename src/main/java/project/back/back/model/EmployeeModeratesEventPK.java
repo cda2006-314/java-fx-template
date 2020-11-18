@@ -9,7 +9,7 @@ public class EmployeeModeratesEventPK implements Serializable {
     private int employeeId;
     private int eventId;
 
-    @Column(name = "EMPLOYEE_ID", nullable = false, precision = 0)
+    @Column(name = "EMPLOYEE_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getEmployeeId() {
         return employeeId;
@@ -19,7 +19,7 @@ public class EmployeeModeratesEventPK implements Serializable {
         this.employeeId = employeeId;
     }
 
-    @Column(name = "EVENT_ID", nullable = false, precision = 0)
+    @Column(name = "EVENT_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getEventId() {
         return eventId;

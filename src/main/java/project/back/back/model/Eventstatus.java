@@ -1,17 +1,17 @@
 package project.back.back.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 public class Eventstatus {
     private int eventstatusId;
     private String eventstatusLabel;
+    private Collection<EventHasEventstatus> eventHasEventstatusesByEventstatusId;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "EVENTSTATUS_ID", nullable = false, precision = 0)
     public int getEventstatusId() {
         return eventstatusId;
@@ -43,5 +43,14 @@ public class Eventstatus {
     @Override
     public int hashCode() {
         return Objects.hash(eventstatusId, eventstatusLabel);
+    }
+
+    @OneToMany(mappedBy = "eventstatusByEventstatusId")
+    public Collection<EventHasEventstatus> getEventHasEventstatusesByEventstatusId() {
+        return eventHasEventstatusesByEventstatusId;
+    }
+
+    public void setEventHasEventstatusesByEventstatusId(Collection<EventHasEventstatus> eventHasEventstatusesByEventstatusId) {
+        this.eventHasEventstatusesByEventstatusId = eventHasEventstatusesByEventstatusId;
     }
 }

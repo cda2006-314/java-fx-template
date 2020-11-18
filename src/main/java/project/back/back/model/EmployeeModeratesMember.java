@@ -11,6 +11,8 @@ public class EmployeeModeratesMember {
     private int employeeId;
     private int memberId;
     private Timestamp employeeModeratesMemberDate;
+    private Employee employeeByEmployeeId;
+    private Member memberByMemberId;
 
     @Id
     @Column(name = "EMPLOYEE_ID", nullable = false, precision = 0)
@@ -55,5 +57,25 @@ public class EmployeeModeratesMember {
     @Override
     public int hashCode() {
         return Objects.hash(employeeId, memberId, employeeModeratesMemberDate);
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "EMPLOYEE_ID", nullable = false)
+    public Employee getEmployeeByEmployeeId() {
+        return employeeByEmployeeId;
+    }
+
+    public void setEmployeeByEmployeeId(Employee employeeByEmployeeId) {
+        this.employeeByEmployeeId = employeeByEmployeeId;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MEMBER_ID", referencedColumnName = "MEMBER_ID", nullable = false)
+    public Member getMemberByMemberId() {
+        return memberByMemberId;
+    }
+
+    public void setMemberByMemberId(Member memberByMemberId) {
+        this.memberByMemberId = memberByMemberId;
     }
 }

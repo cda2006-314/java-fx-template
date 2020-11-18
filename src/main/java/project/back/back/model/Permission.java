@@ -1,17 +1,17 @@
 package project.back.back.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 public class Permission {
     private int permissionId;
     private String permissionLabel;
+    private Collection<Invitation> invitationsByPermissionId;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PERMISSION_ID", nullable = false, precision = 0)
     public int getPermissionId() {
         return permissionId;
@@ -43,5 +43,14 @@ public class Permission {
     @Override
     public int hashCode() {
         return Objects.hash(permissionId, permissionLabel);
+    }
+
+    @OneToMany(mappedBy = "permissionByPermissionId")
+    public Collection<Invitation> getInvitationsByPermissionId() {
+        return invitationsByPermissionId;
+    }
+
+    public void setInvitationsByPermissionId(Collection<Invitation> invitationsByPermissionId) {
+        this.invitationsByPermissionId = invitationsByPermissionId;
     }
 }

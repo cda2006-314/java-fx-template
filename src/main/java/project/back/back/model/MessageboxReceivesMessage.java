@@ -5,12 +5,14 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-@Table(name = "MESSAGEBOX_RECEIVES_MESSAGE", schema = "dbo" )
+@Table(name = "MESSAGEBOX_RECEIVES_MESSAGE", schema = "dbo")
 @IdClass(MessageboxReceivesMessagePK.class)
 public class MessageboxReceivesMessage {
     private int messageboxId;
     private int messageId;
     private Timestamp messageboxReceivesMessageDate;
+    private Messagebox messageboxByMessageboxId;
+    private Message messageByMessageId;
 
     @Id
     @Column(name = "MESSAGEBOX_ID", nullable = false, precision = 0)
@@ -55,5 +57,25 @@ public class MessageboxReceivesMessage {
     @Override
     public int hashCode() {
         return Objects.hash(messageboxId, messageId, messageboxReceivesMessageDate);
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MESSAGEBOX_ID", referencedColumnName = "MESSAGEBOX_ID", nullable = false)
+    public Messagebox getMessageboxByMessageboxId() {
+        return messageboxByMessageboxId;
+    }
+
+    public void setMessageboxByMessageboxId(Messagebox messageboxByMessageboxId) {
+        this.messageboxByMessageboxId = messageboxByMessageboxId;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MESSAGE_ID", referencedColumnName = "MESSAGE_ID", nullable = false)
+    public Message getMessageByMessageId() {
+        return messageByMessageId;
+    }
+
+    public void setMessageByMessageId(Message messageByMessageId) {
+        this.messageByMessageId = messageByMessageId;
     }
 }

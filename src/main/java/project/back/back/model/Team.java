@@ -1,20 +1,24 @@
 package project.back.back.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 public class Team {
+
     private int teamId;
     private int memberId;
     private String teamLabel;
     private String teamDescription;
     private String teamPicurl;
+    private Collection<Memberslist> memberslistsByTeamId;
+    private Member memberByMemberId;
+    private Collection<TeamAccessesEvent> teamAccessesEventsByTeamId;
+    private Collection<TeamHasTeamstatus> teamHasTeamstatusesByTeamId;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "TEAM_ID", nullable = false, precision = 0)
     public int getTeamId() {
         return teamId;
@@ -24,8 +28,7 @@ public class Team {
         this.teamId = teamId;
     }
 
-    @Basic
-    @Column(name = "MEMBER_ID", nullable = false, precision = 0)
+    @Column(name = "MEMBER_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     public int getMemberId() {
         return memberId;
     }
@@ -55,7 +58,7 @@ public class Team {
     }
 
     @Basic
-    @Column(name = "TEAM_PICURL", nullable = false, length = 256)
+    @Column(name = "TEAM_PICURL", nullable = false, length = 100)
     public String getTeamPicurl() {
         return teamPicurl;
     }
@@ -79,5 +82,57 @@ public class Team {
     @Override
     public int hashCode() {
         return Objects.hash(teamId, memberId, teamLabel, teamDescription, teamPicurl);
+    }
+
+    @OneToMany(mappedBy = "teamByTeamId")
+    public Collection<Memberslist> getMemberslistsByTeamId() {
+        return memberslistsByTeamId;
+    }
+
+    public void setMemberslistsByTeamId(Collection<Memberslist> memberslistsByTeamId) {
+        this.memberslistsByTeamId = memberslistsByTeamId;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "MEMBER_ID", referencedColumnName = "MEMBER_ID", nullable = false, foreignKey=@ForeignKey(name="FK_TEAM_MEMBER_CREATES_TEAM_MEMBER"))
+    public Member getMemberByMemberId() {
+        return memberByMemberId;
+    }
+
+    public void setMemberByMemberId(Member memberByMemberId) {
+        this.memberByMemberId = memberByMemberId;
+    }
+
+    @OneToMany(mappedBy = "teamByTeamId")
+    public Collection<TeamAccessesEvent> getTeamAccessesEventsByTeamId() {
+        return teamAccessesEventsByTeamId;
+    }
+
+    public void setTeamAccessesEventsByTeamId(Collection<TeamAccessesEvent> teamAccessesEventsByTeamId) {
+        this.teamAccessesEventsByTeamId = teamAccessesEventsByTeamId;
+    }
+
+    @OneToMany(mappedBy = "teamByTeamId")
+    public Collection<TeamHasTeamstatus> getTeamHasTeamstatusesByTeamId() {
+        return teamHasTeamstatusesByTeamId;
+    }
+
+    public void setTeamHasTeamstatusesByTeamId(Collection<TeamHasTeamstatus> teamHasTeamstatusesByTeamId) {
+        this.teamHasTeamstatusesByTeamId = teamHasTeamstatusesByTeamId;
+    }
+
+    @Override
+    public String toString() {
+        return "Team{" +
+                "teamId=" + teamId +
+                ", memberId=" + memberId +
+                ", teamLabel='" + teamLabel + '\'' +
+                ", teamDescription='" + teamDescription + '\'' +
+                ", teamPicurl='" + teamPicurl + '\'' +
+                ", memberslistsByTeamId=" + memberslistsByTeamId +
+                ", memberByMemberId=" + memberByMemberId +
+                ", teamAccessesEventsByTeamId=" + teamAccessesEventsByTeamId +
+                ", teamHasTeamstatusesByTeamId=" + teamHasTeamstatusesByTeamId +
+                "}\n";
     }
 }

@@ -1,9 +1,7 @@
 package project.back.back.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -24,8 +22,28 @@ public class Member {
     private String memberZipcode;
     private String memberCity;
     private String memberCountry;
+    private Collection<Comment> commentsByMemberId;
+    private Collection<EmployeeModeratesMember> employeeModeratesMembersByMemberId;
+    private Collection<Event> eventsByMemberId;
+    private Collection<InvitationTargetsMember> invitationTargetsMembersByMemberId;
+    private Collection<Library> librariesByMemberId;
+    private Collection<MemberFollowsanotherMember> memberFollowsanotherMembersByMemberId;
+    private Collection<MemberFollowsanotherMember> memberFollowsanotherMembersByMemberId_0;
+    private Collection<MemberHasKeyword> memberHasKeywordsByMemberId;
+    private Collection<MemberHasMemberstatus> memberHasMemberstatusesByMemberId;
+    private Collection<MemberHasPreferences> memberHasPreferencesByMemberId;
+    private Collection<MemberLikesComment> memberLikesCommentsByMemberId;
+    private Collection<MemberLikesEvent> memberLikesEventsByMemberId;
+    private Collection<MemberReportsComment> memberReportsCommentsByMemberId;
+    private Collection<MemberReportsEvent> memberReportsEventsByMemberId;
+    private Collection<MemberRevokesInvitation> memberRevokesInvitationsByMemberId;
+    private Collection<MemberSendsInvitation> memberSendsInvitationsByMemberId;
+    private Collection<Messagebox> messageboxesByMemberId;
+    private Collection<MessageboxListsMember> messageboxListsMembersByMemberId;
+    private Collection<Team> teamsByMemberId;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MEMBER_ID", nullable = false, precision = 0)
     public int getMemberId() {
         return memberId;
@@ -76,7 +94,7 @@ public class Member {
     }
 
     @Basic
-    @Column(name = "MEMBER_PICURL", nullable = false, length = 256)
+    @Column(name = "MEMBER_PICURL", nullable = false, length = 100)
     public String getMemberPicurl() {
         return memberPicurl;
     }
@@ -211,5 +229,176 @@ public class Member {
     @Override
     public int hashCode() {
         return Objects.hash(memberId, memberEmail, memberPassword, memberUsername, memberDescription, memberPicurl, memberPostit, memberIsverified, memberLname, memberFname, memberSiret, memberCompany, memberAddress, memberZipcode, memberCity, memberCountry);
+    }
+
+    @OneToMany(mappedBy = "memberByMemberId")
+    public Collection<Comment> getCommentsByMemberId() {
+        return commentsByMemberId;
+    }
+
+    public void setCommentsByMemberId(Collection<Comment> commentsByMemberId) {
+        this.commentsByMemberId = commentsByMemberId;
+    }
+
+    @OneToMany(mappedBy = "memberByMemberId")
+    public Collection<EmployeeModeratesMember> getEmployeeModeratesMembersByMemberId() {
+        return employeeModeratesMembersByMemberId;
+    }
+
+    public void setEmployeeModeratesMembersByMemberId(Collection<EmployeeModeratesMember> employeeModeratesMembersByMemberId) {
+        this.employeeModeratesMembersByMemberId = employeeModeratesMembersByMemberId;
+    }
+
+    @OneToMany(mappedBy = "memberByMemberId")
+    public Collection<Event> getEventsByMemberId() {
+        return eventsByMemberId;
+    }
+
+    public void setEventsByMemberId(Collection<Event> eventsByMemberId) {
+        this.eventsByMemberId = eventsByMemberId;
+    }
+
+    @OneToMany(mappedBy = "memberByMemberId")
+    public Collection<InvitationTargetsMember> getInvitationTargetsMembersByMemberId() {
+        return invitationTargetsMembersByMemberId;
+    }
+
+    public void setInvitationTargetsMembersByMemberId(Collection<InvitationTargetsMember> invitationTargetsMembersByMemberId) {
+        this.invitationTargetsMembersByMemberId = invitationTargetsMembersByMemberId;
+    }
+
+    @OneToMany(mappedBy = "memberByMemberId")
+    public Collection<Library> getLibrariesByMemberId() {
+        return librariesByMemberId;
+    }
+
+    public void setLibrariesByMemberId(Collection<Library> librariesByMemberId) {
+        this.librariesByMemberId = librariesByMemberId;
+    }
+
+    @OneToMany(mappedBy = "memberByMember1Id")
+    public Collection<MemberFollowsanotherMember> getMemberFollowsanotherMembersByMemberId() {
+        return memberFollowsanotherMembersByMemberId;
+    }
+
+    public void setMemberFollowsanotherMembersByMemberId(Collection<MemberFollowsanotherMember> memberFollowsanotherMembersByMemberId) {
+        this.memberFollowsanotherMembersByMemberId = memberFollowsanotherMembersByMemberId;
+    }
+
+    @OneToMany(mappedBy = "memberByMember2Id")
+    public Collection<MemberFollowsanotherMember> getMemberFollowsanotherMembersByMemberId_0() {
+        return memberFollowsanotherMembersByMemberId_0;
+    }
+
+    public void setMemberFollowsanotherMembersByMemberId_0(Collection<MemberFollowsanotherMember> memberFollowsanotherMembersByMemberId_0) {
+        this.memberFollowsanotherMembersByMemberId_0 = memberFollowsanotherMembersByMemberId_0;
+    }
+
+    @OneToMany(mappedBy = "memberByMemberId")
+    public Collection<MemberHasKeyword> getMemberHasKeywordsByMemberId() {
+        return memberHasKeywordsByMemberId;
+    }
+
+    public void setMemberHasKeywordsByMemberId(Collection<MemberHasKeyword> memberHasKeywordsByMemberId) {
+        this.memberHasKeywordsByMemberId = memberHasKeywordsByMemberId;
+    }
+
+    @OneToMany(mappedBy = "memberByMemberId")
+    public Collection<MemberHasMemberstatus> getMemberHasMemberstatusesByMemberId() {
+        return memberHasMemberstatusesByMemberId;
+    }
+
+    public void setMemberHasMemberstatusesByMemberId(Collection<MemberHasMemberstatus> memberHasMemberstatusesByMemberId) {
+        this.memberHasMemberstatusesByMemberId = memberHasMemberstatusesByMemberId;
+    }
+
+    @OneToMany(mappedBy = "memberByMemberId")
+    public Collection<MemberHasPreferences> getMemberHasPreferencesByMemberId() {
+        return memberHasPreferencesByMemberId;
+    }
+
+    public void setMemberHasPreferencesByMemberId(Collection<MemberHasPreferences> memberHasPreferencesByMemberId) {
+        this.memberHasPreferencesByMemberId = memberHasPreferencesByMemberId;
+    }
+
+    @OneToMany(mappedBy = "memberByMemberId")
+    public Collection<MemberLikesComment> getMemberLikesCommentsByMemberId() {
+        return memberLikesCommentsByMemberId;
+    }
+
+    public void setMemberLikesCommentsByMemberId(Collection<MemberLikesComment> memberLikesCommentsByMemberId) {
+        this.memberLikesCommentsByMemberId = memberLikesCommentsByMemberId;
+    }
+
+    @OneToMany(mappedBy = "memberByMemberId")
+    public Collection<MemberLikesEvent> getMemberLikesEventsByMemberId() {
+        return memberLikesEventsByMemberId;
+    }
+
+    public void setMemberLikesEventsByMemberId(Collection<MemberLikesEvent> memberLikesEventsByMemberId) {
+        this.memberLikesEventsByMemberId = memberLikesEventsByMemberId;
+    }
+
+    @OneToMany(mappedBy = "memberByMemberId")
+    public Collection<MemberReportsComment> getMemberReportsCommentsByMemberId() {
+        return memberReportsCommentsByMemberId;
+    }
+
+    public void setMemberReportsCommentsByMemberId(Collection<MemberReportsComment> memberReportsCommentsByMemberId) {
+        this.memberReportsCommentsByMemberId = memberReportsCommentsByMemberId;
+    }
+
+    @OneToMany(mappedBy = "memberByMemberId")
+    public Collection<MemberReportsEvent> getMemberReportsEventsByMemberId() {
+        return memberReportsEventsByMemberId;
+    }
+
+    public void setMemberReportsEventsByMemberId(Collection<MemberReportsEvent> memberReportsEventsByMemberId) {
+        this.memberReportsEventsByMemberId = memberReportsEventsByMemberId;
+    }
+
+    @OneToMany(mappedBy = "memberByMemberId")
+    public Collection<MemberRevokesInvitation> getMemberRevokesInvitationsByMemberId() {
+        return memberRevokesInvitationsByMemberId;
+    }
+
+    public void setMemberRevokesInvitationsByMemberId(Collection<MemberRevokesInvitation> memberRevokesInvitationsByMemberId) {
+        this.memberRevokesInvitationsByMemberId = memberRevokesInvitationsByMemberId;
+    }
+
+    @OneToMany(mappedBy = "memberByMemberId")
+    public Collection<MemberSendsInvitation> getMemberSendsInvitationsByMemberId() {
+        return memberSendsInvitationsByMemberId;
+    }
+
+    public void setMemberSendsInvitationsByMemberId(Collection<MemberSendsInvitation> memberSendsInvitationsByMemberId) {
+        this.memberSendsInvitationsByMemberId = memberSendsInvitationsByMemberId;
+    }
+
+    @OneToMany(mappedBy = "memberByMemberId")
+    public Collection<Messagebox> getMessageboxesByMemberId() {
+        return messageboxesByMemberId;
+    }
+
+    public void setMessageboxesByMemberId(Collection<Messagebox> messageboxesByMemberId) {
+        this.messageboxesByMemberId = messageboxesByMemberId;
+    }
+
+    @OneToMany(mappedBy = "memberByMemberId")
+    public Collection<MessageboxListsMember> getMessageboxListsMembersByMemberId() {
+        return messageboxListsMembersByMemberId;
+    }
+
+    public void setMessageboxListsMembersByMemberId(Collection<MessageboxListsMember> messageboxListsMembersByMemberId) {
+        this.messageboxListsMembersByMemberId = messageboxListsMembersByMemberId;
+    }
+
+    @OneToMany(mappedBy = "memberByMemberId")
+    public Collection<Team> getTeamsByMemberId() {
+        return teamsByMemberId;
+    }
+
+    public void setTeamsByMemberId(Collection<Team> teamsByMemberId) {
+        this.teamsByMemberId = teamsByMemberId;
     }
 }

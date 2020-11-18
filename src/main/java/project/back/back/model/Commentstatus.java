@@ -1,15 +1,14 @@
 package project.back.back.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 public class Commentstatus {
     private int commentstatusId;
     private String commentstatusLabel;
+    private Collection<CommentHasCommentstatus> commentHasCommentstatusesByCommentstatusId;
 
     @Id
     @Column(name = "COMMENTSTATUS_ID", nullable = false, precision = 0)
@@ -43,5 +42,14 @@ public class Commentstatus {
     @Override
     public int hashCode() {
         return Objects.hash(commentstatusId, commentstatusLabel);
+    }
+
+    @OneToMany(mappedBy = "commentstatusByCommentstatusId")
+    public Collection<CommentHasCommentstatus> getCommentHasCommentstatusesByCommentstatusId() {
+        return commentHasCommentstatusesByCommentstatusId;
+    }
+
+    public void setCommentHasCommentstatusesByCommentstatusId(Collection<CommentHasCommentstatus> commentHasCommentstatusesByCommentstatusId) {
+        this.commentHasCommentstatusesByCommentstatusId = commentHasCommentstatusesByCommentstatusId;
     }
 }

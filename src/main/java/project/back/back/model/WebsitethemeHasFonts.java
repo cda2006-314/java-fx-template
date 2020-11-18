@@ -4,11 +4,13 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "WEBSITETHEME_HAS_FONTS", schema = "dbo" )
+@Table(name = "WEBSITETHEME_HAS_FONTS", schema = "dbo")
 @IdClass(WebsitethemeHasFontsPK.class)
 public class WebsitethemeHasFonts {
     private int websitethemeId;
     private int fontsId;
+    private Websitetheme websitethemeByWebsitethemeId;
+    private Fonts fontsByFontsId;
 
     @Id
     @Column(name = "WEBSITETHEME_ID", nullable = false, precision = 0)
@@ -42,5 +44,25 @@ public class WebsitethemeHasFonts {
     @Override
     public int hashCode() {
         return Objects.hash(websitethemeId, fontsId);
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "WEBSITETHEME_ID", referencedColumnName = "WEBSITETHEME_ID", nullable = false)
+    public Websitetheme getWebsitethemeByWebsitethemeId() {
+        return websitethemeByWebsitethemeId;
+    }
+
+    public void setWebsitethemeByWebsitethemeId(Websitetheme websitethemeByWebsitethemeId) {
+        this.websitethemeByWebsitethemeId = websitethemeByWebsitethemeId;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "FONTS_ID", referencedColumnName = "FONTS_ID", nullable = false)
+    public Fonts getFontsByFontsId() {
+        return fontsByFontsId;
+    }
+
+    public void setFontsByFontsId(Fonts fontsByFontsId) {
+        this.fontsByFontsId = fontsByFontsId;
     }
 }
