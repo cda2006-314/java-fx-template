@@ -7,4 +7,4 @@
 # Editor-based HTTP Client requests
 /httpRequests/
 # Please dont remove this line
-/target/
+../target/
