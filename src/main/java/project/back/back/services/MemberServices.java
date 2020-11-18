@@ -30,4 +30,8 @@ public List<Memberstatus> listMemberStatus(){
     memberL =  (List<Memberstatus>) memberstatusRepository.findAll();
     return memberL;}
 
+    public Member getById(int id){
+        return memberRepository.getOne(id);
+    }
+
 }
