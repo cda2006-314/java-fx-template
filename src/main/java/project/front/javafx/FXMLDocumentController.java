@@ -17,6 +17,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -70,7 +71,8 @@ public class FXMLDocumentController implements Initializable {
     private Color x4;
     @FXML
     private Font x3;
-
+@Autowired
+Navigation navigation;
     private void handleButtonAction(ActionEvent event) {
 
     }
@@ -122,31 +124,28 @@ public class FXMLDocumentController implements Initializable {
         ImageView pageImg = new ImageView(getClass().getResource("IMG/pages.png").toString());
         pageImg.setFitHeight(50);
         pageImg.setFitWidth(50);
-        //Attribution boutons 
+
+        //Attribution boutons et des actions au travers de notre bean : Navigation et de se méthode showView
+        //Cette méthode permet d'associer les vues au controller : essentiel pour le binding avec Spring
+
         Button accountAdmin = (Button) main_AccountAdmin_Button;
        main_AccountAdmin_Button.setOnAction((ActionEvent event) -> {
-           System.out.println("test");
-            try {
+
                 Stage stage = (Stage) main_AccountAdmin_Button.getScene().getWindow();
+                navigation.setStage(stage);
+                navigation.showManageAccoutnView();
 
-                Parent root = FXMLLoader.load(getClass().getResource("views/ManageAccount.fxml"));
-                Scene scene = new Scene(root);
 
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
-                Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
-            }
         });
         Button configAdmin = (Button) main_Config_Button;
         main_Config_Button.setOnAction((ActionEvent event) -> {
             try {
                 Stage stage = (Stage) main_AccountAdmin_Button.getScene().getWindow();
-                Parent root = FXMLLoader.load(getClass().getResource("views/ConfigAdmin.fxml"));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
+                navigation.setStage(stage);
+                navigation.showConfigAdminView();
+
+
+            } catch (Exception ex) {
                 Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
@@ -154,26 +153,28 @@ public class FXMLDocumentController implements Initializable {
         main_StateSystem_Button.setOnAction((ActionEvent event) -> {
             try {
                 Stage stage = (Stage) main_AccountAdmin_Button.getScene().getWindow();
-                Parent root = FXMLLoader.load(getClass().getResource("views/StateSystem.fxml"));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
+                navigation.setStage(stage);
+                navigation.showStateSysyemView();
+
+
+            } catch (Exception ex) {
                 Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+
         Button logAdmin = (Button) main_Log_Button;
         main_Log_Button.setOnAction((ActionEvent event) -> {
             try {
                 Stage stage = (Stage) main_AccountAdmin_Button.getScene().getWindow();
-                Parent root = FXMLLoader.load(getClass().getResource("views/Logs.fxml"));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
+                navigation.setStage(stage);
+                navigation.showLogsView();
+
+
+            } catch (Exception ex) {
                 Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+
         //Attribution des images
 
         accountAdmin.setGraphic(accountAdminImg);
@@ -181,30 +182,33 @@ public class FXMLDocumentController implements Initializable {
         stateSystemAdmin.setGraphic(stateSystemImg);
         logAdmin.setGraphic(logImg);
 
+        //Attribution des actions sur les boutons
         Button userAdmin = (Button) main_User_Button;
         main_User_Button.setOnAction((ActionEvent event) -> {
             try {
                 Stage stage = (Stage) main_AccountAdmin_Button.getScene().getWindow();
-                Parent root = FXMLLoader.load(getClass().getResource("views/UserSceneMain.fxml"));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
+                navigation.setStage(stage);
+                navigation.showUserSceneView();
+
+
+            } catch (Exception ex) {
                 Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+
         Button groupAdmin = (Button) main_Group_Button;
         main_Group_Button.setOnAction((ActionEvent event) -> {
             try {
                 Stage stage = (Stage) main_AccountAdmin_Button.getScene().getWindow();
-                Parent root = FXMLLoader.load(getClass().getResource("views/GroupSceneMain.fxml"));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
+                navigation.setStage(stage);
+                navigation.showGroupSceneView();
+
+
+            } catch (Exception ex) {
                 Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+
         Button pendingValidateAdmin = (Button) main_WaitingValidate_Button;
         main_WaitingValidate_Button.setOnAction((ActionEvent event) -> {
             try {
@@ -226,47 +230,49 @@ public class FXMLDocumentController implements Initializable {
         main_Api_Button.setOnAction((ActionEvent event) -> {
             try {
                 Stage stage = (Stage) main_AccountAdmin_Button.getScene().getWindow();
-                Parent root = FXMLLoader.load(getClass().getResource("views/ApiManager.fxml"));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
+                navigation.setStage(stage);
+                navigation.showAPIManagerView();
+
+
+            } catch (Exception ex) {
                 Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+
         Button fontsAdmin = (Button) main_Fonts_Button;
         main_Fonts_Button.setOnAction((ActionEvent event) -> {
             try {
                 Stage stage = (Stage) main_AccountAdmin_Button.getScene().getWindow();
-                Parent root = FXMLLoader.load(getClass().getResource("views/FontManager.fxml"));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
+                navigation.setStage(stage);
+                navigation.showFontManagerView();
+
+            } catch (Exception ex) {
                 Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+
         Button imageAdmin = (Button) main_Image_Button;
         main_Image_Button.setOnAction((ActionEvent event) -> {
             try {
                 Stage stage = (Stage) main_AccountAdmin_Button.getScene().getWindow();
-                Parent root = FXMLLoader.load(getClass().getResource("views/WebSiteManage.fxml"));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
+                navigation.setStage(stage);
+                navigation.showWebSiteManagerView();
+
+
+            } catch (Exception ex) {
                 Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+
         Button pageAdmin = (Button) main_Page_Button;
         main_Image_Button.setOnAction((ActionEvent event) -> {
             try {
                 Stage stage = (Stage) main_AccountAdmin_Button.getScene().getWindow();
-                Parent root = FXMLLoader.load(getClass().getResource("views/WebSiteManage.fxml"));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
+                navigation.setStage(stage);
+                navigation.showWebSiteManagerView();
+
+
+            } catch (Exception ex) {
                 Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
