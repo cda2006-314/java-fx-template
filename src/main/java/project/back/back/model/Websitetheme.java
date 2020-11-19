@@ -44,6 +44,11 @@ public class Websitetheme {
     }
 
     @Override
+    public String toString() {
+        return websitethemeLabel;
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(websitethemeId, websitethemeLabel);
     }

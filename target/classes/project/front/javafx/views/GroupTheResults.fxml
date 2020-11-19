@@ -11,8 +11,8 @@
       <Label layoutX="261.0" layoutY="36.0" text="Résultats recherche" />
       <TableView fx:id="group_TheResults_Table" layoutX="189.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn fx:id="group_TheResults_TableColumn1" prefWidth="75.0" text="C1" />
+          <TableColumn fx:id="group_TheResults_TableColumn2" prefWidth="75.0" text="C2" />
         </columns>
       </TableView>
       <Button fx:id="Back_Button" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" />

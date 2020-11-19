@@ -17,12 +17,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import project.front.javafx.FXMLDocumentController;
+import project.front.javafx.Navigation;
 
  /**
  * FXML Controller class
@@ -34,7 +37,12 @@ import project.front.javafx.FXMLDocumentController;
  @Component
 public class GroupSceneMainController implements Initializable {
 
-    @FXML
+     @FXML
+     private TableColumn group_AllGroup_TableColumn1;
+     @FXML
+     private TableColumn group_AllGroup_TableColumn2;
+
+     @FXML
     private AnchorPane group_AnchorPane;
     @FXML
     private TextField group_SearchByName_TxtField;
@@ -51,6 +59,8 @@ public class GroupSceneMainController implements Initializable {
     @FXML
     private Button Back_Button;
 
+     @Autowired
+     Navigation navigation;
     /**
      * Initializes the controller class.
      */
@@ -66,11 +76,9 @@ public class GroupSceneMainController implements Initializable {
         Back_Button.setOnAction((ActionEvent event) -> {
             try {
                 Stage stage = (Stage) Back_Button.getScene().getWindow();
-                Parent root = FXMLLoader.load(getClass().getResource("../FXMLDocument.fxml"));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
+                navigation.setStage(stage);
+                navigation.showWelcomeView();
+            } catch (Exception ex) {
                 Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
