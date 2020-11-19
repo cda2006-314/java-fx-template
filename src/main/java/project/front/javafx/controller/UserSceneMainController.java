@@ -74,8 +74,8 @@ public class UserSceneMainController implements Initializable {
 
          List listPrep = (List) memberServices.listMemberStatus();
 
-        ObservableList list = FXCollections.observableArrayList(listPrep);
-        user_SearchStatus_CB.setItems((ObservableList)list);
+        ObservableList list = (ObservableList) FXCollections.observableArrayList(listPrep);
+        user_SearchStatus_CB.setItems(list);
 
 
         AquaFx.createButtonStyler().setType(ButtonType.ROUND_RECT).style(user_SearchUser_Button);
