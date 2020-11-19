@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -38,8 +39,13 @@ public class GroupTheResultsController implements Initializable {
     private TableView<?> group_TheResults_Table;
     @FXML
     private Button Back_Button;
+    @FXML
+    private TableColumn group_TheResults_TableColumn1;
+     @FXML
+     private TableColumn group_TheResults_TableColumn2;
 
-    /**
+
+     /**
      * Initializes the controller class.
      */
     @Override

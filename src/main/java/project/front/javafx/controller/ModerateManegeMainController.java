@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import org.springframework.stereotype.Component;
@@ -40,8 +41,13 @@ public class ModerateManegeMainController implements Initializable {
     private TableView<?> moderate_AccountToValidate_Table;
     @FXML
     private Button Back_Button;
+    @FXML
+    private TableColumn moderate_EventToModerate_TableColumn1;
+     @FXML
+     private TableColumn moderate_EventToModerate_TableColumn2;
 
-    /**
+
+     /**
      * Initializes the controller class.
      */
     @Override

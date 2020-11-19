@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.web.HTMLEditor;
 import javafx.stage.Stage;
@@ -33,7 +34,8 @@ public class FontManagerController implements Initializable {
     private Button fontManage_CreateFont_Button;
     @FXML
     private Button Back_Button;
-
+@FXML
+private ComboBox fontManage_return_CB;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         AquaFx.createTextFieldStyler().setType(TextFieldType.ROUND_RECT).style(fontManage_create_TXT);

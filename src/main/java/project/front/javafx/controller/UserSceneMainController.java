@@ -19,10 +19,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +36,10 @@ import project.front.javafx.FXMLDocumentController;
 
  @Controller
 public class UserSceneMainController implements Initializable {
-
+@FXML
+private TableColumn user_AllUsers_TableColumn1;
+@FXML
+private TableColumn user_AllUsers_TableColumn2;
     @FXML
     private Button user_SearchUser_Button;
     @FXML

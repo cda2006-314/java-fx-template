@@ -67,6 +67,7 @@ public class Team {
         this.teamPicurl = teamPicurl;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -125,14 +126,8 @@ public class Team {
     public String toString() {
         return "Team{" +
                 "teamId=" + teamId +
-                ", memberId=" + memberId +
                 ", teamLabel='" + teamLabel + '\'' +
-                ", teamDescription='" + teamDescription + '\'' +
-                ", teamPicurl='" + teamPicurl + '\'' +
-                ", memberslistsByTeamId=" + memberslistsByTeamId +
-                ", memberByMemberId=" + memberByMemberId +
-                ", teamAccessesEventsByTeamId=" + teamAccessesEventsByTeamId +
-                ", teamHasTeamstatusesByTeamId=" + teamHasTeamstatusesByTeamId +
+
                 "}\n";
     }
 }

@@ -41,6 +41,11 @@ public class Visibility {
     }
 
     @Override
+    public String toString() {
+        return visibilityLabel;
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(visibilityId, visibilityLabel);
     }

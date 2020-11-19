@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.web.HTMLEditor;
 
 import javafx.scene.control.TextField;
@@ -27,6 +28,9 @@ import java.util.logging.Logger;
 
 @Component
 public class ApiManagerController implements Initializable {
+
+    @FXML
+    private ComboBox apiManage_listAPI_CB;
     @FXML
    private HTMLEditor apiManage_htmlEditor_Editor;
     @FXML

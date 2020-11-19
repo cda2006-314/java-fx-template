@@ -16,6 +16,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.springframework.stereotype.Component;
@@ -34,6 +36,12 @@ public class UserTheResultsController implements Initializable {
     private AnchorPane user_theResults_AnchorPane;
     @FXML
     private Button Back_Button;
+    @FXML
+    private TableColumn user_theResults_TableColumn1;
+    @FXML
+    private TableColumn user_theResults_TableColumn2;
+    @FXML
+    private TableView user_theResults_Table;
 
     /**
      * Initializes the controller class.
