@@ -4,6 +4,8 @@ import com.aquafx_project.AquaFx;
 import com.aquafx_project.controls.skin.styles.ButtonType;
 import com.aquafx_project.controls.skin.styles.MacOSDefaultIcons;
 import com.aquafx_project.controls.skin.styles.TextFieldType;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +25,7 @@ import project.front.javafx.Navigation;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -49,6 +52,9 @@ private ComboBox fontManage_return_CB;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        List listPrep = (List) fontsServices.fontsList();
+        ObservableList list = (ObservableList) FXCollections.observableArrayList(listPrep);
+        fontManage_return_CB.setItems(list);
 
 
         AquaFx.createTextFieldStyler().setType(TextFieldType.ROUND_RECT).style(fontManage_create_TXT);
