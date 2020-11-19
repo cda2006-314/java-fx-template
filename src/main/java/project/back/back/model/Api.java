@@ -1,9 +1,7 @@
 package project.back.back.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -11,8 +9,10 @@ public class Api {
     private int apiId;
     private String apiLabel;
     private String apiDescription;
+    private Collection<WebsitethemeHasApi> websitethemeHasApisByApiId;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "API_ID", nullable = false, precision = 0)
     public int getApiId() {
         return apiId;
@@ -55,5 +55,14 @@ public class Api {
     @Override
     public int hashCode() {
         return Objects.hash(apiId, apiLabel, apiDescription);
+    }
+
+    @OneToMany(mappedBy = "apiByApiId")
+    public Collection<WebsitethemeHasApi> getWebsitethemeHasApisByApiId() {
+        return websitethemeHasApisByApiId;
+    }
+
+    public void setWebsitethemeHasApisByApiId(Collection<WebsitethemeHasApi> websitethemeHasApisByApiId) {
+        this.websitethemeHasApisByApiId = websitethemeHasApisByApiId;
     }
 }

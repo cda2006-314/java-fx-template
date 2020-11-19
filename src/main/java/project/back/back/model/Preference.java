@@ -1,9 +1,7 @@
 package project.back.back.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -11,8 +9,11 @@ public class Preference {
     private int preferenceId;
     private int websitethemeId;
     private String preferenceLabel;
+    private Collection<MemberHasPreferences> memberHasPreferencesByPreferenceId;
+    private Websitetheme websitethemeByWebsitethemeId;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PREFERENCE_ID", nullable = false, precision = 0)
     public int getPreferenceId() {
         return preferenceId;
@@ -23,7 +24,7 @@ public class Preference {
     }
 
     @Basic
-    @Column(name = "WEBSITETHEME_ID", nullable = false, precision = 0)
+    @Column(name = "WEBSITETHEME_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     public int getWebsitethemeId() {
         return websitethemeId;
     }
@@ -55,5 +56,24 @@ public class Preference {
     @Override
     public int hashCode() {
         return Objects.hash(preferenceId, websitethemeId, preferenceLabel);
+    }
+
+    @OneToMany(mappedBy = "preferenceByPreferenceId")
+    public Collection<MemberHasPreferences> getMemberHasPreferencesByPreferenceId() {
+        return memberHasPreferencesByPreferenceId;
+    }
+
+    public void setMemberHasPreferencesByPreferenceId(Collection<MemberHasPreferences> memberHasPreferencesByPreferenceId) {
+        this.memberHasPreferencesByPreferenceId = memberHasPreferencesByPreferenceId;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "WEBSITETHEME_ID", referencedColumnName = "WEBSITETHEME_ID", nullable = false)
+    public Websitetheme getWebsitethemeByWebsitethemeId() {
+        return websitethemeByWebsitethemeId;
+    }
+
+    public void setWebsitethemeByWebsitethemeId(Websitetheme websitethemeByWebsitethemeId) {
+        this.websitethemeByWebsitethemeId = websitethemeByWebsitethemeId;
     }
 }

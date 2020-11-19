@@ -1,17 +1,17 @@
 package project.back.back.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 public class Groupstatus {
     private int groupstatusId;
     private String groupstatusLabel;
+    private Collection<TeamHasTeamstatus> teamHasTeamstatusesByGroupstatusId;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "GROUPSTATUS_ID", nullable = false, precision = 0)
     public int getGroupstatusId() {
         return groupstatusId;
@@ -43,5 +43,14 @@ public class Groupstatus {
     @Override
     public int hashCode() {
         return Objects.hash(groupstatusId, groupstatusLabel);
+    }
+
+    @OneToMany(mappedBy = "groupstatusByGroupstatusId")
+    public Collection<TeamHasTeamstatus> getTeamHasTeamstatusesByGroupstatusId() {
+        return teamHasTeamstatusesByGroupstatusId;
+    }
+
+    public void setTeamHasTeamstatusesByGroupstatusId(Collection<TeamHasTeamstatus> teamHasTeamstatusesByGroupstatusId) {
+        this.teamHasTeamstatusesByGroupstatusId = teamHasTeamstatusesByGroupstatusId;
     }
 }

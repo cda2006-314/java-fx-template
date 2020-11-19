@@ -12,6 +12,8 @@ public class EmployeeModeratesComment {
     private int employeeId;
     private Timestamp employeeModeratesCommentDate;
     private Boolean employeeModeratesCommentDelete;
+    private Comment commentByCommentId;
+    private Employee employeeByEmployeeId;
 
     @Id
     @Column(name = "COMMENT_ID", nullable = false, precision = 0)
@@ -67,5 +69,25 @@ public class EmployeeModeratesComment {
     @Override
     public int hashCode() {
         return Objects.hash(commentId, employeeId, employeeModeratesCommentDate, employeeModeratesCommentDelete);
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "COMMENT_ID", referencedColumnName = "COMMENT_ID", nullable = false)
+    public Comment getCommentByCommentId() {
+        return commentByCommentId;
+    }
+
+    public void setCommentByCommentId(Comment commentByCommentId) {
+        this.commentByCommentId = commentByCommentId;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "EMPLOYEE_ID", nullable = false)
+    public Employee getEmployeeByEmployeeId() {
+        return employeeByEmployeeId;
+    }
+
+    public void setEmployeeByEmployeeId(Employee employeeByEmployeeId) {
+        this.employeeByEmployeeId = employeeByEmployeeId;
     }
 }

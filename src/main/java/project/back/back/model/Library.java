@@ -1,9 +1,7 @@
 package project.back.back.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -11,8 +9,11 @@ public class Library {
     private int libraryId;
     private int memberId;
     private String libraryMediaid;
+    private Member memberByMemberId;
+    private Collection<LibraryHasMediastock> libraryHasMediastocksByLibraryId;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "LIBRARY_ID", nullable = false, precision = 0)
     public int getLibraryId() {
         return libraryId;
@@ -23,7 +24,7 @@ public class Library {
     }
 
     @Basic
-    @Column(name = "MEMBER_ID", nullable = false, precision = 0)
+    @Column(name = "MEMBER_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     public int getMemberId() {
         return memberId;
     }
@@ -33,7 +34,7 @@ public class Library {
     }
 
     @Basic
-    @Column(name = "LIBRARY_MEDIAID", nullable = false, length = 32)
+    @Column(name = "LIBRARY_MEDIAID", nullable = false, length = 100)
     public String getLibraryMediaid() {
         return libraryMediaid;
     }
@@ -55,5 +56,24 @@ public class Library {
     @Override
     public int hashCode() {
         return Objects.hash(libraryId, memberId, libraryMediaid);
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MEMBER_ID", referencedColumnName = "MEMBER_ID", nullable = false)
+    public Member getMemberByMemberId() {
+        return memberByMemberId;
+    }
+
+    public void setMemberByMemberId(Member memberByMemberId) {
+        this.memberByMemberId = memberByMemberId;
+    }
+
+    @OneToMany(mappedBy = "libraryByLibraryId")
+    public Collection<LibraryHasMediastock> getLibraryHasMediastocksByLibraryId() {
+        return libraryHasMediastocksByLibraryId;
+    }
+
+    public void setLibraryHasMediastocksByLibraryId(Collection<LibraryHasMediastock> libraryHasMediastocksByLibraryId) {
+        this.libraryHasMediastocksByLibraryId = libraryHasMediastocksByLibraryId;
     }
 }

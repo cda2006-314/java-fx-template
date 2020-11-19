@@ -1,10 +1,8 @@
 package project.back.back.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -16,8 +14,17 @@ public class Comment {
     private int commentLikes;
     private Timestamp memberWritesCommentDate;
     private Timestamp commentIsaboutEventDate;
+    private Event eventByEventId;
+    private Member memberByMemberId;
+    private Collection<CommentAssociatedtoMemberslist> commentAssociatedtoMemberslistsByCommentId;
+    private Collection<CommentCanhaveMedia> commentCanhaveMediaByCommentId;
+    private Collection<CommentHasCommentstatus> commentHasCommentstatusesByCommentId;
+    private Collection<EmployeeModeratesComment> employeeModeratesCommentsByCommentId;
+    private Collection<MemberLikesComment> memberLikesCommentsByCommentId;
+    private Collection<MemberReportsComment> memberReportsCommentsByCommentId;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "COMMENT_ID", nullable = false, precision = 0)
     public int getCommentId() {
         return commentId;
@@ -28,7 +35,7 @@ public class Comment {
     }
 
     @Basic
-    @Column(name = "EVENT_ID", nullable = false, precision = 0)
+    @Column(name = "EVENT_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     public int getEventId() {
         return eventId;
     }
@@ -38,7 +45,7 @@ public class Comment {
     }
 
     @Basic
-    @Column(name = "MEMBER_ID", nullable = false, precision = 0)
+    @Column(name = "MEMBER_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     public int getMemberId() {
         return memberId;
     }
@@ -48,7 +55,7 @@ public class Comment {
     }
 
     @Basic
-    @Column(name = "COMMENT_TEXT", nullable = false, length = 1000)
+    @Column(name = "COMMENT_TEXT", nullable = false, length = 3000)
     public String getCommentText() {
         return commentText;
     }
@@ -104,5 +111,79 @@ public class Comment {
     @Override
     public int hashCode() {
         return Objects.hash(commentId, eventId, memberId, commentText, commentLikes, memberWritesCommentDate, commentIsaboutEventDate);
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "EVENT_ID", referencedColumnName = "EVENT_ID", nullable = false)
+    public Event getEventByEventId() {
+        return eventByEventId;
+    }
+
+    public void setEventByEventId(Event eventByEventId) {
+        this.eventByEventId = eventByEventId;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MEMBER_ID", referencedColumnName = "MEMBER_ID", nullable = false)
+    public Member getMemberByMemberId() {
+        return memberByMemberId;
+    }
+
+    public void setMemberByMemberId(Member memberByMemberId) {
+        this.memberByMemberId = memberByMemberId;
+    }
+
+    @OneToMany(mappedBy = "commentByCommentId")
+    public Collection<CommentAssociatedtoMemberslist> getCommentAssociatedtoMemberslistsByCommentId() {
+        return commentAssociatedtoMemberslistsByCommentId;
+    }
+
+    public void setCommentAssociatedtoMemberslistsByCommentId(Collection<CommentAssociatedtoMemberslist> commentAssociatedtoMemberslistsByCommentId) {
+        this.commentAssociatedtoMemberslistsByCommentId = commentAssociatedtoMemberslistsByCommentId;
+    }
+
+    @OneToMany(mappedBy = "commentByCommentId")
+    public Collection<CommentCanhaveMedia> getCommentCanhaveMediaByCommentId() {
+        return commentCanhaveMediaByCommentId;
+    }
+
+    public void setCommentCanhaveMediaByCommentId(Collection<CommentCanhaveMedia> commentCanhaveMediaByCommentId) {
+        this.commentCanhaveMediaByCommentId = commentCanhaveMediaByCommentId;
+    }
+
+    @OneToMany(mappedBy = "commentByCommentId")
+    public Collection<CommentHasCommentstatus> getCommentHasCommentstatusesByCommentId() {
+        return commentHasCommentstatusesByCommentId;
+    }
+
+    public void setCommentHasCommentstatusesByCommentId(Collection<CommentHasCommentstatus> commentHasCommentstatusesByCommentId) {
+        this.commentHasCommentstatusesByCommentId = commentHasCommentstatusesByCommentId;
+    }
+
+    @OneToMany(mappedBy = "commentByCommentId")
+    public Collection<EmployeeModeratesComment> getEmployeeModeratesCommentsByCommentId() {
+        return employeeModeratesCommentsByCommentId;
+    }
+
+    public void setEmployeeModeratesCommentsByCommentId(Collection<EmployeeModeratesComment> employeeModeratesCommentsByCommentId) {
+        this.employeeModeratesCommentsByCommentId = employeeModeratesCommentsByCommentId;
+    }
+
+    @OneToMany(mappedBy = "commentByCommentId")
+    public Collection<MemberLikesComment> getMemberLikesCommentsByCommentId() {
+        return memberLikesCommentsByCommentId;
+    }
+
+    public void setMemberLikesCommentsByCommentId(Collection<MemberLikesComment> memberLikesCommentsByCommentId) {
+        this.memberLikesCommentsByCommentId = memberLikesCommentsByCommentId;
+    }
+
+    @OneToMany(mappedBy = "commentByCommentId")
+    public Collection<MemberReportsComment> getMemberReportsCommentsByCommentId() {
+        return memberReportsCommentsByCommentId;
+    }
+
+    public void setMemberReportsCommentsByCommentId(Collection<MemberReportsComment> memberReportsCommentsByCommentId) {
+        this.memberReportsCommentsByCommentId = memberReportsCommentsByCommentId;
     }
 }

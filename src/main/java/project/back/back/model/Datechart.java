@@ -1,9 +1,6 @@
 package project.back.back.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Objects;
 
@@ -17,8 +14,10 @@ public class Datechart {
     private Timestamp datechartLabelstart;
     private Timestamp datechartLabelend;
     private Timestamp eventHasDatechartDate;
+    private Event eventByEventId;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "DATECHART_ID", nullable = false, precision = 0)
     public int getDatechartId() {
         return datechartId;
@@ -29,7 +28,7 @@ public class Datechart {
     }
 
     @Basic
-    @Column(name = "EVENT_ID", nullable = false, precision = 0)
+    @Column(name = "EVENT_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     public int getEventId() {
         return eventId;
     }
@@ -116,5 +115,15 @@ public class Datechart {
     @Override
     public int hashCode() {
         return Objects.hash(datechartId, eventId, datechartCreation, datechartStart, datechartEnd, datechartLabelstart, datechartLabelend, eventHasDatechartDate);
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "EVENT_ID", referencedColumnName = "EVENT_ID", nullable = false)
+    public Event getEventByEventId() {
+        return eventByEventId;
+    }
+
+    public void setEventByEventId(Event eventByEventId) {
+        this.eventByEventId = eventByEventId;
     }
 }

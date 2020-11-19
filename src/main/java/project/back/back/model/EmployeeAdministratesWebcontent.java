@@ -9,6 +9,8 @@ import java.util.Objects;
 public class EmployeeAdministratesWebcontent {
     private int employeeId;
     private int webcontentId;
+    private Employee employeeByEmployeeId;
+    private Webcontent webcontentByWebcontentId;
 
     @Id
     @Column(name = "EMPLOYEE_ID", nullable = false, precision = 0)
@@ -42,5 +44,25 @@ public class EmployeeAdministratesWebcontent {
     @Override
     public int hashCode() {
         return Objects.hash(employeeId, webcontentId);
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "EMPLOYEE_ID", nullable = false)
+    public Employee getEmployeeByEmployeeId() {
+        return employeeByEmployeeId;
+    }
+
+    public void setEmployeeByEmployeeId(Employee employeeByEmployeeId) {
+        this.employeeByEmployeeId = employeeByEmployeeId;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "WEBCONTENT_ID", referencedColumnName = "WEBCONTENT_ID", nullable = false)
+    public Webcontent getWebcontentByWebcontentId() {
+        return webcontentByWebcontentId;
+    }
+
+    public void setWebcontentByWebcontentId(Webcontent webcontentByWebcontentId) {
+        this.webcontentByWebcontentId = webcontentByWebcontentId;
     }
 }

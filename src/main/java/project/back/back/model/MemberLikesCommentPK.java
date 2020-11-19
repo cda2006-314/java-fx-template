@@ -9,7 +9,7 @@ public class MemberLikesCommentPK implements Serializable {
     private int memberId;
     private int commentId;
 
-    @Column(name = "MEMBER_ID", nullable = false, precision = 0)
+    @Column(name = "MEMBER_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getMemberId() {
         return memberId;
@@ -19,7 +19,7 @@ public class MemberLikesCommentPK implements Serializable {
         this.memberId = memberId;
     }
 
-    @Column(name = "COMMENT_ID", nullable = false, precision = 0)
+    @Column(name = "COMMENT_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getCommentId() {
         return commentId;

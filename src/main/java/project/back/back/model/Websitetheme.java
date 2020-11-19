@@ -1,9 +1,6 @@
 package project.back.back.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -11,14 +8,13 @@ import java.util.Objects;
 public class Websitetheme {
     private int websitethemeId;
     private String websitethemeLabel;
-    private Collection<Api> api;
-    private Collection<Fonts> fonts;
-    private Collection<Picture> picture;
+    private Collection<Preference> preferencesByWebsitethemeId;
+    private Collection<WebsitethemeHasApi> websitethemeHasApisByWebsitethemeId;
+    private Collection<WebsitethemeHasFonts> websitethemeHasFontsByWebsitethemeId;
+    private Collection<WebsitethemeHasPicture> websitethemeHasPicturesByWebsitethemeId;
 
-    public Websitetheme(){}
-
-    public Websitetheme(Collection<Api> api, Collection<Fonts> fonts, Collection<Picture> picture){this.api = api; this.fonts = fonts; this.picture = picture;}
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "WEBSITETHEME_ID", nullable = false, precision = 0)
     public int getWebsitethemeId() {
         return websitethemeId;
@@ -27,7 +23,6 @@ public class Websitetheme {
     public void setWebsitethemeId(int websitethemeId) {
         this.websitethemeId = websitethemeId;
     }
-
 
     @Basic
     @Column(name = "WEBSITETHEME_LABEL", nullable = false, length = 100)
@@ -51,5 +46,41 @@ public class Websitetheme {
     @Override
     public int hashCode() {
         return Objects.hash(websitethemeId, websitethemeLabel);
+    }
+
+    @OneToMany(mappedBy = "websitethemeByWebsitethemeId")
+    public Collection<Preference> getPreferencesByWebsitethemeId() {
+        return preferencesByWebsitethemeId;
+    }
+
+    public void setPreferencesByWebsitethemeId(Collection<Preference> preferencesByWebsitethemeId) {
+        this.preferencesByWebsitethemeId = preferencesByWebsitethemeId;
+    }
+
+    @OneToMany(mappedBy = "websitethemeByWebsitethemeId")
+    public Collection<WebsitethemeHasApi> getWebsitethemeHasApisByWebsitethemeId() {
+        return websitethemeHasApisByWebsitethemeId;
+    }
+
+    public void setWebsitethemeHasApisByWebsitethemeId(Collection<WebsitethemeHasApi> websitethemeHasApisByWebsitethemeId) {
+        this.websitethemeHasApisByWebsitethemeId = websitethemeHasApisByWebsitethemeId;
+    }
+
+    @OneToMany(mappedBy = "websitethemeByWebsitethemeId")
+    public Collection<WebsitethemeHasFonts> getWebsitethemeHasFontsByWebsitethemeId() {
+        return websitethemeHasFontsByWebsitethemeId;
+    }
+
+    public void setWebsitethemeHasFontsByWebsitethemeId(Collection<WebsitethemeHasFonts> websitethemeHasFontsByWebsitethemeId) {
+        this.websitethemeHasFontsByWebsitethemeId = websitethemeHasFontsByWebsitethemeId;
+    }
+
+    @OneToMany(mappedBy = "websitethemeByWebsitethemeId")
+    public Collection<WebsitethemeHasPicture> getWebsitethemeHasPicturesByWebsitethemeId() {
+        return websitethemeHasPicturesByWebsitethemeId;
+    }
+
+    public void setWebsitethemeHasPicturesByWebsitethemeId(Collection<WebsitethemeHasPicture> websitethemeHasPicturesByWebsitethemeId) {
+        this.websitethemeHasPicturesByWebsitethemeId = websitethemeHasPicturesByWebsitethemeId;
     }
 }

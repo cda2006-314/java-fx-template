@@ -9,7 +9,7 @@ public class WebsitethemeHasPicturePK implements Serializable {
     private int websitethemeId;
     private int pictureId;
 
-    @Column(name = "WEBSITETHEME_ID", nullable = false, precision = 0)
+    @Column(name = "WEBSITETHEME_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getWebsitethemeId() {
         return websitethemeId;
@@ -19,7 +19,7 @@ public class WebsitethemeHasPicturePK implements Serializable {
         this.websitethemeId = websitethemeId;
     }
 
-    @Column(name = "PICTURE_ID", nullable = false, precision = 0)
+    @Column(name = "PICTURE_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getPictureId() {
         return pictureId;

@@ -4,11 +4,13 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "EVENT_HAS_KEYWORD", schema = "dbo" )
+@Table(name = "EVENT_HAS_KEYWORD", schema = "dbo")
 @IdClass(EventHasKeywordPK.class)
 public class EventHasKeyword {
     private int eventId;
     private String keywordLabel;
+    private Event eventByEventId;
+    private Keyword keywordByKeywordLabel;
 
     @Id
     @Column(name = "EVENT_ID", nullable = false, precision = 0)
@@ -42,5 +44,25 @@ public class EventHasKeyword {
     @Override
     public int hashCode() {
         return Objects.hash(eventId, keywordLabel);
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "EVENT_ID", referencedColumnName = "EVENT_ID", nullable = false)
+    public Event getEventByEventId() {
+        return eventByEventId;
+    }
+
+    public void setEventByEventId(Event eventByEventId) {
+        this.eventByEventId = eventByEventId;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "KEYWORD_LABEL", referencedColumnName = "KEYWORD_LABEL", nullable = false)
+    public Keyword getKeywordByKeywordLabel() {
+        return keywordByKeywordLabel;
+    }
+
+    public void setKeywordByKeywordLabel(Keyword keywordByKeywordLabel) {
+        this.keywordByKeywordLabel = keywordByKeywordLabel;
     }
 }

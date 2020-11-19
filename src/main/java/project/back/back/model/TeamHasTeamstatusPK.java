@@ -9,7 +9,7 @@ public class TeamHasTeamstatusPK implements Serializable {
     private int groupstatusId;
     private int teamId;
 
-    @Column(name = "GROUPSTATUS_ID", nullable = false, precision = 0)
+    @Column(name = "GROUPSTATUS_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getGroupstatusId() {
         return groupstatusId;
@@ -19,7 +19,7 @@ public class TeamHasTeamstatusPK implements Serializable {
         this.groupstatusId = groupstatusId;
     }
 
-    @Column(name = "TEAM_ID", nullable = false, precision = 0)
+    @Column(name = "TEAM_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getTeamId() {
         return teamId;

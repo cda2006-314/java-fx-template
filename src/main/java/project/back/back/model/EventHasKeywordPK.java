@@ -9,7 +9,7 @@ public class EventHasKeywordPK implements Serializable {
     private int eventId;
     private String keywordLabel;
 
-    @Column(name = "EVENT_ID", nullable = false, precision = 0)
+    @Column(name = "EVENT_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getEventId() {
         return eventId;
@@ -19,7 +19,7 @@ public class EventHasKeywordPK implements Serializable {
         this.eventId = eventId;
     }
 
-    @Column(name = "KEYWORD_LABEL", nullable = false, length = 100)
+    @Column(name = "KEYWORD_LABEL", insertable = false, updatable = false, nullable = false, length = 100)
     @Id
     public String getKeywordLabel() {
         return keywordLabel;

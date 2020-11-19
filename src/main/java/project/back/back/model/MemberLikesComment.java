@@ -5,12 +5,14 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-@Table(name = "MEMBER_LIKES_COMMENT", schema = "dbo" )
+@Table(name = "MEMBER_LIKES_COMMENT", schema = "dbo")
 @IdClass(MemberLikesCommentPK.class)
 public class MemberLikesComment {
     private int memberId;
     private int commentId;
     private Timestamp memberLikesCommentDate;
+    private Member memberByMemberId;
+    private Comment commentByCommentId;
 
     @Id
     @Column(name = "MEMBER_ID", nullable = false, precision = 0)
@@ -55,5 +57,25 @@ public class MemberLikesComment {
     @Override
     public int hashCode() {
         return Objects.hash(memberId, commentId, memberLikesCommentDate);
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MEMBER_ID", referencedColumnName = "MEMBER_ID", nullable = false)
+    public Member getMemberByMemberId() {
+        return memberByMemberId;
+    }
+
+    public void setMemberByMemberId(Member memberByMemberId) {
+        this.memberByMemberId = memberByMemberId;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "COMMENT_ID", referencedColumnName = "COMMENT_ID", nullable = false)
+    public Comment getCommentByCommentId() {
+        return commentByCommentId;
+    }
+
+    public void setCommentByCommentId(Comment commentByCommentId) {
+        this.commentByCommentId = commentByCommentId;
     }
 }

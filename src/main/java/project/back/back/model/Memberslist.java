@@ -1,10 +1,8 @@
 package project.back.back.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -13,8 +11,12 @@ public class Memberslist {
     private int teamId;
     private String memberslistLabel;
     private Timestamp teamHasUserslistDate;
+    private Collection<CommentAssociatedtoMemberslist> commentAssociatedtoMemberslistsByMemberslistId;
+    private Collection<Invitation> invitationsByMemberslistId;
+    private Team teamByTeamId;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MEMBERSLIST_ID", nullable = false, precision = 0)
     public int getMemberslistId() {
         return memberslistId;
@@ -25,7 +27,7 @@ public class Memberslist {
     }
 
     @Basic
-    @Column(name = "TEAM_ID", nullable = false, precision = 0)
+    @Column(name = "TEAM_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     public int getTeamId() {
         return teamId;
     }
@@ -68,5 +70,33 @@ public class Memberslist {
     @Override
     public int hashCode() {
         return Objects.hash(memberslistId, teamId, memberslistLabel, teamHasUserslistDate);
+    }
+
+    @OneToMany(mappedBy = "memberslistByMemberslistId")
+    public Collection<CommentAssociatedtoMemberslist> getCommentAssociatedtoMemberslistsByMemberslistId() {
+        return commentAssociatedtoMemberslistsByMemberslistId;
+    }
+
+    public void setCommentAssociatedtoMemberslistsByMemberslistId(Collection<CommentAssociatedtoMemberslist> commentAssociatedtoMemberslistsByMemberslistId) {
+        this.commentAssociatedtoMemberslistsByMemberslistId = commentAssociatedtoMemberslistsByMemberslistId;
+    }
+
+    @OneToMany(mappedBy = "memberslistByMemberslistId")
+    public Collection<Invitation> getInvitationsByMemberslistId() {
+        return invitationsByMemberslistId;
+    }
+
+    public void setInvitationsByMemberslistId(Collection<Invitation> invitationsByMemberslistId) {
+        this.invitationsByMemberslistId = invitationsByMemberslistId;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "TEAM_ID", referencedColumnName = "TEAM_ID", nullable = false)
+    public Team getTeamByTeamId() {
+        return teamByTeamId;
+    }
+
+    public void setTeamByTeamId(Team teamByTeamId) {
+        this.teamByTeamId = teamByTeamId;
     }
 }

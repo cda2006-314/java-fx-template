@@ -9,7 +9,7 @@ public class MemberFollowsanotherMemberPK implements Serializable {
     private int member1Id;
     private int member2Id;
 
-    @Column(name = "MEMBER1_ID", nullable = false, precision = 0)
+    @Column(name = "MEMBER1_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getMember1Id() {
         return member1Id;
@@ -19,7 +19,7 @@ public class MemberFollowsanotherMemberPK implements Serializable {
         this.member1Id = member1Id;
     }
 
-    @Column(name = "MEMBER2_ID", nullable = false, precision = 0)
+    @Column(name = "MEMBER2_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getMember2Id() {
         return member2Id;

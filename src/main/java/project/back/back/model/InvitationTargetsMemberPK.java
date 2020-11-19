@@ -9,7 +9,7 @@ public class InvitationTargetsMemberPK implements Serializable {
     private int invitationId;
     private int memberId;
 
-    @Column(name = "INVITATION_ID", nullable = false, precision = 0)
+    @Column(name = "INVITATION_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getInvitationId() {
         return invitationId;
@@ -19,7 +19,7 @@ public class InvitationTargetsMemberPK implements Serializable {
         this.invitationId = invitationId;
     }
 
-    @Column(name = "MEMBER_ID", nullable = false, precision = 0)
+    @Column(name = "MEMBER_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getMemberId() {
         return memberId;

@@ -5,12 +5,14 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-@Table(name = "EVENT_HAS_EVENTSTATUS", schema = "dbo" )
+@Table(name = "EVENT_HAS_EVENTSTATUS", schema = "dbo")
 @IdClass(EventHasEventstatusPK.class)
 public class EventHasEventstatus {
     private int eventId;
     private int eventstatusId;
     private Timestamp eventHasEventstatusDate;
+    private Event eventByEventId;
+    private Eventstatus eventstatusByEventstatusId;
 
     @Id
     @Column(name = "EVENT_ID", nullable = false, precision = 0)
@@ -55,5 +57,25 @@ public class EventHasEventstatus {
     @Override
     public int hashCode() {
         return Objects.hash(eventId, eventstatusId, eventHasEventstatusDate);
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "EVENT_ID", referencedColumnName = "EVENT_ID", nullable = false)
+    public Event getEventByEventId() {
+        return eventByEventId;
+    }
+
+    public void setEventByEventId(Event eventByEventId) {
+        this.eventByEventId = eventByEventId;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "EVENTSTATUS_ID", referencedColumnName = "EVENTSTATUS_ID", nullable = false)
+    public Eventstatus getEventstatusByEventstatusId() {
+        return eventstatusByEventstatusId;
+    }
+
+    public void setEventstatusByEventstatusId(Eventstatus eventstatusByEventstatusId) {
+        this.eventstatusByEventstatusId = eventstatusByEventstatusId;
     }
 }

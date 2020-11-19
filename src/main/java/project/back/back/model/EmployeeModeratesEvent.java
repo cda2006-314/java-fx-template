@@ -12,6 +12,8 @@ public class EmployeeModeratesEvent {
     private int eventId;
     private Timestamp employeeModeratesEventDate;
     private Boolean employeeModeratesEventDelete;
+    private Employee employeeByEmployeeId;
+    private Event eventByEventId;
 
     @Id
     @Column(name = "EMPLOYEE_ID", nullable = false, precision = 0)
@@ -67,5 +69,25 @@ public class EmployeeModeratesEvent {
     @Override
     public int hashCode() {
         return Objects.hash(employeeId, eventId, employeeModeratesEventDate, employeeModeratesEventDelete);
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "EMPLOYEE_ID", nullable = false)
+    public Employee getEmployeeByEmployeeId() {
+        return employeeByEmployeeId;
+    }
+
+    public void setEmployeeByEmployeeId(Employee employeeByEmployeeId) {
+        this.employeeByEmployeeId = employeeByEmployeeId;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "EVENT_ID", referencedColumnName = "EVENT_ID", nullable = false)
+    public Event getEventByEventId() {
+        return eventByEventId;
+    }
+
+    public void setEventByEventId(Event eventByEventId) {
+        this.eventByEventId = eventByEventId;
     }
 }

@@ -4,11 +4,13 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "MEMBER_HAS_PREFERENCES", schema = "dbo" )
+@Table(name = "MEMBER_HAS_PREFERENCES", schema = "dbo")
 @IdClass(MemberHasPreferencesPK.class)
 public class MemberHasPreferences {
     private int memberId;
     private int preferenceId;
+    private Member memberByMemberId;
+    private Preference preferenceByPreferenceId;
 
     @Id
     @Column(name = "MEMBER_ID", nullable = false, precision = 0)
@@ -42,5 +44,25 @@ public class MemberHasPreferences {
     @Override
     public int hashCode() {
         return Objects.hash(memberId, preferenceId);
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MEMBER_ID", referencedColumnName = "MEMBER_ID", nullable = false)
+    public Member getMemberByMemberId() {
+        return memberByMemberId;
+    }
+
+    public void setMemberByMemberId(Member memberByMemberId) {
+        this.memberByMemberId = memberByMemberId;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PREFERENCE_ID", referencedColumnName = "PREFERENCE_ID", nullable = false)
+    public Preference getPreferenceByPreferenceId() {
+        return preferenceByPreferenceId;
+    }
+
+    public void setPreferenceByPreferenceId(Preference preferenceByPreferenceId) {
+        this.preferenceByPreferenceId = preferenceByPreferenceId;
     }
 }

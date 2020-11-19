@@ -9,7 +9,7 @@ public class MemberHasPreferencesPK implements Serializable {
     private int memberId;
     private int preferenceId;
 
-    @Column(name = "MEMBER_ID", nullable = false, precision = 0)
+    @Column(name = "MEMBER_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getMemberId() {
         return memberId;
@@ -19,7 +19,7 @@ public class MemberHasPreferencesPK implements Serializable {
         this.memberId = memberId;
     }
 
-    @Column(name = "PREFERENCE_ID", nullable = false, precision = 0)
+    @Column(name = "PREFERENCE_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getPreferenceId() {
         return preferenceId;

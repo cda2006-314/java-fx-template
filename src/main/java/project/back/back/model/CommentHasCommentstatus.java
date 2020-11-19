@@ -11,6 +11,8 @@ public class CommentHasCommentstatus {
     private int commentstatusId;
     private int commentId;
     private Timestamp commentHasCommentstatusDate;
+    private Commentstatus commentstatusByCommentstatusId;
+    private Comment commentByCommentId;
 
     @Id
     @Column(name = "COMMENTSTATUS_ID", nullable = false, precision = 0)
@@ -55,5 +57,25 @@ public class CommentHasCommentstatus {
     @Override
     public int hashCode() {
         return Objects.hash(commentstatusId, commentId, commentHasCommentstatusDate);
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "COMMENTSTATUS_ID", referencedColumnName = "COMMENTSTATUS_ID", nullable = false)
+    public Commentstatus getCommentstatusByCommentstatusId() {
+        return commentstatusByCommentstatusId;
+    }
+
+    public void setCommentstatusByCommentstatusId(Commentstatus commentstatusByCommentstatusId) {
+        this.commentstatusByCommentstatusId = commentstatusByCommentstatusId;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "COMMENT_ID", referencedColumnName = "COMMENT_ID", nullable = false)
+    public Comment getCommentByCommentId() {
+        return commentByCommentId;
+    }
+
+    public void setCommentByCommentId(Comment commentByCommentId) {
+        this.commentByCommentId = commentByCommentId;
     }
 }

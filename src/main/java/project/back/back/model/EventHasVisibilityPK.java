@@ -9,7 +9,7 @@ public class EventHasVisibilityPK implements Serializable {
     private int visibilityId;
     private int eventId;
 
-    @Column(name = "VISIBILITY_ID", nullable = false, precision = 0)
+    @Column(name = "VISIBILITY_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getVisibilityId() {
         return visibilityId;
@@ -19,7 +19,7 @@ public class EventHasVisibilityPK implements Serializable {
         this.visibilityId = visibilityId;
     }
 
-    @Column(name = "EVENT_ID", nullable = false, precision = 0)
+    @Column(name = "EVENT_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getEventId() {
         return eventId;

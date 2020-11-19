@@ -4,11 +4,13 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "EVENT_HAS_MEDIA", schema = "dbo" )
+@Table(name = "EVENT_HAS_MEDIA", schema = "dbo")
 @IdClass(EventHasMediaPK.class)
 public class EventHasMedia {
     private int eventId;
     private int mediaId;
+    private Event eventByEventId;
+    private Media mediaByMediaId;
 
     @Id
     @Column(name = "EVENT_ID", nullable = false, precision = 0)
@@ -42,5 +44,25 @@ public class EventHasMedia {
     @Override
     public int hashCode() {
         return Objects.hash(eventId, mediaId);
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "EVENT_ID", referencedColumnName = "EVENT_ID", nullable = false)
+    public Event getEventByEventId() {
+        return eventByEventId;
+    }
+
+    public void setEventByEventId(Event eventByEventId) {
+        this.eventByEventId = eventByEventId;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MEDIA_ID", referencedColumnName = "MEDIA_ID", nullable = false)
+    public Media getMediaByMediaId() {
+        return mediaByMediaId;
+    }
+
+    public void setMediaByMediaId(Media mediaByMediaId) {
+        this.mediaByMediaId = mediaByMediaId;
     }
 }

@@ -9,7 +9,7 @@ public class MessageHasMessagestatusPK implements Serializable {
     private int messageId;
     private int statusId;
 
-    @Column(name = "MESSAGE_ID", nullable = false, precision = 0)
+    @Column(name = "MESSAGE_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getMessageId() {
         return messageId;
@@ -19,7 +19,7 @@ public class MessageHasMessagestatusPK implements Serializable {
         this.messageId = messageId;
     }
 
-    @Column(name = "STATUS_ID", nullable = false, precision = 0)
+    @Column(name = "STATUS_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
     public int getStatusId() {
         return statusId;
