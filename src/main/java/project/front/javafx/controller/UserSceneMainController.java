@@ -27,6 +27,7 @@ import org.springframework.stereotype.Controller;
 import project.back.back.services.EmployeeServices;
 import project.back.back.services.MemberServices;
 import project.front.javafx.FXMLDocumentController;
+import project.front.javafx.Navigation;
 
  /**
  * FXML Controller class
@@ -58,6 +59,8 @@ private TableColumn user_AllUsers_TableColumn2;
    private MemberServices memberServices;
      @Autowired
      private EmployeeServices employeeServices;
+     @Autowired
+     Navigation navigation;
 
 
   // public void setMemberServices(MemberServices memberServices){this.memberServices = memberServices;}
@@ -88,11 +91,9 @@ private TableColumn user_AllUsers_TableColumn2;
         Back_Button.setOnAction((ActionEvent event) -> {
             try {
                 Stage stage = (Stage) Back_Button.getScene().getWindow();
-                Parent root = FXMLLoader.load(getClass().getResource("../FXMLDocument.fxml"));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
+                navigation.setStage(stage);
+                navigation.showWelcomeView();
+            } catch (Exception ex) {
                 Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });

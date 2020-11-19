@@ -15,8 +15,11 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.web.HTMLEditor;
 import javafx.stage.Stage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import project.back.back.services.FontsServices;
 import project.front.javafx.FXMLDocumentController;
+import project.front.javafx.Navigation;
 
 import java.io.IOException;
 import java.net.URL;
@@ -36,8 +39,18 @@ public class FontManagerController implements Initializable {
     private Button Back_Button;
 @FXML
 private ComboBox fontManage_return_CB;
+
+    @Autowired
+    Navigation navigation;
+
+@Autowired
+    FontsServices fontsServices;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+
+
         AquaFx.createTextFieldStyler().setType(TextFieldType.ROUND_RECT).style(fontManage_create_TXT);
         AquaFx.createButtonStyler().setType(ButtonType.ROUND_RECT).style(fontManage_CreateFont_Button);
         Button tbBack = Back_Button;
@@ -45,11 +58,9 @@ private ComboBox fontManage_return_CB;
         Back_Button.setOnAction((ActionEvent event) -> {
             try {
                 Stage stage = (Stage) Back_Button.getScene().getWindow();
-                Parent root = FXMLLoader.load(getClass().getResource("../FXMLDocument.fxml"));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
+                navigation.setStage(stage);
+                navigation.showWelcomeView();
+            } catch (Exception ex) {
                 Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });

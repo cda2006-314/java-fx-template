@@ -213,11 +213,10 @@ Navigation navigation;
         main_WaitingValidate_Button.setOnAction((ActionEvent event) -> {
             try {
                 Stage stage = (Stage) main_AccountAdmin_Button.getScene().getWindow();
-                Parent root = FXMLLoader.load(getClass().getResource("views/ModerateManegeMain.fxml"));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
+                navigation.setStage(stage);
+                navigation.showModerateManageView();
+
+            } catch (Exception ex) {
                 Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
