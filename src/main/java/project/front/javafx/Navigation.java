@@ -75,7 +75,7 @@ public class Navigation {
     public void showManageAccoutnView(){show(ManageAccount_VIEW);}
     public void showManagePasswordView(){show(ManagePassword_VIEW);}
     public void showModerateManageView(){show(ModerateManageMain_VIEW);}
-    public void showStateSysyemView(){show(StateSystem_VIEW);}
+    public void showStateSystemView(){show(StateSystem_VIEW);}
     public void showUserSceneView(){show(UserSceneMain_VIEW);}
     public void showUserResultsView(){show(UserTheResults_VIEW);}
     public void showWebSiteManagerView(){show(WebSiteManage_VIEW);}
