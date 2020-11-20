@@ -14,11 +14,11 @@
       <Label layoutX="53.0" layoutY="289.0" text="Validation Compte Utilisateurs" />
       <TableView fx:id="moderate_EventToModerate_Table" layoutX="196.0" layoutY="15.0" prefHeight="93.0" prefWidth="398.0">
         <columns>
-          <TableColumn fx:id="moderate_EventToModerate_TableColumn1" prefWidth="75.0" text="Event Id" />
-          <TableColumn fx:id="moderate_EventToModerate_TableColumn2" prefWidth="75.0" text="Nom Event" />
-            <TableColumn fx:id="moderate_EventToModerate_TableColumn3" prefWidth="75.0" text="Membre" />
-            <TableColumn fx:id="moderate_EventToModerate_TableColumn4" prefWidth="75.0" text="Date" />
-            <TableColumn fx:id="moderate_EventToModerate_TableColumn5" prefWidth="75.0" text="Commentaires" />
+          <TableColumn fx:id="moderate_EventToModerate_TableColumn1" prefWidth="75.0" text="C1" />
+          <TableColumn fx:id="moderate_EventToModerate_TableColumn2" prefWidth="75.0" text="C2" />
+            <TableColumn fx:id="moderate_EventToModerate_TableColumn3" prefWidth="75.0" text="C1" />
+            <TableColumn fx:id="moderate_EventToModerate_TableColumn4" prefWidth="75.0" text="C2" />
+            <TableColumn fx:id="moderate_EventToModerate_TableColumn5" prefWidth="75.0" text="C1" />
 
         </columns>
       </TableView>

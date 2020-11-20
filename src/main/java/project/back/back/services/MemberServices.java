@@ -7,6 +7,7 @@ import project.back.back.model.Memberstatus;
 import project.back.back.repository.MemberRepository;
 import project.back.back.repository.MemberstatusRepository;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MemberServices {
@@ -21,7 +22,12 @@ public void createMember(Member member){memberRepository.save(member);}
 
 public void changeStatusMembre(int memberId){memberstatusRepository.updateMemberStatus(memberId);}
 
-//updateMember à faire
+public Member findById(Integer memberId){
+    Optional<Member> optionalMember = Optional.ofNullable(memberRepository.findMemberByMemberId(memberId));
+  Member member = optionalMember.get();
+    return member; }
+
+public void updateMember(Integer memberId){createMember(findById(memberId));}
 
 public List<Member> listMember(){ return memberRepository.findAll(); }
 

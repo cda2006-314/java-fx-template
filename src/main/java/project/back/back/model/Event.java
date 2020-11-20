@@ -99,6 +99,11 @@ public class Event {
     }
 
     @Override
+    public String toString() {
+        return eventLabel;
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(eventId, memberId, eventLabel, eventLikes, eventPostit, eventIssponsored);
     }

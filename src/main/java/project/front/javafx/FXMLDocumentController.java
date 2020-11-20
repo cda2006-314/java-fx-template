@@ -13,12 +13,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import project.front.javafx.controller.ToggleSwitch;
 
 import java.io.IOException;
 import java.net.URL;
@@ -71,6 +73,10 @@ public class FXMLDocumentController implements Initializable {
     private Color x4;
     @FXML
     private Font x3;
+    @FXML
+    private HBox all_Received_TB_HB;
+
+
 @Autowired
 Navigation navigation;
     private void handleButtonAction(ActionEvent event) {
@@ -79,7 +85,9 @@ Navigation navigation;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        ToggleSwitch toggleSwitch = new ToggleSwitch();
 
+        all_Received_TB_HB.getChildren().add(toggleSwitch);
 
         AquaFx.createLabelStyler().setSizeVariant(ControlSizeVariant.REGULAR).style(labelD);
         AquaFx.createLabelStyler().setSizeVariant(ControlSizeVariant.REGULAR).style(labelDD);
@@ -133,7 +141,7 @@ Navigation navigation;
 
                 Stage stage = (Stage) main_AccountAdmin_Button.getScene().getWindow();
                 navigation.setStage(stage);
-                navigation.showManageAccoutnView();
+                navigation.showManageAccountView();
 
 
         });
@@ -183,6 +191,7 @@ Navigation navigation;
         logAdmin.setGraphic(logImg);
 
         //Attribution des actions sur les boutons
+
         Button userAdmin = (Button) main_User_Button;
         main_User_Button.setOnAction((ActionEvent event) -> {
             try {

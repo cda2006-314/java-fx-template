@@ -17,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -40,6 +41,8 @@ public class ManagePasswordController implements Initializable {
     private Button account_SubmitNewPassword_Button;
     @FXML
     private Button Back_Button;
+
+
      @Autowired
      Navigation navigation;
 
@@ -48,6 +51,9 @@ public class ManagePasswordController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+
+
         AquaFx.createButtonStyler().setType(ButtonType.ROUND_RECT).style(account_SubmitNewPassword_Button);
         AquaFx.createPasswordFieldStyler().style(account_formerPassword_PasswordField);
         AquaFx.createPasswordFieldStyler().style(account_newPassword_PasswordField);
