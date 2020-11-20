@@ -1,5 +1,8 @@
 package project.back.back.model;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
@@ -204,6 +207,11 @@ public class Member {
     }
 
     @Override
+    public String toString() {
+        return memberUsername;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -303,6 +311,7 @@ public class Member {
         this.memberHasKeywordsByMemberId = memberHasKeywordsByMemberId;
     }
 
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "memberByMemberId")
     public Collection<MemberHasMemberstatus> getMemberHasMemberstatusesByMemberId() {
         return memberHasMemberstatusesByMemberId;

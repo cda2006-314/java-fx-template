@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.web.HTMLEditor;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,8 @@ public class FontManagerController implements Initializable {
     private Button fontManage_CreateFont_Button;
     @FXML
     private Button Back_Button;
+
+
 @FXML
 private ComboBox fontManage_return_CB;
 
@@ -51,6 +54,8 @@ private ComboBox fontManage_return_CB;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+
 
         List listPrep = (List) fontsServices.fontsList();
         ObservableList list = (ObservableList) FXCollections.observableArrayList(listPrep);

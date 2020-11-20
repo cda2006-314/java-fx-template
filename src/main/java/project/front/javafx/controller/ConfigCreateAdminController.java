@@ -18,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -42,6 +43,7 @@ public class ConfigCreateAdminController implements Initializable {
     @FXML
     private Button Back_Button;
 
+
      @Autowired
      Navigation navigation;
     /**
@@ -49,6 +51,8 @@ public class ConfigCreateAdminController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+
         AquaFx.createTextFieldStyler().setType(TextFieldType.ROUND_RECT).style(configure_NewAdminPassword_Textfield);
         AquaFx.createButtonStyler().setType(ButtonType.ROUND_RECT).style(configure_CreateAdmin_Button);
         AquaFx.createTextFieldStyler().setType(TextFieldType.ROUND_RECT).style(configure_LoginNewAdmin_TxtField);

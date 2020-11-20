@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -36,6 +37,7 @@ public class LogsController implements Initializable {
     private Button logs_GiveLogs_Button;
     @FXML
     private Button Back_Button;
+
      @Autowired
      Navigation navigation;
 
@@ -44,6 +46,9 @@ public class LogsController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+
+
         AquaFx.createButtonStyler().setType(ButtonType.ROUND_RECT).style(logs_GiveLogs_Button);
 
         Button tbBack = Back_Button;

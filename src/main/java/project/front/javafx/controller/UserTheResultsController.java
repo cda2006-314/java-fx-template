@@ -19,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -44,6 +45,8 @@ public class UserTheResultsController implements Initializable {
     private TableColumn user_theResults_TableColumn2;
     @FXML
     private TableView user_theResults_Table;
+
+
      @Autowired
      Navigation navigation;
 
@@ -52,6 +55,9 @@ public class UserTheResultsController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+
+
         Button tbBack = Back_Button;
         AquaFx.createButtonStyler().setIcon(MacOSDefaultIcons.LEFT).setType(ButtonType.LEFT_PILL).style(tbBack);
         Back_Button.setOnAction((ActionEvent event) -> {

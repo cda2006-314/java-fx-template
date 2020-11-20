@@ -8,6 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.HTMLEditor?>
 
+<?import javafx.scene.layout.HBox?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="899.0" style="-fx-background-color: #778899;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.front.javafx.controller.ApiManagerController">
    <children>
       <Label layoutX="163.0" layoutY="36.0" prefHeight="35.0" prefWidth="226.0" text="Gestion des APIs">
@@ -21,5 +22,6 @@
       <TextField fx:id="apiManage_create_TXT" layoutX="234.0" layoutY="116.0" />
       <Button fx:id="apiManage_CreateAPI_Button" layoutX="442.0" layoutY="116.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="98.0" text="Ajout" />
       <Button fx:id="Back_Button" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" />
+
    </children>
 </AnchorPane>

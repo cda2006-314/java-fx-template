@@ -31,8 +31,12 @@
                   <Label layoutX="86.0" layoutY="36.0" prefHeight="34.0" prefWidth="231.0" text="Liste des utilisateurs" />
                   <TableView fx:id="user_AllUsers_Table" layoutX="39.0" layoutY="111.0" prefHeight="200.0" prefWidth="349.0">
                     <columns>
-                      <TableColumn fx:id="user_AllUsers_TableColumn1" prefWidth="75.0" text="C1" />
-                      <TableColumn fx:id="user_AllUsers_TableColumn2" prefWidth="75.0" text="C2" />
+                      <TableColumn fx:id="user_AllUsers_TableColumn1" prefWidth="75.0" text="Member Id" />
+                      <TableColumn fx:id="user_AllUsers_TableColumn2" prefWidth="75.0" text="Email" />
+                        <TableColumn fx:id="user_AllUsers_TableColumn3" prefWidth="75.0" text="Username" />
+                        <TableColumn fx:id="user_AllUsers_TableColumn4" prefWidth="75.0" text="Verified" />
+                        <TableColumn fx:id="user_AllUsers_TableColumn5" prefWidth="75.0" text="Statut" />
+
                     </columns>
                   </TableView>
                </children>
