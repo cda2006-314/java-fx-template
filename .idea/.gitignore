@@ -2,9 +2,8 @@
 /shelf/
 /workspace.xml
 # Datasource local storage ignored files
-/../../../../../../../:\Users\User\IdeaProjects\test\java-fx-template\.idea/dataSources/
+/dataSources/
 /dataSources.local.xml
+/dataSources.xml
 # Editor-based HTTP Client requests
 /httpRequests/
-# Please dont remove this line
-../target/
