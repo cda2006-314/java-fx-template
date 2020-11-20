@@ -10,6 +10,8 @@ import com.aquafx_project.AquaFx;
 import com.aquafx_project.controls.skin.styles.ButtonType;
 import com.aquafx_project.controls.skin.styles.MacOSDefaultIcons;
 import com.aquafx_project.controls.skin.styles.TextFieldType;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,10 +22,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import project.back.back.model.Employee;
+import project.back.back.model.Member;
+import project.back.back.services.EmployeeServices;
 import project.front.javafx.FXMLDocumentController;
 import project.front.javafx.Navigation;
 
@@ -37,12 +44,12 @@ import project.front.javafx.Navigation;
 public class ConfigAdminController implements Initializable {
 
      @FXML
-     private TableView config_returnSearchAdmin_Table;
+     private TableView<Employee> config_returnSearchAdmin_Table;
      @FXML
      private
-     TableColumn config_returnSearchAdmin_TableColumn2;
+     TableColumn <Employee, Integer> config_returnSearchAdmin_TableColumn2;
      @FXML
-     private TableColumn config_returnSearchAdmin_TableColumn1;
+     private TableColumn <Employee, Integer> config_returnSearchAdmin_TableColumn1;
 
     @FXML
     private AnchorPane configuration_AnchorPane;
@@ -53,6 +60,9 @@ public class ConfigAdminController implements Initializable {
     @FXML
     private Button Back_Button;
 
+
+    @Autowired
+     EmployeeServices employeeServices;
     @Autowired
      Navigation navigation;
     /**
@@ -60,6 +70,16 @@ public class ConfigAdminController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+        //Peuplement du tableau
+        config_returnSearchAdmin_TableColumn1.setCellValueFactory(new PropertyValueFactory<>("employeeId"));
+        config_returnSearchAdmin_TableColumn2.setCellValueFactory(new PropertyValueFactory<>("employeeLogin"));
+
+        //Construction de notre liste de peuplement
+        ObservableList<Employee> listEmployee = listEmployee();
+        config_returnSearchAdmin_Table.setItems(listEmployee);
+
+
         AquaFx.createButtonStyler().setType(ButtonType.ROUND_RECT).style(config_CreateAdmin_Button);
         AquaFx.createTextFieldStyler().setType(TextFieldType.SEARCH).style(config_SearchAdmin_TxtField);
         Button tbBack = Back_Button;
@@ -73,6 +93,10 @@ public class ConfigAdminController implements Initializable {
                 Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-    }    
-    
-}
+    }
+
+     private ObservableList<Employee> listEmployee() {
+         ObservableList<Employee> listTable = FXCollections.observableArrayList(employeeServices.getList());
+     return listTable; }
+
+ }

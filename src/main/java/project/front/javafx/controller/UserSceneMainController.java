@@ -22,6 +22,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -69,6 +70,8 @@ public class UserSceneMainController implements Initializable {
 
     @FXML
     private Button Back_Button;
+
+
      @Autowired
    private MemberServices memberServices;
      @Autowired
@@ -87,6 +90,8 @@ public class UserSceneMainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+
 
         //Liste tous les status des membres
         List listPrep = (List) memberServices.listMemberStatus();

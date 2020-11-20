@@ -20,7 +20,7 @@ public class Navigation {
     private static final Logger LOG = LoggerFactory.getLogger(Navigation.class);
     private static final String FXMLDOCUMENT_VIEW = "FXMLDocument.fxml";
     private static final String APIManager_VIEW = "views/ApiManager.fxml";
-    private static final String CongiAdmin_VIEW = "views/CongiAdmin.fxml";
+    private static final String ConfigAdmin_VIEW = "views/ConfigAdmin.fxml";
     private static final String ConfigCreateAdmin_VIEW = "views/ConfigCreateAdmin.fxml";
     private static final String FontManager_VIEW ="views/FontManager.fxml";
     private static final String GroupSceneMain_VIEW ="views/GroupSceneMain.fxml";
@@ -28,7 +28,7 @@ public class Navigation {
     private static final String Logs_VIEW ="views/Logs.fxml";
     private static final String ManageAccount_VIEW ="views/ManageAccount.fxml";
     private static final String ManagePassword_VIEW ="views/ManagePassword.fxml";
-    private static final String ModerateManageMain_VIEW = "views/ModerateManageMain.fxml";
+    private static final String ModerateManageMain_VIEW = "views/ModerateManegeMain.fxml";
     private static final String StateSystem_VIEW= "views/StateSystem.fxml";
     private static final String UserSceneMain_VIEW= "views/UserSceneMain.fxml";
     private static final String UserTheResults_VIEW= "views/UserTheResults.fxml";
@@ -66,13 +66,13 @@ public class Navigation {
     public void showAPIManagerView() {
         show(APIManager_VIEW);
     }
-    public void showConfigAdminView(){show(CongiAdmin_VIEW);}
+    public void showConfigAdminView(){show(ConfigAdmin_VIEW);}
     public void showConfigCreateView(){show(ConfigCreateAdmin_VIEW);}
     public void showFontManagerView(){show(FontManager_VIEW);}
     public void showGroupSceneView(){show(GroupSceneMain_VIEW);}
     public void showGroupResultsView(){show(GroupTheResults_VIEW);}
     public void showLogsView(){show(Logs_VIEW);}
-    public void showManageAccoutnView(){show(ManageAccount_VIEW);}
+    public void showManageAccountView(){show(ManageAccount_VIEW);}
     public void showManagePasswordView(){show(ManagePassword_VIEW);}
     public void showModerateManageView(){show(ModerateManageMain_VIEW);}
     public void showStateSystemView(){show(StateSystem_VIEW);}
@@ -103,7 +103,7 @@ public class Navigation {
         switch (view) {
 
             case APIManager_VIEW:   return apiManagerController;
-            case CongiAdmin_VIEW:   return configAdminController;
+            case ConfigAdmin_VIEW:   return configAdminController;
             case ConfigCreateAdmin_VIEW:   return configCreateAdminController;
             case FontManager_VIEW: return fontManagerController;
             case GroupSceneMain_VIEW: return groupSceneMainController;

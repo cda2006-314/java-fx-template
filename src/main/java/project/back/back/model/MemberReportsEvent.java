@@ -1,5 +1,8 @@
 package project.back.back.model;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Objects;
@@ -71,7 +74,8 @@ public class MemberReportsEvent {
         return Objects.hash(eventId, memberId, memberReportsEventDate, memberReportsEventPostit);
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @ManyToOne
     @JoinColumn(name = "EVENT_ID", referencedColumnName = "EVENT_ID", nullable = false)
     public Event getEventByEventId() {
         return eventByEventId;
@@ -81,7 +85,8 @@ public class MemberReportsEvent {
         this.eventByEventId = eventByEventId;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @ManyToOne
     @JoinColumn(name = "MEMBER_ID", referencedColumnName = "MEMBER_ID", nullable = false)
     public Member getMemberByMemberId() {
         return memberByMemberId;

@@ -23,5 +23,6 @@
       </HBox>
       <Button fx:id="configure_CreateAdmin_Button" layoutX="460.0" layoutY="346.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="72.0" text="Créer" />
       <Button fx:id="Back_Button" layoutX="14.0" layoutY="20.0" mnemonicParsing="false"  />
+
    </children>
 </AnchorPane>

@@ -22,8 +22,9 @@ class SpringJavaFXApplicationTests {
     void contextLoads() {
     }
 
-    @Autowired MemberRepository memberRepository;
-@Autowired
+    @Autowired
+    MemberRepository memberRepository;
+    @Autowired
     MemberServices memberServices;
 
 

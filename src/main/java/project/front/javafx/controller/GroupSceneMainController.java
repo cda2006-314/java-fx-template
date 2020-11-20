@@ -10,6 +10,7 @@ import com.aquafx_project.AquaFx;
 import com.aquafx_project.controls.skin.styles.ButtonType;
 import com.aquafx_project.controls.skin.styles.MacOSDefaultIcons;
 import com.aquafx_project.controls.skin.styles.TextFieldType;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,10 +21,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import project.back.back.model.Employee;
+import project.back.back.model.Team;
+import project.back.back.services.TeamServices;
 import project.front.javafx.FXMLDocumentController;
 import project.front.javafx.Navigation;
 
@@ -41,6 +47,10 @@ public class GroupSceneMainController implements Initializable {
      private TableColumn group_AllGroup_TableColumn1;
      @FXML
      private TableColumn group_AllGroup_TableColumn2;
+     @FXML
+     private TableColumn group_AllGroup_TableColumn3;
+     @FXML
+     private TableColumn group_AllGroup_TableColumn4;
 
      @FXML
     private AnchorPane group_AnchorPane;
@@ -55,10 +65,13 @@ public class GroupSceneMainController implements Initializable {
     @FXML
     private AnchorPane group_ReceiveResults_AnchorPane;
     @FXML
-    private TableView<?> group_AllGroup_Table;
+    private TableView<Team> group_AllGroup_Table;
     @FXML
     private Button Back_Button;
 
+
+     @Autowired
+     TeamServices teamServices;
      @Autowired
      Navigation navigation;
     /**
@@ -66,6 +79,21 @@ public class GroupSceneMainController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+
+
+        //Peuplement du tableau
+
+        group_AllGroup_TableColumn1.setCellValueFactory(new PropertyValueFactory<>("teamId"));
+                group_AllGroup_TableColumn2.setCellValueFactory(new PropertyValueFactory<>("teamLabel"));
+                        group_AllGroup_TableColumn3.setCellValueFactory(new PropertyValueFactory<>("teamDescription"));
+                                group_AllGroup_TableColumn4.setCellValueFactory(new PropertyValueFactory<>("teamPicurl"));
+
+        //Construction de notre liste de peuplement
+        ObservableList<Team> listTeam = listTeam();
+        group_AllGroup_Table.setItems(listTeam);
+
+
         AquaFx.createButtonStyler().setType(ButtonType.ROUND_RECT).style(group_Search_Button);
 
         AquaFx.createTextFieldStyler().setType(TextFieldType.SEARCH).style(group_SearchByName_TxtField);
@@ -82,6 +110,11 @@ public class GroupSceneMainController implements Initializable {
                 Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-    }    
-    
-}
+    }
+
+     private ObservableList<Team> listTeam() {
+        ObservableList<Team> listTeam = (ObservableList<Team>) teamServices.getAll();
+      return listTeam;
+     }
+
+ }

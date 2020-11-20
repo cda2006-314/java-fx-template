@@ -22,6 +22,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TreeView;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -52,6 +53,8 @@ public class WebSiteManageController implements Initializable {
     private TreeView<?> ManageWebSite_AssocPreference_TreeView;
     @FXML
     private Button Back_Button;
+
+
      @Autowired
      Navigation navigation;
 
@@ -68,6 +71,9 @@ public class WebSiteManageController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+
+
         //ManageWebSite_ShowApi_CB
         List listPrep = (List) apiManageServices.listApi();
         ObservableList list = (ObservableList) FXCollections.observableArrayList(listPrep);
