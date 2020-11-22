@@ -7,33 +7,49 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="group_AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="899.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" style="-fx-background-color: #778899;" fx:controller="project.front.javafx.controller.GroupSceneMainController">
+<AnchorPane fx:id="group_AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="899.0" style="-fx-background-color: #778899;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.front.javafx.controller.GroupSceneMainController">
    <children>
       <SplitPane dividerPositions="0.29797979797979796" layoutX="141.0" layoutY="81.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <Label layoutX="67.0" layoutY="24.0" text="Recherche groupe" />
-                  <Label layoutX="29.0" layoutY="89.0" text="par Nom" />
-                  <Label layoutX="29.0" layoutY="169.0" text="par Id" />
-                  <Label layoutX="29.0" layoutY="249.0" text="par Mots-clef" />
-                  <TextField fx:id="group_SearchByName_TxtField" layoutX="13.0" layoutY="117.0" />
-                  <TextField fx:id="group_SearchById_TxtField" layoutX="13.0" layoutY="199.0" />
-                  <TextField fx:id="group_SearchByKeyWords_TxtField" layoutX="13.0" layoutY="289.0" />
+                  <Label layoutX="67.0" layoutY="24.0" prefHeight="27.0" prefWidth="175.0" text="Recherche groupe">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font></Label>
+                  <Label layoutX="14.0" layoutY="89.0" prefHeight="17.0" prefWidth="124.0" text="par Nom">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Label layoutX="14.0" layoutY="169.0" prefHeight="17.0" prefWidth="102.0" text="par Id">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Label layoutX="15.0" layoutY="249.0" prefHeight="17.0" prefWidth="85.0" text="par Mots-clef">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <TextField fx:id="group_SearchByName_TxtField" layoutX="13.0" layoutY="117.0" prefHeight="25.0" prefWidth="230.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="21.0" />
+                  <TextField fx:id="group_SearchById_TxtField" layoutX="13.0" layoutY="199.0" prefHeight="25.0" prefWidth="230.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="21.0" />
+                  <TextField fx:id="group_SearchByKeyWords_TxtField" layoutX="13.0" layoutY="289.0" prefHeight="25.0" prefWidth="230.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="21.0" />
                   <Button fx:id="group_Search_Button" layoutX="95.0" layoutY="343.0" mnemonicParsing="false" text="Button" />
-                  <Button fx:id="Back_Button" layoutX="13.0" layoutY="12.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="40.0"  />
+                  <Button fx:id="Back_Button" layoutX="13.0" layoutY="12.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="40.0" />
                </children>
             </AnchorPane>
           <AnchorPane fx:id="group_ReceiveResults_AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <Label layoutX="181.0" layoutY="34.0" text="Tous les groupes" />
-                  <TableView fx:id="group_AllGroup_Table" layoutX="109.0" layoutY="99.0" prefHeight="200.0" prefWidth="200.0">
+                  <Label layoutX="181.0" layoutY="34.0" prefHeight="27.0" prefWidth="175.0" text="Tous les groupes" AnchorPane.leftAnchor="181.0" AnchorPane.rightAnchor="271.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font></Label>
+                  <TableView fx:id="group_AllGroup_Table" layoutX="36.0" layoutY="99.0" prefHeight="243.0" prefWidth="501.0" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="90.0">
                     <columns>
-                      <TableColumn fx:id="group_AllGroup_TableColumn1" prefWidth="75.0" text="Team Id" />
-                      <TableColumn fx:id="group_AllGroup_TableColumn2" prefWidth="75.0" text="Nom" />
-                        <TableColumn fx:id="group_AllGroup_TableColumn3" prefWidth="75.0" text="Description" />
-                        <TableColumn fx:id="group_AllGroup_TableColumn4" prefWidth="75.0" text="Image" />
+                      <TableColumn fx:id="group_AllGroup_TableColumn1" prefWidth="76.0" text="Team Id" />
+                      <TableColumn fx:id="group_AllGroup_TableColumn2" prefWidth="115.0" text="Nom" />
+                        <TableColumn fx:id="group_AllGroup_TableColumn3" minWidth="0.0" prefWidth="179.0" text="Description" />
+                        <TableColumn fx:id="group_AllGroup_TableColumn4" minWidth="0.0" prefWidth="122.0" text="Image" />
                     </columns>
                   </TableView>
                </children>
