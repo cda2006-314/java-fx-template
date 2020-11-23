@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -8,34 +9,87 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="899.0" xmlns="http://javafx.com/javafx/11.0.1" style="-fx-background-color: #778899;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.front.javafx.controller.UserSceneMainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="899.0" style="-fx-background-color: #778899;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.front.javafx.controller.UserSceneMainController">
    <children>
       <SplitPane dividerPositions="0.29797979797979796" layoutX="171.0" layoutY="120.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <Label layoutX="21.0" layoutY="49.0" prefHeight="24.0" prefWidth="133.0" text="Recherche Utilisateur" />
-                  <Label layoutX="17.0" layoutY="79.0" text="par Login" />
-                  <Label layoutX="17.0" layoutY="153.0" text="par Evenement" />
-                  <Label layoutX="17.0" layoutY="245.0" text="par Statut" />
-                  <Button fx:id="user_SearchUser_Button" layoutX="81.0" layoutY="347.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Rechercher" />
-                  <TextField fx:id="user_SearchLogin_TextField" layoutX="13.0" layoutY="113.0" />
-                  <TextField fx:id="user_SearchEvent_Textfield" layoutX="13.0" layoutY="199.0" />
-                  <ComboBox fx:id="user_SearchStatus_CB" layoutX="13.0" layoutY="284.0" prefWidth="150.0" />
-                  <Button fx:id="Back_Button" layoutX="13.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="42.0"  />
+                  <Button fx:id="Back_Button" layoutX="13.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="42.0" />
+                  <VBox layoutY="52.0" prefHeight="452.0" prefWidth="264.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="64.0" prefWidth="226.0" text="Recherche Utilisateur">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="51.0" prefWidth="63.0" text="par Login">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="user_SearchLogin_TextField" prefHeight="25.0" prefWidth="217.0">
+                           <VBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Label prefHeight="72.0" prefWidth="128.0" text="par Evenement">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="user_SearchEvent_Textfield">
+                           <VBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Label prefHeight="71.0" prefWidth="130.0" text="par Statut">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ComboBox fx:id="user_SearchStatus_CB" prefWidth="150.0">
+                           <VBox.margin>
+                              <Insets left="20.0" />
+                           </VBox.margin>
+                        </ComboBox>
+                        <Button fx:id="user_SearchUser_Button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="159.0" text="Rechercher">
+                           <VBox.margin>
+                              <Insets left="40.0" top="40.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
                </children>
             </AnchorPane>
           <AnchorPane fx:id="user_ResultSearch_AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <Label layoutX="86.0" layoutY="36.0" prefHeight="34.0" prefWidth="231.0" text="Liste des utilisateurs" />
-                  <TableView fx:id="user_AllUsers_Table" layoutX="39.0" layoutY="111.0" prefHeight="200.0" prefWidth="349.0">
+                  <Label alignment="CENTER" layoutX="86.0" layoutY="36.0" prefHeight="35.0" prefWidth="458.0" text="Liste des utilisateurs">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font></Label>
+                  <TableView fx:id="user_AllUsers_Table" layoutX="39.0" layoutY="111.0" prefHeight="357.0" prefWidth="567.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="39.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="111.0">
                     <columns>
-                      <TableColumn fx:id="user_AllUsers_TableColumn1" prefWidth="75.0" text="Member Id" />
-                      <TableColumn fx:id="user_AllUsers_TableColumn2" prefWidth="75.0" text="Email" />
-                        <TableColumn fx:id="user_AllUsers_TableColumn3" prefWidth="75.0" text="Username" />
-                        <TableColumn fx:id="user_AllUsers_TableColumn4" prefWidth="75.0" text="Verified" />
-                        <TableColumn fx:id="user_AllUsers_TableColumn5" prefWidth="75.0" text="Statut" />
+                      <TableColumn fx:id="user_AllUsers_TableColumn1" prefWidth="76.0" text="Member Id" />
+                      <TableColumn fx:id="user_AllUsers_TableColumn2" prefWidth="159.0" text="Email" />
+                        <TableColumn fx:id="user_AllUsers_TableColumn3" text="Username" />
+                        <TableColumn fx:id="user_AllUsers_TableColumn4" prefWidth="63.0" text="Verified" />
+                        <TableColumn fx:id="user_AllUsers_TableColumn5" prefWidth="185.0" text="Statut" />
 
                     </columns>
                   </TableView>

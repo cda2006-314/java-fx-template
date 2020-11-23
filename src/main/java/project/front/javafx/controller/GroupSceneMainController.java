@@ -10,6 +10,7 @@ import com.aquafx_project.AquaFx;
 import com.aquafx_project.controls.skin.styles.ButtonType;
 import com.aquafx_project.controls.skin.styles.MacOSDefaultIcons;
 import com.aquafx_project.controls.skin.styles.TextFieldType;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -113,7 +114,7 @@ public class GroupSceneMainController implements Initializable {
     }
 
      private ObservableList<Team> listTeam() {
-        ObservableList<Team> listTeam = (ObservableList<Team>) teamServices.getAll();
+        ObservableList<Team> listTeam = FXCollections.observableArrayList(teamServices.getAll());
       return listTeam;
      }
 
