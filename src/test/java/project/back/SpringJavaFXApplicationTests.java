@@ -3,15 +3,10 @@ package project.back;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.util.Assert;
 import project.back.back.model.Member;
 import project.back.back.repository.MemberRepository;
 import project.back.back.services.MemberServices;
 import project.front.javafx.JavaFXApplication;
-import project.front.javafx.JavaFXMain;
-
-import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -49,7 +44,7 @@ class SpringJavaFXApplicationTests {
 
 
     public static void main(String[] args) {
-        JavaFXMain.main(args);
+        JavaFXApplication.main(args);
     }
 
 }
