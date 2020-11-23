@@ -9,19 +9,19 @@
 
 <AnchorPane prefHeight="583.0" prefWidth="908.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.front.javafx.FXMLDocumentController">
    <children>
-<AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="583.0" prefWidth="973.0" style="-fx-background-color: #778899;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+<AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="583.0" prefWidth="973.0" style="-fx-background-color: #FFFFF0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
   <children>
-            <Label fx:id="labelU" layoutX="19.0" layoutY="9.0" prefHeight="53.0" prefWidth="721.0" text="Administration système" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="303.0">
+            <Label fx:id="labelU" layoutX="19.0" layoutY="9.0" prefHeight="53.0" prefWidth="721.0" text="Administration système" textFill="#6b271e" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="303.0">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <Label fx:id="labelD" layoutX="19.0" layoutY="184.0" prefHeight="56.0" prefWidth="1013.0" text="Gestion des utilisateurs et des groupes" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="11.0">
+            <Label fx:id="labelD" layoutX="19.0" layoutY="184.0" prefHeight="56.0" prefWidth="1013.0" text="Gestion des utilisateurs et des groupes" textFill="#6b271e" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="11.0">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <Label fx:id="labelDD" layoutX="15.0" layoutY="368.0" prefHeight="53.0" prefWidth="1013.0" text="Gestion de l'application web " AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+            <Label fx:id="labelDD" layoutX="15.0" layoutY="368.0" prefHeight="53.0" prefWidth="1013.0" text="Gestion de l'application web " textFill="#6b271e" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
