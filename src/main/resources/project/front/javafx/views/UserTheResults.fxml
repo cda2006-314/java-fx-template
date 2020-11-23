@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="user_theResults_AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="899.0" style="-fx-background-color: #778899;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.front.javafx.controller.UserTheResultsController">
+<AnchorPane fx:id="user_theResults_AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="899.0" style="-fx-background-color: #FFFFF0 ;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.front.javafx.controller.UserTheResultsController">
    <children>
       <Label layoutX="138.0" layoutY="37.0" prefHeight="38.0" prefWidth="233.0" text="Résultats recherche" />
       <TableView fx:id="user_theResults_Table" layoutX="83.0" layoutY="111.0" prefHeight="200.0" prefWidth="381.0">
