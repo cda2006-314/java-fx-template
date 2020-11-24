@@ -53,14 +53,14 @@
       </HBox>
       <HBox layoutX="106.0" layoutY="316.0" prefHeight="30.0" prefWidth="679.0">
          <children>
-            <TextField id="config_SearchAdminByLogin_TxtField" prefHeight="25.0" prefWidth="345.0" promptText="par Login">
+            <TextField fx:id="config_SearchAdminByLogin_TxtField" prefHeight="25.0" prefWidth="345.0" promptText="par Login">
                <HBox.margin>
                   <Insets left="320.0" />
                </HBox.margin>
             </TextField>
          </children>
       </HBox>
-      <AnchorPane id="config_CreateAdminReceive_AnchorPane" layoutX="66.0" layoutY="445.0" prefHeight="78.0" prefWidth="778.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="55.0" />
-      <Button id="config_SearchAdmin_Button" layoutX="805.0" layoutY="291.0" mnemonicParsing="false" text="Button" />
+      <AnchorPane fx:id="config_CreateAdminReceive_AnchorPane" layoutX="66.0" layoutY="445.0" prefHeight="78.0" prefWidth="778.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="55.0" />
+      <Button fx:id="config_SearchAdmin_Button" layoutX="805.0" layoutY="291.0" mnemonicParsing="false" text="Button" />
    </children>
 </AnchorPane>

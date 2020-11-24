@@ -125,13 +125,17 @@ public class ConfigAdminController implements Initializable {
          String id = config_SearchAdmin_TxtField.getText();
          String login = config_SearchAdminByLogin_TxtField.getText();
 
-         if (!id.equals(null)) {
+         if (!id.isEmpty()) {
              int idSearch = Integer.parseInt(id);
              Employee employee = employeeServices.findById(idSearch);
-             config_returnSearchAdmin_Table.setItems((ObservableList<Employee>) employee);
-         } else if (!login.equals(null)) {
+             ObservableList<Employee> listTable = FXCollections.observableArrayList();
+             listTable.add(employee);
+             config_returnSearchAdmin_Table.setItems(listTable);
+         } else if (!login.isEmpty()) {
              Employee employee = employeeServices.findByLogin(login);
-             config_returnSearchAdmin_Table.setItems((ObservableList<Employee>) employee);
+             ObservableList<Employee> listTable = FXCollections.observableArrayList();
+             listTable.add(employee);
+             config_returnSearchAdmin_Table.setItems(listTable);
          } else {
              String message = "Aucune entrée !";
          }
