@@ -19,10 +19,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.layout.AnchorPane;
@@ -99,6 +96,7 @@ public class ConfigAdminController implements Initializable {
          Button tbBack = Back_Button;
          AquaFx.createButtonStyler().setIcon(MacOSDefaultIcons.LEFT).setType(ButtonType.LEFT_PILL).style(tbBack);
 
+         //Recherche selon login ou id
          config_SearchAdmin_Button.setOnAction((ActionEvent event) -> {
          doSearch();
                  });
@@ -112,7 +110,19 @@ public class ConfigAdminController implements Initializable {
                  Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
              }
          });
+
+
+         config_CreateAdmin_Button.setOnAction((ActionEvent event) -> {
+                      try {
+                          Stage stage = (Stage) Back_Button.getScene().getWindow();
+                          navigation.setStage(stage);
+                          navigation.showConfigCreateView();
+                     } catch (Exception ex) {
+                          Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+                     }
+                  });
      }
+
 
 
 

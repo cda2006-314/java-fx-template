@@ -54,68 +54,103 @@ public class GroupSceneMainController implements Initializable {
      private TableColumn group_AllGroup_TableColumn4;
 
      @FXML
-    private AnchorPane group_AnchorPane;
-    @FXML
-    private TextField group_SearchByName_TxtField;
-    @FXML
-    private TextField group_SearchById_TxtField;
-    @FXML
-    private TextField group_SearchByKeyWords_TxtField;
-    @FXML
-    private Button group_Search_Button;
-    @FXML
-    private AnchorPane group_ReceiveResults_AnchorPane;
-    @FXML
-    private TableView<Team> group_AllGroup_Table;
-    @FXML
-    private Button Back_Button;
+     private AnchorPane group_AnchorPane;
+     @FXML
+     private TextField group_SearchByName_TxtField;
+     @FXML
+     private TextField group_SearchById_TxtField;
+     @FXML
+     private TextField group_SearchByKeyWords_TxtField;
+     @FXML
+     private Button group_Search_Button;
+     @FXML
+     private AnchorPane group_ReceiveResults_AnchorPane;
+     @FXML
+     private TableView<Team> group_AllGroup_Table;
+     @FXML
+     private Button Back_Button;
 
 
      @Autowired
      TeamServices teamServices;
      @Autowired
      Navigation navigation;
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+
+     /**
+      * Initializes the controller class.
+      */
+     @Override
+     public void initialize(URL url, ResourceBundle rb) {
 
 
+         //Peuplement du tableau
 
-        //Peuplement du tableau
+         group_AllGroup_TableColumn1.setCellValueFactory(new PropertyValueFactory<>("teamId"));
+         group_AllGroup_TableColumn2.setCellValueFactory(new PropertyValueFactory<>("teamLabel"));
+         group_AllGroup_TableColumn3.setCellValueFactory(new PropertyValueFactory<>("teamDescription"));
+         group_AllGroup_TableColumn4.setCellValueFactory(new PropertyValueFactory<>("teamPicurl"));
 
-        group_AllGroup_TableColumn1.setCellValueFactory(new PropertyValueFactory<>("teamId"));
-                group_AllGroup_TableColumn2.setCellValueFactory(new PropertyValueFactory<>("teamLabel"));
-                        group_AllGroup_TableColumn3.setCellValueFactory(new PropertyValueFactory<>("teamDescription"));
-                                group_AllGroup_TableColumn4.setCellValueFactory(new PropertyValueFactory<>("teamPicurl"));
-
-        //Construction de notre liste de peuplement
-        ObservableList<Team> listTeam = listTeam();
-        group_AllGroup_Table.setItems(listTeam);
+         //Construction de notre liste de peuplement
+         ObservableList<Team> listTeam = listTeam();
+         group_AllGroup_Table.setItems(listTeam);
 
 
-        AquaFx.createButtonStyler().setType(ButtonType.ROUND_RECT).style(group_Search_Button);
+         AquaFx.createButtonStyler().setType(ButtonType.ROUND_RECT).style(group_Search_Button);
 
-        AquaFx.createTextFieldStyler().setType(TextFieldType.SEARCH).style(group_SearchByName_TxtField);
-        AquaFx.createTextFieldStyler().setType(TextFieldType.SEARCH).style(group_SearchById_TxtField);
-        AquaFx.createTextFieldStyler().setType(TextFieldType.SEARCH).style(group_SearchByKeyWords_TxtField);
-        Button tbBack = Back_Button;
-        AquaFx.createButtonStyler().setIcon(MacOSDefaultIcons.LEFT).setType(ButtonType.LEFT_PILL).style(tbBack);
-        Back_Button.setOnAction((ActionEvent event) -> {
-            try {
-                Stage stage = (Stage) Back_Button.getScene().getWindow();
-                navigation.setStage(stage);
-                navigation.showWelcomeView();
-            } catch (Exception ex) {
-                Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
-    }
+         AquaFx.createTextFieldStyler().setType(TextFieldType.SEARCH).style(group_SearchByName_TxtField);
+         AquaFx.createTextFieldStyler().setType(TextFieldType.SEARCH).style(group_SearchById_TxtField);
+         AquaFx.createTextFieldStyler().setType(TextFieldType.SEARCH).style(group_SearchByKeyWords_TxtField);
+         Button tbBack = Back_Button;
+         AquaFx.createButtonStyler().setIcon(MacOSDefaultIcons.LEFT).setType(ButtonType.LEFT_PILL).style(tbBack);
+         Back_Button.setOnAction((ActionEvent event) -> {
+             try {
+                 Stage stage = (Stage) Back_Button.getScene().getWindow();
+                 navigation.setStage(stage);
+                 navigation.showWelcomeView();
+             } catch (Exception ex) {
+                 Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         });
+
+
+         group_Search_Button.setOnAction((ActionEvent event) -> {
+doSearchGroup();
+         });
+     }
+     //Action bouton recherche
 
      private ObservableList<Team> listTeam() {
-        ObservableList<Team> listTeam = FXCollections.observableArrayList(teamServices.getAll());
-      return listTeam;
+         ObservableList<Team> listTeam = FXCollections.observableArrayList(teamServices.getAll());
+         return listTeam;
      }
 
+     //retourne le tableau avec les résultats de la recherche
+     public void doSearchGroup() {
+         String id = group_SearchById_TxtField.getText();
+         String name = group_SearchByName_TxtField.getText();
+         String descriptors = group_SearchByKeyWords_TxtField.getText();
+
+         if (!id.isEmpty()) {
+             int idSearch = Integer.parseInt(id);
+            Team team = teamServices.findById(idSearch);
+
+             ObservableList<Team> listTeam = FXCollections.observableArrayList();
+             listTeam.add(team);
+             group_AllGroup_Table.setItems(listTeam);
+         } else if (!name.isEmpty()) {
+             Team team =  teamServices.findByName(name);
+
+             ObservableList<Team> listTeam = FXCollections.observableArrayList();
+             listTeam.add(team);
+             group_AllGroup_Table.setItems(listTeam);
+
+         } else if (!descriptors.isEmpty()) {
+             Team team =  teamServices.findByKeywords(descriptors);
+             ObservableList<Team> listTeam = FXCollections.observableArrayList();
+             listTeam.add(team);
+             group_AllGroup_Table.setItems(listTeam);
+
+
+         }
+     }
  }
