@@ -12,6 +12,7 @@ import project.back.back.repository.EventstatusRepository;
 import project.back.back.repository.MemberstatusRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeeServices {
@@ -45,6 +46,27 @@ public class EmployeeServices {
     public void accessSystem(){}
 
     public void accessLog(){}
+
+    public Employee findById(int id){
+        Employee employee;
+        Optional<Employee> optionnalEmployee = employeeRepository.findById(id);
+    if (optionnalEmployee.isPresent()) {
+         employee = optionnalEmployee.get();
+        return employee;
+    }
+    return null;
+    }
+
+    public Employee findByLogin(String login){
+        Employee employee;
+        Optional<Employee> optionnalEmployee = employeeRepository.findEmployeeByEmployeeLogin(login);
+        if (optionnalEmployee.isPresent()) {
+            employee = optionnalEmployee.get();
+            return employee;
+        }
+        return null;
+    }
+
 
     public List<Employee> getList(){return employeeRepository.findAll();}
 
