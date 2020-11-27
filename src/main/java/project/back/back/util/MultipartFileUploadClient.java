@@ -17,7 +17,7 @@ public class MultipartFileUploadClient {
 
     private static final String API_KEY = "4";
     private static final String SERVER_URL = "http://localhost:8090/api/v1/media/upload";
-    public static String id_media;
+    public static String response_media_upload;
 
     public static void main(String[] args) throws IOException {
       String  urlImage = give_UrlFile("src/main/resources/project/front/javafx/IMG/system.png");
@@ -40,12 +40,12 @@ public class MultipartFileUploadClient {
      *
      * @return id_media
      */
-    public String getId_media() {
-        return id_media;
+    public String getResponse_media_upload() {
+        return response_media_upload;
     }
 
-    public void setId_media(String id_media) {
-        this.id_media = id_media;
+    public void getResponse_media_upload(String response_media_upload) {
+        this.response_media_upload = response_media_upload;
     }
 
     private static void sendFile(String filepath){
@@ -72,7 +72,7 @@ public class MultipartFileUploadClient {
 
         // Displays the response
         System.out.println("Response code: " + response.getStatusCode());
-        id_media = response.getBody();
+        response_media_upload = response.getBody();
         System.out.println("Response :\n"+response.getBody());
     }
 }
