@@ -29,6 +29,7 @@ public class Navigation {
     private static final String ManageAccount_VIEW ="views/ManageAccount.fxml";
     private static final String ManagePassword_VIEW ="views/ManagePassword.fxml";
     private static final String ModerateManageMain_VIEW = "views/ModerateManegeMain.fxml";
+    private static final String PictureManageMain_VIEW = "views/PictureManager.fxml";
     private static final String StateSystem_VIEW= "views/StateSystem.fxml";
     private static final String UserSceneMain_VIEW= "views/UserSceneMain.fxml";
     private static final String UserTheResults_VIEW= "views/UserTheResults.fxml";
@@ -57,6 +58,7 @@ public class Navigation {
    @Autowired UserSceneMainController userSceneMainController;
     @Autowired UserTheResultsController userTheResultsController;
     @Autowired WebSiteManageController webSiteManageController;
+    @Autowired PictureManagerController pictureManagerController;
 
    //Méthode d'affichage des views FXML
 
@@ -79,7 +81,7 @@ public class Navigation {
     public void showUserSceneView(){show(UserSceneMain_VIEW);}
     public void showUserResultsView(){show(UserTheResults_VIEW);}
     public void showWebSiteManagerView(){show(WebSiteManage_VIEW);}
-
+    public void showPictureManagerView(){show(PictureManageMain_VIEW);}
 
     private void show(String view) {
         Scene scene = new Scene(loadFxml(view));
@@ -116,7 +118,7 @@ public class Navigation {
             case UserSceneMain_VIEW: return userSceneMainController;
             case UserTheResults_VIEW: return userTheResultsController;
             case WebSiteManage_VIEW: return webSiteManageController;
-
+            case PictureManageMain_VIEW: return pictureManagerController;
 
             default:
                 return fxmlDocumentController;

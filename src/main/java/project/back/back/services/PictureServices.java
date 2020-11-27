@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.back.back.model.Picture;
 import project.back.back.repository.PictureRepository;
+import project.back.back.util.MultipartFileUploadClient;
 
 import java.util.List;
 
@@ -12,7 +13,16 @@ public class PictureServices {
 @Autowired
     PictureRepository pictureRepository;
 
-public void createPicture(Picture picture){pictureRepository.save(picture);}
+public void createPicture(String urlFile){
+    Picture picture = new Picture();
+    MultipartFileUploadClient uploadClient = new MultipartFileUploadClient();
+    uploadClient.sendFile(urlFile);
+    String reponse = uploadClient.getResponse_media_upload();
+    picture.setPictureLabel(reponse);
+
+    pictureRepository.save(picture);}
+
+
 public void deletePicture(Picture picture){pictureRepository.delete(picture);}
 public List<Picture> pictureList(){return pictureRepository.findAll();}
 
