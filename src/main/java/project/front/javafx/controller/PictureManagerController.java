@@ -21,6 +21,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.ui.Model;
 import project.back.back.services.PictureServices;
 import project.front.javafx.FXMLDocumentController;
 import project.front.javafx.Navigation;
@@ -50,6 +51,8 @@ public class PictureManagerController implements Initializable {
     private Button Back_Button;
     @FXML
     private AnchorPane picture_ReceivePicture_AnchorPane;
+    @FXML
+    private Button picture_AddPicture_Button;
 
     @Autowired
     Navigation navigation;
@@ -89,13 +92,19 @@ public class PictureManagerController implements Initializable {
                         new FileChooser.ExtensionFilter("PNG", "*.png"));
 
                 try {
-                File selectedDirectory = fileChooser.showOpenDialog(pictureManage_CreatePicture_Button.getContextMenu());
+                    File selectedDirectory = fileChooser.showOpenDialog(pictureManage_CreatePicture_Button.getContextMenu());
 
-                pictureManage_create_TXT.setText(selectedDirectory.getAbsolutePath());
-                 pictureManage_create_TXT.setDisable(true);
+                    pictureManage_create_TXT.setText(selectedDirectory.getAbsolutePath());
+                    // pictureManage_create_TXT.setDisable(true);
+                    System.out.println(pictureManage_create_TXT.getText());
 
-                final URL imageURL = getClass().getResource(pictureManage_create_TXT.getText());
-                String localUrl;
+                    //replace all whitespaces by %
+                    //check the create picture doesnt send error but doesnt work
+//
+//>>
+
+                    final URL imageURL = getClass().getResource(pictureManage_create_TXT.getText());
+                    String localUrl;
                     localUrl = imageURL.toURI().toURL().toString();
                     final ImageView imageView = new ImageView(localUrl);
                     picture_ReceivePicture_AnchorPane.getChildren().setAll(imageView);
@@ -107,14 +116,18 @@ public class PictureManagerController implements Initializable {
                 }
 
 
-
-
-            }else{
+            } else {
 
             }
         });
-        }
+
+        picture_AddPicture_Button.setOnAction((ActionEvent event) -> {
+            String url = pictureManage_create_TXT.getText();
+            System.out.println(pictureManage_create_TXT.getText());
+            pictureServices.createPicture(url);
+        });
 
 
     }
+}
 

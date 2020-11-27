@@ -1,5 +1,7 @@
 package project.back.back.util;
 
+import org.apache.http.entity.StringEntity;
+import org.apache.http.util.EntityUtils;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
@@ -19,10 +21,7 @@ public class MultipartFileUploadClient {
     private static final String SERVER_URL = "http://localhost:8090/api/v1/media/upload";
     public static String response_media_upload;
 
-    public static void main(String[] args) throws IOException {
-      String  urlImage = give_UrlFile("src/main/resources/project/front/javafx/IMG/system.png");
-        sendFile(urlImage);
-    }
+
 
 
     /**
@@ -31,7 +30,7 @@ public class MultipartFileUploadClient {
      * @return
      */
 
-    public static String give_UrlFile(String urlImage){
+    public String give_UrlFile(String urlImage){
         return urlImage;
     }
 
@@ -48,7 +47,7 @@ public class MultipartFileUploadClient {
         this.response_media_upload = response_media_upload;
     }
 
-    private static void sendFile(String filepath){
+    public void sendFile(String filepath){
 
         // Open a file that is going to be sent
 

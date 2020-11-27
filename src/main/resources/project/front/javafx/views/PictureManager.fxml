@@ -49,5 +49,6 @@
             </children>
         </HBox>
       <AnchorPane fx:id="picture_ReceivePicture_AnchorPane" layoutX="220.0" layoutY="241.0" prefHeight="253.0" prefWidth="458.0" />
+      <Button fx:id="picture_AddPicture_Button" layoutX="423.0" layoutY="506.0" mnemonicParsing="false" text="Button" />
     </children>
 </AnchorPane>
