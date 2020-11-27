@@ -93,7 +93,7 @@ public class PictureManagerController implements Initializable {
 
                 try {
                     File selectedDirectory = fileChooser.showOpenDialog(pictureManage_CreatePicture_Button.getContextMenu());
-
+String fileUrl = selectedDirectory.getAbsolutePath();
                     pictureManage_create_TXT.setText(selectedDirectory.getAbsolutePath());
                     // pictureManage_create_TXT.setDisable(true);
                     System.out.println(pictureManage_create_TXT.getText());
@@ -103,7 +103,7 @@ public class PictureManagerController implements Initializable {
 //
 //>>
 
-                    final URL imageURL = getClass().getResource(pictureManage_create_TXT.getText());
+                    final URL imageURL = getClass().getResource(fileUrl);
                     String localUrl;
                     localUrl = imageURL.toURI().toURL().toString();
                     final ImageView imageView = new ImageView(localUrl);
