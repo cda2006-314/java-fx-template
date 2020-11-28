@@ -277,7 +277,7 @@ Navigation navigation;
             try {
                 Stage stage = (Stage) main_AccountAdmin_Button.getScene().getWindow();
                 navigation.setStage(stage);
-                navigation.showWebSiteManagerView();
+                navigation.showWebContentView();
 
 
             } catch (Exception ex) {

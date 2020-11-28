@@ -32,6 +32,11 @@ public class Webcontent {
     }
 
     @Override
+    public String toString() {
+        return  webcontentLabel;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
