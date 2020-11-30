@@ -27,6 +27,8 @@ import project.front.javafx.FXMLDocumentController;
 import project.front.javafx.Navigation;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -97,21 +99,24 @@ String fileUrl = selectedDirectory.getAbsolutePath();
                     pictureManage_create_TXT.setText(selectedDirectory.getAbsolutePath());
                     // pictureManage_create_TXT.setDisable(true);
                     System.out.println(pictureManage_create_TXT.getText());
-
+String urlImg = pictureManage_create_TXT.getText();
                     //replace all whitespaces by %
                     //check the create picture doesnt send error but doesnt work
 //
 //>>
+                    FileInputStream input = new FileInputStream(urlImg);
 
+                    Image image = new Image(input);
+
+                    ImageView imageView = new ImageView(image);
+/*
                     final URL imageURL = getClass().getResource(fileUrl);
                     String localUrl;
                     localUrl = imageURL.toURI().toURL().toString();
-                    final ImageView imageView = new ImageView(localUrl);
+                    final ImageView imageView = new ImageView(localUrl);*/
                     picture_ReceivePicture_AnchorPane.getChildren().setAll(imageView);
 
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                } catch (URISyntaxException e) {
+                } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
 

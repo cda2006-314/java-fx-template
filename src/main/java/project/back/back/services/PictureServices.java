@@ -18,9 +18,12 @@ public void createPicture(String urlFile){
     MultipartFileUploadClient uploadClient = new MultipartFileUploadClient();
     uploadClient.sendFile(urlFile);
     String reponse = uploadClient.getResponse_media_upload();
-    picture.setPictureLabel(reponse);
 
-    pictureRepository.save(picture);}
+    String idPicture = reponse.substring(25,49);
+    picture.setPictureLabel(idPicture);
+    picture.setPictureUrl("http://localhost:8090/api/v1/media/display/" + idPicture + "?api-key=");
+    pictureRepository.save(picture);
+    System.out.println(picture);}
 
 
 public void deletePicture(Picture picture){pictureRepository.delete(picture);}

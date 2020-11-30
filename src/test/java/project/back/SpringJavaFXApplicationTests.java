@@ -6,6 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import project.back.back.model.Member;
 import project.back.back.repository.MemberRepository;
 import project.back.back.services.MemberServices;
+import project.back.back.util.MultipartFileUploadClient;
 import project.front.javafx.JavaFXApplication;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -40,6 +41,13 @@ class SpringJavaFXApplicationTests {
            memberServices.createMember(member1);
 
             assertEquals(member1.getMemberId(), member1.getMemberId());
+}
+
+@Test
+public void sendAPicture(){
+
+        MultipartFileUploadClient mp =  new MultipartFileUploadClient();
+        mp.sendFile("C:\\Users\\Charlène\\Downloads\\outils-de-cuisine.png");
 }
 
 

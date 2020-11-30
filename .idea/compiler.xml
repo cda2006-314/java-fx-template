@@ -9,12 +9,14 @@
         <module name="java-fx-template" />
         <module name="back" />
         <module name="java-fx-template-nt" />
+        <module name="api" />
         <module name="base-back-spring" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="api" options="-parameters" />
       <module name="back" options="-parameters" />
       <module name="base-back-spring" options="-parameters" />
       <module name="java-fx-template" options="-parameters" />
