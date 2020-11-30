@@ -46,96 +46,117 @@ public class UserSceneMainController implements Initializable {
      private TableView<Member> user_AllUsers_Table;
 
      @FXML
-     private TableColumn <Member, Integer> user_AllUsers_TableColumn1;
+     private TableColumn<Member, Integer> user_AllUsers_TableColumn1;
      @FXML
-     private TableColumn <Member, String> user_AllUsers_TableColumn2;
+     private TableColumn<Member, String> user_AllUsers_TableColumn2;
      @FXML
-     private TableColumn <Member, String>  user_AllUsers_TableColumn3;
+     private TableColumn<Member, String> user_AllUsers_TableColumn3;
      @FXML
-     private TableColumn <Member, Boolean>  user_AllUsers_TableColumn4;
+     private TableColumn<Member, Boolean> user_AllUsers_TableColumn4;
      @FXML
-     private TableColumn <Member, String>  user_AllUsers_TableColumn5;
+     private TableColumn<Member, String> user_AllUsers_TableColumn5;
 
 
-    @FXML
-    private Button user_SearchUser_Button;
-    @FXML
-    private TextField user_SearchLogin_TextField;
-    @FXML
-    private TextField user_SearchEvent_Textfield;
-    @FXML
-    private ComboBox<?> user_SearchStatus_CB;
-    @FXML
-    private AnchorPane user_ResultSearch_AnchorPane;
+     @FXML
+     private Button user_SearchUser_Button;
+     @FXML
+     private TextField user_SearchLogin_TextField;
+     @FXML
+     private TextField user_SearchEvent_Textfield;
+     @FXML
+     private ComboBox<?> user_SearchStatus_CB;
+     @FXML
+     private AnchorPane user_ResultSearch_AnchorPane;
 
-    @FXML
-    private Button Back_Button;
+     @FXML
+     private Button Back_Button;
 
 
      @Autowired
-   private MemberServices memberServices;
+     private MemberServices memberServices;
      @Autowired
      private EmployeeServices employeeServices;
      @Autowired
      Navigation navigation;
 
 
-  // public void setMemberServices(MemberServices memberServices){this.memberServices = memberServices;}
+     // public void setMemberServices(MemberServices memberServices){this.memberServices = memberServices;}
 
 
-    /**
-     * Initializes the controller class.
-     */
+     /**
+      * Initializes the controller class.
+      */
 
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+     @Override
+     public void initialize(URL url, ResourceBundle rb) {
 
 
+         //Liste tous les status des membres
+         List listPrep = (List) memberServices.listMemberStatus();
+         ObservableList list = (ObservableList) FXCollections.observableArrayList(listPrep);
+         user_SearchStatus_CB.setItems(list);
 
-        //Liste tous les status des membres
-        List listPrep = (List) memberServices.listMemberStatus();
-        ObservableList list = (ObservableList) FXCollections.observableArrayList(listPrep);
-        user_SearchStatus_CB.setItems(list);
+         //Peuplement du tableau: tableau éditable permettant la modification
+         user_AllUsers_TableColumn1.setCellValueFactory(new PropertyValueFactory<>("memberId"));
+         user_AllUsers_TableColumn2.setCellValueFactory(new PropertyValueFactory<>("memberEmail"));
+         user_AllUsers_TableColumn3.setCellValueFactory(new PropertyValueFactory<>("memberUsername"));
+         user_AllUsers_TableColumn4.setCellValueFactory(new PropertyValueFactory<>("memberIsverified"));
+         user_AllUsers_TableColumn5.setCellValueFactory(new PropertyValueFactory<>("memberHasMemberstatusesByMemberId"));
 
-        //Peuplement du tableau: tableau éditable permettant la modification
-        user_AllUsers_TableColumn1.setCellValueFactory(new PropertyValueFactory<>("memberId"));
-        user_AllUsers_TableColumn2.setCellValueFactory(new PropertyValueFactory<>("memberEmail"));
-        user_AllUsers_TableColumn3.setCellValueFactory(new PropertyValueFactory<>("memberUsername"));
-        user_AllUsers_TableColumn4.setCellValueFactory(new PropertyValueFactory<>("memberIsverified"));
-        user_AllUsers_TableColumn5.setCellValueFactory(new PropertyValueFactory<>("memberHasMemberstatusesByMemberId"));
-
-        //Construction de notre liste de peuplement
-        ObservableList<Member> listMember = listMember();
-        user_AllUsers_Table.setItems(listMember);
-      //  user_AllUsers_Table.getColumns().addAll(user_AllUsers_TableColumn1, user_AllUsers_TableColumn2, user_AllUsers_TableColumn3, user_AllUsers_TableColumn4, user_AllUsers_TableColumn5);
-
+         //Construction de notre liste de peuplement
+         ObservableList<Member> listMember = listMember();
+         user_AllUsers_Table.setItems(listMember);
+         //  user_AllUsers_Table.getColumns().addAll(user_AllUsers_TableColumn1, user_AllUsers_TableColumn2, user_AllUsers_TableColumn3, user_AllUsers_TableColumn4, user_AllUsers_TableColumn5);
 
 
-        AquaFx.createButtonStyler().setType(ButtonType.ROUND_RECT).style(user_SearchUser_Button);
-        AquaFx.createTextFieldStyler().setType(TextFieldType.SEARCH).style(user_SearchLogin_TextField);
-        AquaFx.createTextFieldStyler().setType(TextFieldType.SEARCH).style(user_SearchEvent_Textfield);
-        AquaFx.createComboBoxStyler().style(user_SearchStatus_CB);
+         AquaFx.createButtonStyler().setType(ButtonType.ROUND_RECT).style(user_SearchUser_Button);
+         AquaFx.createTextFieldStyler().setType(TextFieldType.SEARCH).style(user_SearchLogin_TextField);
+         AquaFx.createTextFieldStyler().setType(TextFieldType.SEARCH).style(user_SearchEvent_Textfield);
+         AquaFx.createComboBoxStyler().style(user_SearchStatus_CB);
 
-        Button tbBack = Back_Button;
-        AquaFx.createButtonStyler().setIcon(MacOSDefaultIcons.LEFT).setType(ButtonType.LEFT_PILL).style(tbBack);
-        Back_Button.setOnAction((ActionEvent event) -> {
-            try {
-                Stage stage = (Stage) Back_Button.getScene().getWindow();
-                navigation.setStage(stage);
-                navigation.showWelcomeView();
-            } catch (Exception ex) {
-                Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
-    }
+         Button tbBack = Back_Button;
+         AquaFx.createButtonStyler().setIcon(MacOSDefaultIcons.LEFT).setType(ButtonType.LEFT_PILL).style(tbBack);
+         Back_Button.setOnAction((ActionEvent event) -> {
+             try {
+                 Stage stage = (Stage) Back_Button.getScene().getWindow();
+                 navigation.setStage(stage);
+                 navigation.showWelcomeView();
+             } catch (Exception ex) {
+                 Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         });
+     }
 
      private ObservableList<Member> listMember() {
 
 
+         ObservableList<Member> listTable = FXCollections.observableArrayList(memberServices.listMember());
 
-        ObservableList<Member> listTable = FXCollections.observableArrayList(memberServices.listMember());
+         return listTable;
+     }
 
-    return listTable;}
+     public void doSearchUser() {
 
+         String login = user_SearchLogin_TextField.getText();
+         String event = user_SearchEvent_Textfield.getText();
+         String status = user_SearchStatus_CB.getValue().toString();
+
+         if (!login.isEmpty()) {
+Member member = memberServices.getByLogin(login);
+ObservableList<Member> listResult = FXCollections.observableArrayList();
+listResult.add(member);
+             user_AllUsers_Table.setItems(listResult);
+         } else if (!event.isEmpty()) {
+
+             //Member memberEvent = memberServices.
+
+
+         } else if (!status.isEmpty()) {
+
+
+         } else {
+             String message = "champ vide";
+         }
+     }
  }

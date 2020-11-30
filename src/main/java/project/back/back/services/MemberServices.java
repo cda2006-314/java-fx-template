@@ -40,6 +40,8 @@ public List<Memberstatus> listMemberStatus(){
         return memberRepository.getOne(id);
     }
 
-    public List<Member> listUnverifiedMember(){return memberRepository.findUnverified();}
+    //public List<Member> listUnverifiedMember(){return memberRepository.findUnverified(false);}
 
+    public Member getByLogin(String login){Member optionalMember = memberRepository.findMemberByMemberUsername(login);
+return  optionalMember;}
 }

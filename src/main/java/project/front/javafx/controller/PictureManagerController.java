@@ -80,6 +80,18 @@ public class PictureManagerController implements Initializable {
 
         pictureManage_CreatePicture_Button.setOnAction((ActionEvent event) -> {
 
+            loadImage();
+
+
+        });
+
+        picture_AddPicture_Button.setOnAction((ActionEvent event) -> {
+            String url = pictureManage_create_TXT.getText();
+            System.out.println(pictureManage_create_TXT.getText());
+            pictureServices.createPicture(url);
+        });
+    }
+    public void loadImage(){
             if (pictureManage_create_TXT.isEditable()) {
                 FileChooser fileChooser = new FileChooser();
                 fileChooser.getExtensionFilters().addAll(//
@@ -119,15 +131,9 @@ public class PictureManagerController implements Initializable {
             } else {
 
             }
-        });
-
-        picture_AddPicture_Button.setOnAction((ActionEvent event) -> {
-            String url = pictureManage_create_TXT.getText();
-            System.out.println(pictureManage_create_TXT.getText());
-            pictureServices.createPicture(url);
-        });
 
 
-    }
+
+        }
 }
 

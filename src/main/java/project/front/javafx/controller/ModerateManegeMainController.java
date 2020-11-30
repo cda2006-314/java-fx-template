@@ -134,14 +134,14 @@ public class ModerateManegeMainController implements Initializable {
         moderate_CommentsToModerate_TableColumn4.setCellValueFactory(new PropertyValueFactory<>("memberReportsCommentDate"));
         moderate_CommentsToModerate_TableColumn5.setCellValueFactory(new PropertyValueFactory<>("memberReportsCommentPostit"));
 
-        ObservableList<MemberReportsComment> listReportsComment = (ObservableList<MemberReportsComment>) memberReportsCommentService.reportsCommentList();
+        ObservableList<MemberReportsComment> listReportsComment = listReportsComment();
         moderate_CommentsToModerate_Table.setItems(listReportsComment);
 
         //moderate_UsersToModerate_Table
 
 
         //moderate_AccountToValidate_Table
-
+/*
         moderate_AccountToValidate_TableColumn1.setCellValueFactory(new PropertyValueFactory<>("memberId"));
         moderate_AccountToValidate_TableColumn2.setCellValueFactory(new PropertyValueFactory<>("memberUsername"));
         moderate_AccountToValidate_TableColumn3.setCellValueFactory(new PropertyValueFactory<>("memberEmail"));
@@ -150,9 +150,9 @@ public class ModerateManegeMainController implements Initializable {
         moderate_AccountToValidate_TableColumn6.setCellValueFactory(new PropertyValueFactory<>("memberCountry"));
 
 
-        ObservableList<Member> listMemberUnverified = (ObservableList<Member>) memberServices.listUnverifiedMember();
+        ObservableList<Member> listMemberUnverified = listMemberUnverified() ;
         moderate_AccountToValidate_Table.setItems(listMemberUnverified);
-
+*/
         Button tbBack = Back_Button;
         AquaFx.createButtonStyler().setIcon(MacOSDefaultIcons.LEFT).setType(ButtonType.LEFT_PILL).style(tbBack);
         Back_Button.setOnAction((ActionEvent event) -> {
@@ -171,5 +171,17 @@ public class ModerateManegeMainController implements Initializable {
         ObservableList<MemberReportsEvent> listReportsEvent = FXCollections.observableArrayList(memberReportsEventServices.reportsEventList());
         return listReportsEvent;
      }
+
+     private ObservableList<MemberReportsComment> listReportsComment() {
+
+         ObservableList<MemberReportsComment> listReportsComment = FXCollections.observableArrayList(memberReportsCommentService.reportsCommentList());
+         return listReportsComment;
+     }
+/*
+     private ObservableList<Member> listMemberUnverified() {
+
+         ObservableList<Member> listMemberUnverified = FXCollections.observableArrayList(memberServices.listUnverifiedMember());
+         return listMemberUnverified;
+     }*/
 
  }
