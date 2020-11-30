@@ -21,7 +21,11 @@ public class MultipartFileUploadClient {
     private static final String SERVER_URL = "http://localhost:8090/api/v1/media/upload";
     public static String response_media_upload;
 
+public static void main (String []args){
 
+    MultipartFileUploadClient mp =  new MultipartFileUploadClient();
+    mp.sendFile("C:\\Users\\Charlène\\Downloads\\outils-de-cuisine.png");
+}
 
 
     /**
