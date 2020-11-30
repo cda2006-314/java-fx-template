@@ -40,4 +40,6 @@ public List<Memberstatus> listMemberStatus(){
         return memberRepository.getOne(id);
     }
 
+    public List<Member> listUnverifiedMember(){return memberRepository.findUnverified();}
+
 }
