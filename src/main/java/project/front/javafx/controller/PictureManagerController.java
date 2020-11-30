@@ -15,13 +15,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.web.WebView;
-import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.ui.Model;
 import project.back.back.services.PictureServices;
 import project.front.javafx.FXMLDocumentController;
 import project.front.javafx.Navigation;
@@ -29,8 +26,6 @@ import project.front.javafx.Navigation;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -40,7 +35,6 @@ import java.util.logging.Logger;
 @Component
 public class PictureManagerController implements Initializable {
 
-    private static final String BOOTSTRAP_PREFIX = "http://getbootstrap.com/components/#";
 
 
     @FXML
@@ -60,6 +54,7 @@ public class PictureManagerController implements Initializable {
     Navigation navigation;
     @Autowired
     PictureServices pictureServices;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -95,11 +90,11 @@ public class PictureManagerController implements Initializable {
 
                 try {
                     File selectedDirectory = fileChooser.showOpenDialog(pictureManage_CreatePicture_Button.getContextMenu());
-String fileUrl = selectedDirectory.getAbsolutePath();
+                    String fileUrl = selectedDirectory.getAbsolutePath();
                     pictureManage_create_TXT.setText(selectedDirectory.getAbsolutePath());
                     // pictureManage_create_TXT.setDisable(true);
                     System.out.println(pictureManage_create_TXT.getText());
-String urlImg = pictureManage_create_TXT.getText();
+                    String urlImg = pictureManage_create_TXT.getText();
                     //replace all whitespaces by %
                     //check the create picture doesnt send error but doesnt work
 //
