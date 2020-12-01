@@ -56,7 +56,7 @@ public class ApiManagerController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        System.out.println(Thread.currentThread());
 
         //initialise la liste des Api
         List listPrep = (List) apiManageServices.listApi();
