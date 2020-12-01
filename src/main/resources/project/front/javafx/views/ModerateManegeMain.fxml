@@ -49,8 +49,12 @@
             </Label>
             <TableView fx:id="moderate_CommentsToModerate_Table" prefHeight="100.0" prefWidth="574.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="C1" />
-                <TableColumn prefWidth="75.0" text="C2" />
+                <TableColumn fx:id="moderate_CommentsToModerate_TableColumn1" prefWidth="75.0" text="Comment Id" />
+                <TableColumn fx:id="moderate_CommentsToModerate_TableColumn2" prefWidth="75.0" text="Member Id" />
+                  <TableColumn fx:id="moderate_CommentsToModerate_TableColumn3" prefWidth="75.0" text="Commentaire" />
+                  <TableColumn fx:id="moderate_CommentsToModerate_TableColumn4" prefWidth="75.0" text="Date" />
+                  <TableColumn fx:id="moderate_CommentsToModerate_TableColumn5" prefWidth="75.0" text="Explications" />
+
               </columns>
             </TableView>
          </children>
@@ -88,8 +92,12 @@
             </Label>
             <TableView fx:id="moderate_AccountToValidate_Table" prefHeight="100.0" prefWidth="547.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="C1" />
-                <TableColumn prefWidth="75.0" text="C2" />
+                <TableColumn fx:id="moderate_AccountToValidate_TableColumn1" prefWidth="75.0" text="Member ID" />
+                <TableColumn fx:id="moderate_AccountToValidate_TableColumn2" prefWidth="75.0" text="Member Username" />
+                  <TableColumn fx:id="moderate_AccountToValidate_TableColumn3" prefWidth="75.0" text="MemberEmail" />
+                  <TableColumn fx:id="moderate_AccountToValidate_TableColumn4" prefWidth="75.0" text="Member Description" />
+                  <TableColumn fx:id="moderate_AccountToValidate_TableColumn5" prefWidth="75.0" text="Member Nom" />
+                  <TableColumn fx:id="moderate_AccountToValidate_TableColumn6" prefWidth="75.0" text="Country" />
               </columns>
             </TableView>
          </children>

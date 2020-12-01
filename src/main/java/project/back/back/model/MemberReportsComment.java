@@ -1,5 +1,8 @@
 package project.back.back.model;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Objects;
@@ -71,7 +74,7 @@ public class MemberReportsComment {
         return Objects.hash(commentId, memberId, memberReportsCommentDate, memberReportsCommentPostit);
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "COMMENT_ID", referencedColumnName = "COMMENT_ID", nullable = false)
     public Comment getCommentByCommentId() {
         return commentByCommentId;
@@ -81,7 +84,7 @@ public class MemberReportsComment {
         this.commentByCommentId = commentByCommentId;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "MEMBER_ID", referencedColumnName = "MEMBER_ID", nullable = false)
     public Member getMemberByMemberId() {
         return memberByMemberId;

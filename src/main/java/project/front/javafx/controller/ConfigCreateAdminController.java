@@ -22,6 +22,8 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import project.back.back.model.Employee;
+import project.back.back.services.EmployeeServices;
 import project.front.javafx.FXMLDocumentController;
 import project.front.javafx.Navigation;
 
@@ -46,6 +48,8 @@ public class ConfigCreateAdminController implements Initializable {
 
      @Autowired
      Navigation navigation;
+     @Autowired
+     EmployeeServices employeeServices;
     /**
      * Initializes the controller class.
      */
@@ -66,6 +70,24 @@ public class ConfigCreateAdminController implements Initializable {
                 navigation.showWelcomeView();
             } catch (Exception ex) {
                 Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+
+        //Création employé
+
+        configure_CreateAdmin_Button.setOnAction((ActionEvent event) -> {
+            try {
+                Employee employee = new Employee();
+                String login = configure_LoginNewAdmin_TxtField.getText();
+                String password = configure_NewAdminPassword_Textfield.getText();
+
+                employee.setEmployeeLogin(login);
+                employee.setEmployeePassword(password);
+
+                employeeServices.createEmployee(employee);
+
+            }catch (Exception exception){
+                Logger.getLogger(ConfigCreateAdminController.class.getName()).log(Level.SEVERE, "création impossible", exception);
             }
         });
     }    

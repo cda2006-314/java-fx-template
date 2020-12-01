@@ -26,9 +26,12 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import project.back.back.model.EmployeeModeratesMember;
+import project.back.back.model.Member;
 import project.back.back.model.MemberReportsComment;
 import project.back.back.model.MemberReportsEvent;
+import project.back.back.services.MemberReportsCommentService;
 import project.back.back.services.MemberReportsEventServices;
+import project.back.back.services.MemberServices;
 import project.front.javafx.FXMLDocumentController;
 import project.front.javafx.Navigation;
 
@@ -43,14 +46,28 @@ public class ModerateManegeMainController implements Initializable {
 
      //Typage des tableaux
 
-    @FXML
-    private TableView<MemberReportsEvent> moderate_EventToModerate_Table;
-    @FXML
-    private TableView<MemberReportsComment> moderate_CommentsToModerate_Table;
+
+
     @FXML
     private TableView<EmployeeModeratesMember> moderate_UsersToModerate_Table;
     @FXML
-    private TableView<?> moderate_AccountToValidate_Table;
+    private TableView<Member> moderate_AccountToValidate_Table;
+
+    @FXML
+    private TableColumn moderate_AccountToValidate_TableColumn1;
+     @FXML
+     private TableColumn moderate_AccountToValidate_TableColumn2;
+     @FXML
+     private TableColumn moderate_AccountToValidate_TableColumn3;
+     @FXML
+     private TableColumn moderate_AccountToValidate_TableColumn4;
+     @FXML
+     private TableColumn moderate_AccountToValidate_TableColumn5;
+     @FXML
+     private TableColumn moderate_AccountToValidate_TableColumn6;
+
+     @FXML
+     private TableView<MemberReportsEvent> moderate_EventToModerate_Table;
 
      @FXML
      private TableColumn moderate_EventToModerate_TableColumn1;
@@ -63,13 +80,32 @@ public class ModerateManegeMainController implements Initializable {
      @FXML
      private TableColumn  moderate_EventToModerate_TableColumn5;
 
+     @FXML
+     private TableView<MemberReportsComment> moderate_CommentsToModerate_Table;
+
+     @FXML
+     private TableColumn moderate_CommentsToModerate_TableColumn1;
+     @FXML
+     private TableColumn moderate_CommentsToModerate_TableColumn2;
+     @FXML
+     private TableColumn moderate_CommentsToModerate_TableColumn3;
+     @FXML
+     private TableColumn moderate_CommentsToModerate_TableColumn4;
+     @FXML
+     private TableColumn moderate_CommentsToModerate_TableColumn5;
+
+
 
 
     @FXML
     private Button Back_Button;
 
      @Autowired
+     MemberReportsCommentService memberReportsCommentService;
+     @Autowired
      MemberReportsEventServices memberReportsEventServices;
+     @Autowired
+     MemberServices memberServices;
      @Autowired
      Navigation navigation;
 
@@ -91,6 +127,32 @@ public class ModerateManegeMainController implements Initializable {
         ObservableList<MemberReportsEvent> listReportsEvent = listReportsEvent();
         moderate_EventToModerate_Table.setItems(listReportsEvent);
 
+        //MemberReportsComment
+        moderate_CommentsToModerate_TableColumn1.setCellValueFactory(new PropertyValueFactory<>("commentId"));
+        moderate_CommentsToModerate_TableColumn2.setCellValueFactory(new PropertyValueFactory<>("memberId"));
+        moderate_CommentsToModerate_TableColumn3.setCellValueFactory(new PropertyValueFactory<>("commentByCommentId"));
+        moderate_CommentsToModerate_TableColumn4.setCellValueFactory(new PropertyValueFactory<>("memberReportsCommentDate"));
+        moderate_CommentsToModerate_TableColumn5.setCellValueFactory(new PropertyValueFactory<>("memberReportsCommentPostit"));
+
+        ObservableList<MemberReportsComment> listReportsComment = listReportsComment();
+        moderate_CommentsToModerate_Table.setItems(listReportsComment);
+
+        //moderate_UsersToModerate_Table
+
+
+        //moderate_AccountToValidate_Table
+/*
+        moderate_AccountToValidate_TableColumn1.setCellValueFactory(new PropertyValueFactory<>("memberId"));
+        moderate_AccountToValidate_TableColumn2.setCellValueFactory(new PropertyValueFactory<>("memberUsername"));
+        moderate_AccountToValidate_TableColumn3.setCellValueFactory(new PropertyValueFactory<>("memberEmail"));
+        moderate_AccountToValidate_TableColumn4.setCellValueFactory(new PropertyValueFactory<>("memberDescription"));
+        moderate_AccountToValidate_TableColumn5.setCellValueFactory(new PropertyValueFactory<>("memberLname"));
+        moderate_AccountToValidate_TableColumn6.setCellValueFactory(new PropertyValueFactory<>("memberCountry"));
+
+
+        ObservableList<Member> listMemberUnverified = listMemberUnverified() ;
+        moderate_AccountToValidate_Table.setItems(listMemberUnverified);
+*/
         Button tbBack = Back_Button;
         AquaFx.createButtonStyler().setIcon(MacOSDefaultIcons.LEFT).setType(ButtonType.LEFT_PILL).style(tbBack);
         Back_Button.setOnAction((ActionEvent event) -> {
@@ -109,5 +171,17 @@ public class ModerateManegeMainController implements Initializable {
         ObservableList<MemberReportsEvent> listReportsEvent = FXCollections.observableArrayList(memberReportsEventServices.reportsEventList());
         return listReportsEvent;
      }
+
+     private ObservableList<MemberReportsComment> listReportsComment() {
+
+         ObservableList<MemberReportsComment> listReportsComment = FXCollections.observableArrayList(memberReportsCommentService.reportsCommentList());
+         return listReportsComment;
+     }
+/*
+     private ObservableList<Member> listMemberUnverified() {
+
+         ObservableList<Member> listMemberUnverified = FXCollections.observableArrayList(memberServices.listUnverifiedMember());
+         return listMemberUnverified;
+     }*/
 
  }

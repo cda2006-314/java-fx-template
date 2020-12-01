@@ -239,6 +239,7 @@ public class Member {
         return Objects.hash(memberId, memberEmail, memberPassword, memberUsername, memberDescription, memberPicurl, memberPostit, memberIsverified, memberLname, memberFname, memberSiret, memberCompany, memberAddress, memberZipcode, memberCity, memberCountry);
     }
 
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "memberByMemberId")
     public Collection<Comment> getCommentsByMemberId() {
         return commentsByMemberId;
@@ -256,7 +257,7 @@ public class Member {
     public void setEmployeeModeratesMembersByMemberId(Collection<EmployeeModeratesMember> employeeModeratesMembersByMemberId) {
         this.employeeModeratesMembersByMemberId = employeeModeratesMembersByMemberId;
     }
-
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "memberByMemberId")
     public Collection<Event> getEventsByMemberId() {
         return eventsByMemberId;
@@ -283,7 +284,7 @@ public class Member {
     public void setLibrariesByMemberId(Collection<Library> librariesByMemberId) {
         this.librariesByMemberId = librariesByMemberId;
     }
-
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "memberByMember1Id")
     public Collection<MemberFollowsanotherMember> getMemberFollowsanotherMembersByMemberId() {
         return memberFollowsanotherMembersByMemberId;
