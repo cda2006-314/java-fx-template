@@ -30,6 +30,7 @@ import org.springframework.stereotype.Component;
 import project.back.back.model.Employee;
 import project.back.back.model.Member;
 import project.back.back.services.EmployeeServices;
+import project.back.back.services.PictureServices;
 import project.front.javafx.FXMLDocumentController;
 import project.front.javafx.Navigation;
 

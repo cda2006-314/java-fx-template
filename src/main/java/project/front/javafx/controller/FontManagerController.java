@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import project.back.back.services.FontsServices;
+import project.back.back.services.PictureServices;
 import project.front.javafx.FXMLDocumentController;
 import project.front.javafx.Navigation;
 
@@ -46,15 +47,17 @@ public class FontManagerController implements Initializable {
 @FXML
 private ComboBox fontManage_return_CB;
 
+
+
+
     @Autowired
     Navigation navigation;
 
-@Autowired
+    @Autowired
     FontsServices fontsServices;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
 
 
         List listPrep = (List) fontsServices.fontsList();
