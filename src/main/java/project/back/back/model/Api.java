@@ -9,6 +9,7 @@ public class Api {
     private int apiId;
     private String apiLabel;
     private String apiDescription;
+    private String apiContenu;
     private Collection<WebsitethemeHasApi> websitethemeHasApisByApiId;
 
     @Id
@@ -33,6 +34,16 @@ public class Api {
     }
 
     @Basic
+    @Column(name = "API_CONTENU", nullable = true, length = 1000)
+    public String getApiContenu() {
+        return apiContenu;
+    }
+
+    public void setApiContenu(String apiContenu) {
+        this.apiContenu = apiContenu;
+    }
+
+    @Basic
     @Column(name = "API_DESCRIPTION", nullable = false, length = 1000)
     public String getApiDescription() {
         return apiDescription;
@@ -41,7 +52,6 @@ public class Api {
     public void setApiDescription(String apiDescription) {
         this.apiDescription = apiDescription;
     }
-
     @Override
     public String toString() {
         return apiLabel;

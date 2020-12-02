@@ -9,6 +9,7 @@ public class Fonts {
     private int fontsId;
     private String fontsLabel;
     private String fontsUrl;
+    private String fontsContenu;
     private Collection<WebsitethemeHasFonts> websitethemeHasFontsByFontsId;
 
     @Id
@@ -40,6 +41,16 @@ public class Fonts {
 
     public void setFontsUrl(String fontsUrl) {
         this.fontsUrl = fontsUrl;
+    }
+
+    @Basic
+    @Column(name = "FONTS_CONTENU", nullable = true, length = 1000)
+    public String getFontsContenu() {
+        return fontsContenu;
+    }
+
+    public void setFontsContenu(String fontsContenu) {
+        this.fontsContenu = fontsContenu;
     }
 
     @Override
