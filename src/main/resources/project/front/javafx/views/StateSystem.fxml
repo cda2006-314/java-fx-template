@@ -18,32 +18,32 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="182.0" layoutY="105.0" prefHeight="308.0" prefWidth="502.0" AnchorPane.leftAnchor="182.0" AnchorPane.rightAnchor="215.0">
+      <AnchorPane layoutX="23.0" layoutY="105.0" prefHeight="393.0" prefWidth="849.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="27.0">
          <children>
-            <VBox layoutY="27.0" prefHeight="157.0" prefWidth="192.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="310.0">
+            <VBox layoutY="27.0" prefHeight="393.0" prefWidth="190.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="659.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label prefHeight="56.0" prefWidth="126.0" text="Etat serveur">
+                  <Label prefHeight="143.0" prefWidth="126.0" text="Etat serveur">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="59.0" prefWidth="186.0" text="Etat Base de données">
+                  <Label prefHeight="122.0" prefWidth="186.0" text="Etat Base de données">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="40.0" prefWidth="104.0" text="Etat API">
+                  <Label prefHeight="137.0" prefWidth="104.0" text="Etat API">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
                </children>
             </VBox>
-            <VBox layoutX="204.0" layoutY="27.0" prefHeight="157.0" prefWidth="192.0" AnchorPane.leftAnchor="204.0" AnchorPane.rightAnchor="106.0">
+            <VBox layoutX="204.0" layoutY="27.0" prefHeight="393.0" prefWidth="645.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="204.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label fx:id="stateSystem_ReturnStateServer_Label" prefHeight="51.0" prefWidth="87.0" text="Label" />
-                  <Label fx:id="StateSystem_ReturnStateBDD_Label" prefHeight="60.0" prefWidth="78.0" text="Label" />
-                  <Label fx:id="stateSystem_ReturnStateApi_Label" prefHeight="50.0" prefWidth="104.0" text="Label" />
+                  <Label fx:id="stateSystem_ReturnStateServer_Label" prefHeight="134.0" prefWidth="553.0" text="Label" />
+                  <Label fx:id="StateSystem_ReturnStateBDD_Label" prefHeight="126.0" prefWidth="537.0" text="Label" />
+                  <Label fx:id="stateSystem_ReturnStateApi_Label" prefHeight="105.0" prefWidth="548.0" text="Label" />
                </children>
             </VBox>
          </children>
