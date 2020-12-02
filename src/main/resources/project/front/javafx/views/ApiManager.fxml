@@ -12,7 +12,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="899.0" style="-fx-background-color: #FFFFF0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.front.javafx.controller.ApiManagerController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="33.0" layoutY="13.0" prefHeight="35.0" prefWidth="818.0" text="Gestion des APIs" textAlignment="CENTER" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="48.0">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="29.0" layoutY="13.0" prefHeight="35.0" prefWidth="818.0" text="Gestion des APIs" textAlignment="CENTER" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="52.0">
          <font>
             <Font size="36.0" />
          </font></Label>

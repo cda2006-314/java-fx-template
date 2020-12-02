@@ -22,6 +22,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import project.back.back.services.StateSystemServices;
 import project.front.javafx.FXMLDocumentController;
 import project.front.javafx.Navigation;
 
@@ -45,7 +46,8 @@ public class StateSystemController implements Initializable {
     @FXML
     private Button Back_Button;
 
-
+     @Autowired
+     StateSystemServices stateSystemServices;
      @Autowired
      Navigation navigation;
 
@@ -55,7 +57,15 @@ public class StateSystemController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+//Set les labels via notre stateSystemServices
 
+        try {
+            stateSystem_ReturnStateServer_Label.setText(feedLabelServer());
+            stateSystem_ReturnStateApi_Label.setText(feedLabelSystem());
+            StateSystem_ReturnStateBDD_Label.setText(feedLabelDB());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         Button tbBack = Back_Button;
         AquaFx.createButtonStyler().setIcon(MacOSDefaultIcons.LEFT).setType(ButtonType.LEFT_PILL).style(tbBack);
@@ -68,6 +78,20 @@ public class StateSystemController implements Initializable {
                 Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-    }    
+
+
+    }
+
+    public String feedLabelServer() throws IOException {
+        return stateSystemServices.giveJvmHealth();
+    }
+
+    public String feedLabelSystem() throws IOException {
+        return stateSystemServices.giveHealth();
+    }
+
+    public String feedLabelDB() throws IOException {
+        return stateSystemServices.giveDBHealth();
+    }
     
 }
