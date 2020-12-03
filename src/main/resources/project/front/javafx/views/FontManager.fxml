@@ -10,10 +10,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.HTMLEditor?>
 
-<?import javafx.scene.control.TextArea?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="899.0" style="-fx-background-color: #FFFFF0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.front.javafx.controller.FontManagerController">
     <children>
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="29.0" layoutY="13.0" prefHeight="35.0" prefWidth="818.0" text="Gestion des APIs" textAlignment="CENTER" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="52.0">
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="29.0" layoutY="13.0" prefHeight="35.0" prefWidth="818.0" text="Gestion des fonts" textAlignment="CENTER" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="52.0">
             <font>
                 <Font size="36.0" />
             </font></Label>
@@ -56,16 +55,26 @@
                 <Button fx:id="fontManage_CreateFont_Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="98.0" text="Ajout" />
             </children>
         </HBox>
-        <HBox layoutX="244.0" layoutY="156.0" prefHeight="37.0" prefWidth="643.0">
+        <HBox layoutX="244.0" layoutY="156.0" prefHeight="17.0" prefWidth="643.0">
             <children>
-                <Label prefHeight="17.0" prefWidth="177.0" text="Description du font" />
-                <TextArea fx:id="fonts_GiveDescription_TXTArea" prefHeight="200.0" prefWidth="200.0" />
+                <Label prefHeight="17.0" prefWidth="177.0" text="Image du font" />
+            <TextField fx:id="fontManager_DropImage_TxtField" prefHeight="25.0" prefWidth="203.0">
+               <HBox.margin>
+                  <Insets right="40.0" />
+               </HBox.margin>
+            </TextField>
+            <Button fx:id="fontManager_DropImage_Button" mnemonicParsing="false" text="Image" />
             </children>
         </HBox>
         <HBox layoutX="246.0" layoutY="205.0" prefHeight="25.0" prefWidth="542.0">
             <children>
                 <Label prefHeight="21.0" prefWidth="178.0" text="Fonts contenu" />
-                <TextField fx:id="fonts_DropFiles_TxtField" prefHeight="25.0" prefWidth="195.0" />
+                <TextField  fx:id="fonts_DropFiles_TxtField" prefHeight="25.0" prefWidth="205.0" />
+            <Button fx:id="fontsManager_DropFonts_Button" mnemonicParsing="false" text="Fonts">
+               <HBox.margin>
+                  <Insets left="40.0" />
+               </HBox.margin>
+            </Button>
             </children>
         </HBox>
 

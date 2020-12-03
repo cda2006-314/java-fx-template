@@ -33,7 +33,7 @@ public class FontsServices {
         System.out.println("Retour contenu");
         String idContenu= reponseContenu.substring(25,49);
         fonts.setFontsContenu(idContenu);
-
+        fonts.setFontsLabel(fontLabel);
         fontsRepository.save(fonts);
     }
 
