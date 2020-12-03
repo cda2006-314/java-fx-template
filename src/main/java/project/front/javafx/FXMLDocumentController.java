@@ -70,6 +70,8 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button main_Page_Button;
     @FXML
+    private Button main_Preference_Button;
+    @FXML
     private Color x4;
     @FXML
     private Font x3;
@@ -132,9 +134,23 @@ Navigation navigation;
         ImageView pageImg = new ImageView(getClass().getResource("IMG/pages.png").toString());
         pageImg.setFitHeight(50);
         pageImg.setFitWidth(50);
+        ImageView prefImg = new ImageView(getClass().getResource("IMG/loupe.png").toString());
+        prefImg.setFitHeight(50);
+        prefImg.setFitWidth(50);
 
         //Attribution boutons et des actions au travers de notre bean : Navigation et de se méthode showView
         //Cette méthode permet d'associer les vues au controller : essentiel pour le binding avec Spring
+
+        main_Preference_Button.setOnAction((ActionEvent event) -> {
+
+            Stage stage = (Stage) main_AccountAdmin_Button.getScene().getWindow();
+            navigation.setStage(stage);
+            navigation.showWebSiteManagerView();
+
+        });
+
+
+
 
         Button accountAdmin = (Button) main_AccountAdmin_Button;
        main_AccountAdmin_Button.setOnAction((ActionEvent event) -> {
@@ -189,6 +205,7 @@ Navigation navigation;
         configAdmin.setGraphic(configAdminImg);
         stateSystemAdmin.setGraphic(stateSystemImg);
         logAdmin.setGraphic(logImg);
+        main_Preference_Button.setGraphic(prefImg);
 
         //Attribution des actions sur les boutons
 
