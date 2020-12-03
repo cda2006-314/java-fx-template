@@ -14,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.web.HTMLEditor;
@@ -42,6 +43,10 @@ public class FontManagerController implements Initializable {
     private Button fontManage_CreateFont_Button;
     @FXML
     private Button Back_Button;
+    @FXML
+    private TextArea fonts_GiveDescription_TXTArea;
+    @FXML
+    private TextField fonts_DropFiles_TxtField;
 
 
 @FXML

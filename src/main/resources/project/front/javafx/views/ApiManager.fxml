@@ -48,24 +48,24 @@
                   <Insets right="20.0" />
                </HBox.margin>
             </Label>
-            <TextField id="api_GiveName_TxtField" fx:id="apiManage_create_TXT" prefHeight="25.0" prefWidth="203.0">
+            <TextField  fx:id="apiManage_create_TXT" prefHeight="25.0" prefWidth="203.0">
                <HBox.margin>
                   <Insets right="40.0" />
                </HBox.margin>
             </TextField>
-            <Button id="api_CreateApi_Button" fx:id="apiManage_CreateAPI_Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="98.0" text="Ajout" />
+            <Button  fx:id="apiManage_CreateAPI_Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="98.0" text="Ajout" />
          </children>
       </HBox>
       <HBox layoutX="244.0" layoutY="156.0" prefHeight="37.0" prefWidth="643.0">
          <children>
             <Label prefHeight="17.0" prefWidth="177.0" text="Description de l'API" />
-            <TextArea id="api_GiveDescription_TXTArea" prefHeight="200.0" prefWidth="200.0" />
+            <TextArea fx:id="api_GiveDescription_TXTArea" prefHeight="200.0" prefWidth="200.0" />
          </children>
       </HBox>
       <HBox layoutX="246.0" layoutY="205.0" prefHeight="25.0" prefWidth="542.0">
          <children>
             <Label prefHeight="21.0" prefWidth="178.0" text="Contenu de l'API" />
-            <TextField id="api_DropFiles_TxtField" prefHeight="25.0" prefWidth="195.0" />
+            <TextField fx:id="api_DropFiles_TxtField" prefHeight="25.0" prefWidth="195.0" />
          </children>
       </HBox>
 
