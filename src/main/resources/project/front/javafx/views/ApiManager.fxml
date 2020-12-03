@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -16,7 +17,7 @@
          <font>
             <Font size="36.0" />
          </font></Label>
-      <HTMLEditor fx:id="apiManage_htmlEditor_Editor" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="29.0" layoutY="164.0" prefHeight="356.0" prefWidth="818.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="52.0" AnchorPane.topAnchor="164.0" />
+      <HTMLEditor fx:id="apiManage_htmlEditor_Editor" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="29.0" layoutY="243.0" prefHeight="277.0" prefWidth="818.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="52.0" AnchorPane.topAnchor="243.0" />
       <Button fx:id="Back_Button" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" />
       <HBox layoutX="32.0" layoutY="75.0" prefHeight="35.0" prefWidth="507.0" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="360.0">
          <children>
@@ -35,19 +36,36 @@
             </Label>
          </children>
       </HBox>
-      <HBox layoutX="32.0" layoutY="110.0" prefHeight="43.0" prefWidth="861.0" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="6.0">
+      <HBox layoutX="32.0" layoutY="110.0" prefHeight="46.0" prefWidth="861.0" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="6.0">
          <children>
             <ComboBox fx:id="apiManage_listAPI_CB" prefWidth="150.0">
                <HBox.margin>
                   <Insets right="60.0" />
                </HBox.margin>
             </ComboBox>
-            <TextField fx:id="apiManage_create_TXT" prefHeight="25.0" prefWidth="171.0">
+            <Label prefHeight="17.0" prefWidth="156.0" text="Nom de l'API">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </Label>
+            <TextField id="api_GiveName_TxtField" fx:id="apiManage_create_TXT" prefHeight="25.0" prefWidth="203.0">
                <HBox.margin>
                   <Insets right="40.0" />
                </HBox.margin>
             </TextField>
-            <Button fx:id="apiManage_CreateAPI_Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="98.0" text="Ajout" />
+            <Button id="api_CreateApi_Button" fx:id="apiManage_CreateAPI_Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="98.0" text="Ajout" />
+         </children>
+      </HBox>
+      <HBox layoutX="244.0" layoutY="156.0" prefHeight="37.0" prefWidth="643.0">
+         <children>
+            <Label prefHeight="17.0" prefWidth="177.0" text="Description de l'API" />
+            <TextArea id="api_GiveDescription_TXTArea" prefHeight="200.0" prefWidth="200.0" />
+         </children>
+      </HBox>
+      <HBox layoutX="246.0" layoutY="205.0" prefHeight="25.0" prefWidth="542.0">
+         <children>
+            <Label prefHeight="21.0" prefWidth="178.0" text="Contenu de l'API" />
+            <TextField id="api_DropFiles_TxtField" prefHeight="25.0" prefWidth="195.0" />
          </children>
       </HBox>
 
