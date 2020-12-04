@@ -1,6 +1,11 @@
 package project.back.back.controller;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,10 +24,19 @@ public class PreferenceRestController {
     PreferenceServices preferenceServices;
 
     @GetMapping("/allPreference")
-    public String apiList(){
+    @ApiOperation(value="Search Picture on our database", response = List.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Ok: successfull research"),
+            @ApiResponse(code = 204, message = "No Content: no result founded"),
+    })
+    public ResponseEntity<List<Preference>> preferenceList(){
         List<Preference> list = preferenceServices.preferenceList();
+        if(list != null) {
 
-        return "List"  + list ;
+            return new ResponseEntity<List<Preference>>(list, HttpStatus.ACCEPTED);
+        }
+        return new ResponseEntity<List<Preference>>(HttpStatus.NO_CONTENT);
+    }
 
     }
-}
+

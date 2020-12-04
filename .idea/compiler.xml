@@ -9,10 +9,12 @@
         <module name="java-fx-template" />
         <module name="back" />
         <module name="java-fx-template-nt" />
-        <module name="api" />
         <module name="base-back-spring" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="api" target="11" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
