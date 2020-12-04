@@ -1,5 +1,9 @@
 package project.back.back.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
@@ -72,7 +76,9 @@ public class Api {
         return Objects.hash(apiId, apiLabel, apiDescription);
     }
 
+    @LazyCollection(LazyCollectionOption.TRUE)
     @OneToMany(mappedBy = "apiByApiId")
+    @JsonIgnore
     public Collection<WebsitethemeHasApi> getWebsitethemeHasApisByApiId() {
         return websitethemeHasApisByApiId;
     }
