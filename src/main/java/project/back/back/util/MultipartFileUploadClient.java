@@ -30,7 +30,10 @@ public class MultipartFileUploadClient {
 
 public static void main(String []args){
     MultipartFileUploadClient mp =  new MultipartFileUploadClient();
-    mp.sendFile("C:\\Users\\Charlène\\Downloads\\outils-de-cuisine.png");}
+  //  mp.sendFile("C:\\Users\\Charlène\\Downloads\\outils-de-cuisine.png");
+mp.sendFile("C:\\Users\\Charlène\\Desktop\\Projet groupe n-Tiers\\Web Angular\\fonts\\Epilogue.zip");
+
+}
     /**
      * Provide url image to send
      * @param urlImage

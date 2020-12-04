@@ -9,6 +9,7 @@ public class Preference {
     private int preferenceId;
     private int websitethemeId;
     private String preferenceLabel;
+    private String preferenceDescription;
     private Collection<MemberHasPreferences> memberHasPreferencesByPreferenceId;
     private Websitetheme websitethemeByWebsitethemeId;
 
@@ -41,6 +42,16 @@ public class Preference {
 
     public void setPreferenceLabel(String preferenceLabel) {
         this.preferenceLabel = preferenceLabel;
+    }
+
+    @Basic
+    @Column(name = "PREFERENCE_DESCRIPTION", nullable = false, length = 100)
+    public String getPreferenceDescription() {
+        return preferenceDescription;
+    }
+
+    public void setPreferenceDescription(String preferenceDescription) {
+        this.preferenceDescription = preferenceDescription;
     }
 
     @Override

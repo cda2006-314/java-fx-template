@@ -59,7 +59,11 @@
                         <Insets right="20.0" />
                      </HBox.margin>
                   </Button>
-                <Button fx:id="main_User_Button" mnemonicParsing="false" prefHeight="102.0" prefWidth="202.0" />
+                <Button fx:id="main_User_Button" mnemonicParsing="false" prefHeight="102.0" prefWidth="202.0">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin></Button>
+                  <Button fx:id="main_Preference_Button"  mnemonicParsing="false" prefHeight="102.0" prefWidth="202.0" />
                </children>
             </HBox>
             <HBox layoutX="18.0" layoutY="421.0" prefHeight="100.0" prefWidth="1013.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="12.0">
@@ -140,13 +144,18 @@
                         <Insets left="110.0" />
                      </HBox.margin>
                   </Label>
-                  <Label text="Gestion utilisateur">
+                  <Label prefHeight="20.0" prefWidth="126.0" text="Gestion utilisateur">
                      <font>
                         <Font size="14.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="120.0" />
+                        <Insets left="120.0" right="100.0" />
                      </HBox.margin>
+                  </Label>
+                  <Label layoutX="512.0" layoutY="10.0" prefHeight="20.0" prefWidth="185.0" text="Gestion préference">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
                   </Label>
                </children>
             </HBox>

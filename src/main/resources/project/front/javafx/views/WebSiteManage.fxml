@@ -4,14 +4,16 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="899.0" xmlns="http://javafx.com/javafx/11.0.1" style="-fx-background-color: #FFFFF0 ;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.front.javafx.controller.WebSiteManageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="899.0" style="-fx-background-color: #FFFFF0 ;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.front.javafx.controller.WebSiteManageController">
    <children>
       <SplitPane dividerPositions="0.5" layoutX="220.0" layoutY="160.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #FFFFF0;">
                <children>
                   <Label layoutX="105.0" layoutY="23.0" text="Gestion du site Web" />
                   <Label layoutX="47.0" layoutY="73.0" text="API" />
@@ -22,14 +24,57 @@
                   <ComboBox fx:id="ManageWebSite_ShowFont_CB" layoutX="133.0" layoutY="137.0" prefWidth="150.0" />
                   <ComboBox fx:id="ManageWebSite_ShowImages_CB" layoutX="133.0" layoutY="202.0" prefWidth="150.0" />
                   <ComboBox fx:id="ManageWebSite_ShowPages_CB" layoutX="133.0" layoutY="292.0" prefWidth="150.0" />
-                  <Button fx:id="Back_Button" layoutX="14.0" layoutY="11.0" mnemonicParsing="false"  />
+                  <Button fx:id="Back_Button" layoutX="14.0" layoutY="11.0" mnemonicParsing="false" />
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #FFFFF0;">
                <children>
-                  <Label layoutX="79.0" layoutY="35.0" prefHeight="17.0" prefWidth="161.0" text="Association des préférences" />
-                  <Label layoutX="93.0" layoutY="81.0" prefHeight="17.0" prefWidth="107.0" text="Label" />
-                  <TreeView fx:id="ManageWebSite_AssocPreference_TreeView" layoutX="48.0" layoutY="114.0" prefHeight="156.0" prefWidth="200.0" />
+                  <Label alignment="CENTER" layoutX="12.0" layoutY="35.0" prefHeight="17.0" prefWidth="394.0" text="Association des préférences" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font></Label>
+                  <HBox layoutX="2.0" layoutY="72.0" prefHeight="27.0" prefWidth="439.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="4.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="27.0" prefWidth="439.0" text="Les Apis">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="2.0" layoutY="113.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                  <HBox layoutX="-1.0" layoutY="371.0" prefHeight="48.0" prefWidth="445.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0">
+                     <children>
+                        <Label prefHeight="38.0" prefWidth="147.0" text="Nom préference" />
+                        <TextField prefHeight="25.0" prefWidth="247.0" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="-13.0" layoutY="240.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.leftAnchor="-13.0" AnchorPane.rightAnchor="13.0" />
+                  <HBox layoutX="2.0" layoutY="213.0" prefHeight="27.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="27.0" prefWidth="447.0" text="Les fonts">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="5.0" layoutY="330.0" prefHeight="25.0" prefWidth="439.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="26.0" prefWidth="438.0" text="Créer la préference">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Button id="preference_Create_Button" layoutX="141.0" layoutY="507.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="187.0" text="Création" />
+                  <HBox layoutX="-1.0" layoutY="406.0" prefHeight="48.0" prefWidth="446.0">
+                     <children>
+                        <Label prefHeight="32.0" prefWidth="147.0" text="Image" />
+                        <TextField prefHeight="25.0" prefWidth="248.0" />
+                     </children>
+                  </HBox>
                </children>
             </AnchorPane>
         </items>

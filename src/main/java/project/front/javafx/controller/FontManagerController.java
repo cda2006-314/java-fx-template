@@ -14,9 +14,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.web.HTMLEditor;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -25,6 +27,7 @@ import project.back.back.services.PictureServices;
 import project.front.javafx.FXMLDocumentController;
 import project.front.javafx.Navigation;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -42,7 +45,14 @@ public class FontManagerController implements Initializable {
     private Button fontManage_CreateFont_Button;
     @FXML
     private Button Back_Button;
-
+    @FXML
+    private TextField fonts_DropFiles_TxtField;
+    @FXML
+    private TextField  fontManager_DropImage_TxtField;
+    @FXML
+    private Button fontManager_DropImage_Button;
+    @FXML
+    private Button fontsManager_DropFonts_Button;
 
 @FXML
 private ComboBox fontManage_return_CB;
@@ -78,6 +88,46 @@ private ComboBox fontManage_return_CB;
                 Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+        fontManage_CreateFont_Button.setOnAction((ActionEvent event) -> {
+        createFont();
+        });
+
+        fontManager_DropImage_Button.setOnAction((ActionEvent event) -> {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.getExtensionFilters().addAll(//
+                    new FileChooser.ExtensionFilter("*", "*.*"),
+                    new FileChooser.ExtensionFilter("JPEG", "*.jpeg"),
+                    new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                    new FileChooser.ExtensionFilter("PNG", "*.png"));
+
+
+            File selectedDirectory = fileChooser.showOpenDialog(fontManager_DropImage_Button.getContextMenu());
+            String fileUrl = selectedDirectory.getAbsolutePath();
+            fontManager_DropImage_TxtField.setText(fileUrl);
+        });
+
+        fontsManager_DropFonts_Button.setOnAction((ActionEvent event) -> {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.getExtensionFilters().addAll(//
+                    new FileChooser.ExtensionFilter("*", "*.*"),
+                    new FileChooser.ExtensionFilter("json", "*.json"),
+                    new FileChooser.ExtensionFilter("zip", "*.zip"),
+                    new FileChooser.ExtensionFilter("CSV", "*.csv"));
+
+
+            File selectedDirectory = fileChooser.showOpenDialog(fontManager_DropImage_Button.getContextMenu());
+            String fileUrl = selectedDirectory.getAbsolutePath();
+            fonts_DropFiles_TxtField.setText(fileUrl);
+        });
+    }
+
+    public void createFont(){
+        String label = fontManage_create_TXT.getText();
+        String contenu = fonts_DropFiles_TxtField.getText();
+        String image = fontManager_DropImage_TxtField.getText();
+
+        fontsServices.createFont(label, image, contenu);
+
     }
 
 }
