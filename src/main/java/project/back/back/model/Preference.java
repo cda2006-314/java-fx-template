@@ -1,5 +1,7 @@
 package project.back.back.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
@@ -74,7 +76,8 @@ public class Preference {
         return Objects.hash(preferenceId, websitethemeId, preferenceLabel);
     }
 
-    @OneToMany(mappedBy = "preferenceByPreferenceId")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "preferenceByPreferenceId")
+    @JsonIgnore
     public Collection<MemberHasPreferences> getMemberHasPreferencesByPreferenceId() {
         return memberHasPreferencesByPreferenceId;
     }
@@ -84,6 +87,7 @@ public class Preference {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     @JoinColumn(name = "WEBSITETHEME_ID", referencedColumnName = "WEBSITETHEME_ID", nullable = false)
     public Websitetheme getWebsitethemeByWebsitethemeId() {
         return websitethemeByWebsitethemeId;
