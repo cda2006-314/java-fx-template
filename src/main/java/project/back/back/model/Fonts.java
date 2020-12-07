@@ -1,5 +1,7 @@
 package project.back.back.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
@@ -74,6 +76,7 @@ public class Fonts {
     }
 
     @OneToMany(mappedBy = "fontsByFontsId")
+    @JsonIgnore
     public Collection<WebsitethemeHasFonts> getWebsitethemeHasFontsByFontsId() {
         return websitethemeHasFontsByFontsId;
     }

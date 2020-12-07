@@ -6,6 +6,8 @@ import project.back.back.model.Preference;
 import project.back.back.repository.PreferenceRepository;
 import project.back.back.util.MultipartFileUploadClient;
 
+import java.util.List;
+
 @Service
 public class PreferenceServices {
 
@@ -29,5 +31,6 @@ public class PreferenceServices {
         preferenceRepository.save(preference);
     }
 
+    public List<Preference> preferenceList(){ return preferenceRepository.findAll();}
 
 }
