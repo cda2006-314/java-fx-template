@@ -21,8 +21,8 @@ import java.util.List;
 
 public class MultipartFileUploadClient {
 
-    private static final String API_KEY = "4";
-    private static final String SERVER_URL = "http://localhost:8090/api/v1/media/upload";
+
+    private static final String SERVER_URL = "http://localhost:8080/api/v2/media/upload";
     public static String response_media_upload;
     public String id;
     public String data;
@@ -34,15 +34,6 @@ public static void main(String []args){
 mp.sendFile("C:\\Users\\Charlène\\Desktop\\Projet groupe n-Tiers\\Web Angular\\fonts\\Epilogue.zip");
 
 }
-    /**
-     * Provide url image to send
-     * @param urlImage
-     * @return
-     */
-
-    public String give_UrlFile(String urlImage){
-        return urlImage;
-    }
 
     /**
      * We use this method for print the new id of the media in our GUI JavaFX
@@ -64,8 +55,7 @@ mp.sendFile("C:\\Users\\Charlène\\Desktop\\Projet groupe n-Tiers\\Web Angular\\
         // Setup headers
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
-        headers.add("api-key", API_KEY);
-
+        headers.setAccessControlRequestMethod(HttpMethod.POST);
         // Body building - including the file above
         MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
         body.add("file", fileSystemResource);
@@ -78,11 +68,11 @@ mp.sendFile("C:\\Users\\Charlène\\Desktop\\Projet groupe n-Tiers\\Web Angular\\
         ResponseEntity<String> response = restTemplate.postForEntity(serverUrl, requestEntity, String.class);
 
         // Displays the response
-        System.out.println("Response code: " + response.getStatusCode());
+
         response_media_upload = response.getBody();
-        String idPicture = response_media_upload.substring(25,49);
-        System.out.println("test"  + idPicture);
-        System.out.println("Response :\n"+response.getBody() + "\n");
+
+        System.out.println( response_media_upload);
+
 
     }
 
