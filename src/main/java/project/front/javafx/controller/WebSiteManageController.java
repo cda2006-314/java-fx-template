@@ -1,6 +1,5 @@
  package project.front.javafx.controller;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -15,20 +14,21 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TreeView;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import project.back.back.model.Api;
+import project.back.back.model.Fonts;
+import project.back.back.model.Picture;
+import project.back.back.model.Webcontent;
 import project.back.back.services.ApiManageServices;
 import project.back.back.services.FontsServices;
 import project.back.back.services.PictureServices;
+import project.back.back.services.WebContentServices;
 import project.front.javafx.FXMLDocumentController;
 import project.front.javafx.Navigation;
 
@@ -42,13 +42,13 @@ import project.front.javafx.Navigation;
 public class WebSiteManageController implements Initializable {
 
     @FXML
-    private ComboBox<?> ManageWebSite_ShowApi_CB;
+    private ComboBox<Api> ManageWebSite_ShowApi_CB;
     @FXML
-    private ComboBox<?> ManageWebSite_ShowFont_CB;
+    private ComboBox<Fonts> ManageWebSite_ShowFont_CB;
     @FXML
-    private ComboBox<?> ManageWebSite_ShowImages_CB;
+    private ComboBox<Picture> ManageWebSite_ShowImages_CB;
     @FXML
-    private ComboBox<?> ManageWebSite_ShowPages_CB;
+    private ComboBox<Webcontent> ManageWebSite_ShowPages_CB;
     @FXML
     private TreeView<?> ManageWebSite_AssocPreference_TreeView;
     @FXML
@@ -64,6 +64,8 @@ public class WebSiteManageController implements Initializable {
      ApiManageServices apiManageServices;
      @Autowired
      PictureServices pictureServices;
+     @Autowired
+     WebContentServices webContentServices;
 
 
     /**
@@ -75,19 +77,16 @@ public class WebSiteManageController implements Initializable {
 
 
         //ManageWebSite_ShowApi_CB
-        List listPrep = (List) apiManageServices.listApi();
-        ObservableList list = (ObservableList) FXCollections.observableArrayList(listPrep);
-        ManageWebSite_ShowApi_CB.setItems(list);
+        ManageWebSite_ShowApi_CB.setItems(showApi());
 
         //ManageWebSite_ShowFont_CB
-        List listPrepa = (List) fontsServices.fontsList();
-        ObservableList lista = (ObservableList) FXCollections.observableArrayList(listPrepa);
-        ManageWebSite_ShowFont_CB.setItems(lista);
+        ManageWebSite_ShowFont_CB.setItems(showFonts());
 
         //ManageWebSite_ShowImages_CB
-        List listPrepar = (List) pictureServices.pictureList();
-        ObservableList listar = (ObservableList) FXCollections.observableArrayList(listPrepar);
-        ManageWebSite_ShowImages_CB.setItems(listar);
+        ManageWebSite_ShowImages_CB.setItems(showPictures());
+
+        //ManageWebSite_ShowPages_CB
+        ManageWebSite_ShowPages_CB.setItems(showWebContent());
 
         AquaFx.createComboBoxStyler().style(ManageWebSite_ShowPages_CB);
         AquaFx.createComboBoxStyler().style(ManageWebSite_ShowImages_CB);
@@ -105,6 +104,29 @@ public class WebSiteManageController implements Initializable {
                 Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-    }    
+    }
+
+    public ObservableList<Api> showApi(){  List listPrep = apiManageServices.listApi();
+        ObservableList list = (ObservableList) FXCollections.observableArrayList(listPrep);
+    return list;}
+
+    public ObservableList<Fonts> showFonts(){
+        List listPrepa = (List) fontsServices.fontsList();
+        ObservableList lista = (ObservableList) FXCollections.observableArrayList(listPrepa);
+        return lista;
+    }
+
+    public ObservableList<Picture> showPictures(){
+        List listPrepar = (List) pictureServices.pictureList();
+        ObservableList listar = (ObservableList) FXCollections.observableArrayList(listPrepar);
+        return listar;
+    }
+
+    public ObservableList<Webcontent> showWebContent(){
+        List prepaContent = webContentServices.webcontentList();
+        ObservableList<Webcontent> listContent = FXCollections.observableArrayList(prepaContent);
+        return listContent;
+
+    }
     
 }

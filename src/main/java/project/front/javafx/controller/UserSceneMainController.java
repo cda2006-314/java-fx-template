@@ -27,6 +27,7 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import project.back.back.model.Member;
+import project.back.back.model.Memberstatus;
 import project.back.back.services.EmployeeServices;
 import project.back.back.services.MemberServices;
 import project.front.javafx.FXMLDocumentController;
@@ -93,9 +94,8 @@ public class UserSceneMainController implements Initializable {
 
 
          //Liste tous les status des membres
-         List listPrep = (List) memberServices.listMemberStatus();
-         ObservableList list = (ObservableList) FXCollections.observableArrayList(listPrep);
-         user_SearchStatus_CB.setItems(list);
+
+         user_SearchStatus_CB.setItems(giveMemberStatus());
 
          //Peuplement du tableau: tableau éditable permettant la modification
          user_AllUsers_TableColumn1.setCellValueFactory(new PropertyValueFactory<>("memberId"));
@@ -158,5 +158,12 @@ listResult.add(member);
          } else {
              String message = "champ vide";
          }
+     }
+
+     public ObservableList giveMemberStatus(){
+         List listPrep =  memberServices.listMemberStatus();
+         ObservableList list = FXCollections.observableArrayList(listPrep);
+
+         return list;
      }
  }

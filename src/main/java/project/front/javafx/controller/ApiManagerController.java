@@ -4,8 +4,11 @@ import com.aquafx_project.AquaFx;
 import com.aquafx_project.controls.skin.styles.ButtonType;
 import com.aquafx_project.controls.skin.styles.MacOSDefaultIcons;
 import com.aquafx_project.controls.skin.styles.TextFieldType;
+import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,6 +27,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import project.back.back.model.Api;
 import project.back.back.services.ApiManageServices;
 import project.front.javafx.FXMLDocumentController;
 import project.front.javafx.Navigation;
@@ -60,7 +64,7 @@ public class ApiManagerController implements Initializable {
 
    /* @FXML
     private AnchorPane testButton;*/
-
+private MyApiViewService service = new MyApiViewService();
 
     @Autowired ApiManageServices apiManageServices;
 
@@ -73,9 +77,7 @@ public class ApiManagerController implements Initializable {
         System.out.println(Thread.currentThread());
 
         //initialise la liste des Api
-        List listPrep = (List) apiManageServices.listApi();
-        ObservableList list = (ObservableList) FXCollections.observableArrayList(listPrep);
-        apiManage_listAPI_CB.setItems(list);
+        apiManage_listAPI_CB.setItems(giveList());
 
 
         //Habillage de la scène avec AquaFX
@@ -97,10 +99,7 @@ public class ApiManagerController implements Initializable {
                 Stage stage = (Stage) Back_Button.getScene().getWindow();
                 navigation.setStage(stage);
                 navigation.showWelcomeView();
-             /*   Parent root = FXMLLoader.load(getClass().getResource("../FXMLDocument.fxml"));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();*/
+
             } catch (Exception ex) {
                 Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -133,4 +132,36 @@ public class ApiManagerController implements Initializable {
 
         apiManageServices.createApi(label,description, contenu);
     }
+
+    public ObservableList<Api> giveList(){
+        List listPrep =  apiManageServices.listApi();
+        ObservableList list = (ObservableList) FXCollections.observableArrayList(listPrep);
+        return list;
+    }
+
+
+
+    private static class MyApiViewService extends Service<ObservableList<Api>> {
+        @Autowired
+        ApiManageServices apiManageServices;
+
+        @Override
+        protected Task<ObservableList<Api>> createTask() {
+            return new Task<ObservableList<Api>>() {
+                @Override
+                protected ObservableList<Api> call() throws Exception {
+                    List listPrep =  apiManageServices.listApi();
+                    ObservableList<Api> observableList =  (ObservableList)  FXCollections.observableArrayList(listPrep);
+
+
+                    return observableList;
+                }
+            };
+        }
+
+
+    }
+
+
+
 }

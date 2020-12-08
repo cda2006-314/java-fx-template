@@ -20,6 +20,7 @@ import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import project.back.back.model.Webcontent;
 import project.back.back.services.WebContentServices;
 import project.front.javafx.FXMLDocumentController;
 import project.front.javafx.Navigation;
@@ -56,9 +57,7 @@ public class WebContentManagerController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         //Préparation liste ComboBox
-        List listPrep = (List) webContentServices.webcontentList();
-        ObservableList list = (ObservableList) FXCollections.observableArrayList(listPrep);
-        pageManage_return_CB.setItems(list);
+        pageManage_return_CB.setItems(giveWebContent());
 
 
 
@@ -85,5 +84,11 @@ public class WebContentManagerController implements Initializable {
 
 
         });
+    }
+
+    public ObservableList<Webcontent> giveWebContent(){
+        List listPrep = webContentServices.webcontentList();
+        ObservableList list = (ObservableList) FXCollections.observableArrayList(listPrep);
+        return list;
     }
 }
