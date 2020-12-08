@@ -62,13 +62,13 @@ public class MediaFileController {
         mediaFile.setId(mediaFileService.save(mediaFile));
 
         // Converts the member into JSON
-        String jsonMediaFile = JSONUtil.objectToJsonString(mediaFile, new MediaFileAdapter());
-        String jsonResponse = JSONUtil.createJsonResponseBody(jsonMediaFile, Values.MESSAGE_OK);
+
+        String response = mediaFile.getId();
 
         // Do processing with uploaded file data in Service layer
-        return new ResponseEntity<String>(jsonResponse, HttpStatus.OK);
-    }*/
-
+        return new ResponseEntity<String>(response, HttpStatus.OK);
+    }
+*/
     @GetMapping("/display/{id}")
     public void display(@PathVariable("id") String imageID, HttpServletResponse response) throws IOException {
 

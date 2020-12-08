@@ -91,6 +91,7 @@ private MyApiViewService service = new MyApiViewService();
         //fin test
         apiManage_CreateAPI_Button.setOnAction((ActionEvent event) -> {
         createApi();
+        apiManage_listAPI_CB.setItems(giveList());
         });
 
 
