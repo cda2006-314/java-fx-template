@@ -1,5 +1,7 @@
 package project.back.back.model;
 
+import net.minidev.json.annotate.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
@@ -54,6 +56,7 @@ public class Websitetheme {
     }
 
     @OneToMany(mappedBy = "websitethemeByWebsitethemeId")
+    @JsonIgnore
     public Collection<Preference> getPreferencesByWebsitethemeId() {
         return preferencesByWebsitethemeId;
     }
@@ -63,6 +66,7 @@ public class Websitetheme {
     }
 
     @OneToMany(mappedBy = "websitethemeByWebsitethemeId")
+    @JsonIgnore
     public Collection<WebsitethemeHasApi> getWebsitethemeHasApisByWebsitethemeId() {
         return websitethemeHasApisByWebsitethemeId;
     }
@@ -72,6 +76,7 @@ public class Websitetheme {
     }
 
     @OneToMany(mappedBy = "websitethemeByWebsitethemeId")
+    @JsonIgnore
     public Collection<WebsitethemeHasFonts> getWebsitethemeHasFontsByWebsitethemeId() {
         return websitethemeHasFontsByWebsitethemeId;
     }
@@ -81,6 +86,7 @@ public class Websitetheme {
     }
 
     @OneToMany(mappedBy = "websitethemeByWebsitethemeId")
+    @JsonIgnore
     public Collection<WebsitethemeHasPicture> getWebsitethemeHasPicturesByWebsitethemeId() {
         return websitethemeHasPicturesByWebsitethemeId;
     }

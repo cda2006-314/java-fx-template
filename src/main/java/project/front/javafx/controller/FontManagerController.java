@@ -22,6 +22,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import project.back.back.model.Fonts;
 import project.back.back.services.FontsServices;
 import project.back.back.services.PictureServices;
 import project.front.javafx.FXMLDocumentController;
@@ -69,10 +70,7 @@ private ComboBox fontManage_return_CB;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-
-        List listPrep = (List) fontsServices.fontsList();
-        ObservableList list = (ObservableList) FXCollections.observableArrayList(listPrep);
-        fontManage_return_CB.setItems(list);
+        fontManage_return_CB.setItems(giveListFonts());
 
 
         AquaFx.createTextFieldStyler().setType(TextFieldType.ROUND_RECT).style(fontManage_create_TXT);
@@ -90,6 +88,7 @@ private ComboBox fontManage_return_CB;
         });
         fontManage_CreateFont_Button.setOnAction((ActionEvent event) -> {
         createFont();
+            fontManage_return_CB.setItems(giveListFonts());
         });
 
         fontManager_DropImage_Button.setOnAction((ActionEvent event) -> {
@@ -128,6 +127,12 @@ private ComboBox fontManage_return_CB;
 
         fontsServices.createFont(label, image, contenu);
 
+    }
+
+    public ObservableList<Fonts> giveListFonts(){
+        List listPrep = (List) fontsServices.fontsList();
+        ObservableList list = (ObservableList) FXCollections.observableArrayList(listPrep);
+        return list;
     }
 
 }

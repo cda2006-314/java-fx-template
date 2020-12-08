@@ -21,12 +21,11 @@ public class PreferenceServices {
         MultipartFileUploadClient multipartFileUploadClient = new MultipartFileUploadClient();
         multipartFileUploadClient.sendFile(urlImage);
 
-        String response_SendImage = multipartFileUploadClient.getResponse_media_upload();
-        String idImage = response_SendImage.substring(25,49);
+        String idImage = multipartFileUploadClient.getResponse_media_upload();
 
         preference.setPreferenceLabel(label);
         preference.setWebsitethemeId(Integer.parseInt(webThemeId));
-        preference.setPreferenceDescription("http://localhost:8090/api/v1/media/display/" + idImage + "?api-key=");
+        preference.setPreferenceDescription("http://localhost:8080/api/v2/media/display/" + idImage);
 
         preferenceRepository.save(preference);
     }

@@ -23,10 +23,9 @@ public class ApiManageServices {
         Api api = new Api();
         MultipartFileUploadClient multipartFileUploadClient = new MultipartFileUploadClient();
         multipartFileUploadClient.sendFile(apiContent);
-        String reponseUpload =  multipartFileUploadClient.getResponse_media_upload();
-        String idApi = reponseUpload.substring(25,49);
+        String idApi =  multipartFileUploadClient.getResponse_media_upload();
         api.setApiLabel(label);
-        api.setApiContenu("http://localhost:8090/api/v1/media/display/" + idApi + "?api-key=");
+        api.setApiContenu("http://localhost:8080/api/v2/media/display/" + idApi );
         api.setApiDescription(description);
         apiRepository.save(api);
     }

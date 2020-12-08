@@ -17,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -38,11 +39,11 @@ public class StateSystemController implements Initializable {
     @FXML
     private AnchorPane StateSystemAnchorPane;
     @FXML
-    private Label stateSystem_ReturnStateServer_Label;
+    private TextArea stateSystem_ReturnStateServer_Label;
     @FXML
-    private Label StateSystem_ReturnStateBDD_Label;
+    private TextArea StateSystem_ReturnStateBDD_Label;
     @FXML
-    private Label stateSystem_ReturnStateApi_Label;
+    private TextArea stateSystem_ReturnStateApi_Label;
     @FXML
     private Button Back_Button;
 

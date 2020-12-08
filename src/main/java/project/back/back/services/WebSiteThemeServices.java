@@ -4,12 +4,15 @@ import project.back.back.model.Api;
 import project.back.back.model.Fonts;
 import project.back.back.model.Picture;
 
+import project.back.back.model.Websitetheme;
 import project.back.back.repository.ApiRepository;
 import project.back.back.repository.FontsRepository;
 import project.back.back.repository.PictureRepository;
 import project.back.back.repository.WebSiteThemeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class WebSiteThemeServices {
@@ -29,7 +32,7 @@ public void createFonts(Fonts fonts){fontsRepository.save(fonts);}
 
 public void createPicture(Picture picture){pictureRepository.save(picture); }
 
-
+public List<Websitetheme> listWebsiteTheme(){return webSiteThemeRepository.findAll();}
 
 
 
