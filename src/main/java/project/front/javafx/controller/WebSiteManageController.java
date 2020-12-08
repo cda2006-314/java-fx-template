@@ -15,20 +15,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TreeView;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import project.back.back.model.Api;
-import project.back.back.model.Fonts;
-import project.back.back.model.Picture;
-import project.back.back.model.Webcontent;
-import project.back.back.services.ApiManageServices;
-import project.back.back.services.FontsServices;
-import project.back.back.services.PictureServices;
-import project.back.back.services.WebContentServices;
+import project.back.back.model.*;
+import project.back.back.services.*;
 import project.front.javafx.FXMLDocumentController;
 import project.front.javafx.Navigation;
 
@@ -53,7 +45,18 @@ public class WebSiteManageController implements Initializable {
     private TreeView<?> ManageWebSite_AssocPreference_TreeView;
     @FXML
     private Button Back_Button;
-
+    @FXML
+    private TextArea webSiteManager_ReceiveChoice_TxtArea;
+     @FXML
+     private TextArea webSiteManage_ReceiveFontChoice_TxtArea;
+    @FXML
+    private TextField webSiteManager_ReceiveName_Txt;
+    @FXML
+    private Button webSiteManage_preference_Create_Button;
+    @FXML
+    private TextField webSiteManage_ReceiveImage_Txt;
+    @FXML
+    private ComboBox<Websitetheme> webSiteManage_theme_Cb;
 
      @Autowired
      Navigation navigation;
@@ -66,6 +69,8 @@ public class WebSiteManageController implements Initializable {
      PictureServices pictureServices;
      @Autowired
      WebContentServices webContentServices;
+     @Autowired
+     WebSiteThemeServices webSiteThemeServices;
 
 
     /**
@@ -75,6 +80,8 @@ public class WebSiteManageController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
 
+        //webSiteManage_theme_Cb
+        webSiteManage_theme_Cb.setItems(showWebTheme());
 
         //ManageWebSite_ShowApi_CB
         ManageWebSite_ShowApi_CB.setItems(showApi());
@@ -126,6 +133,31 @@ public class WebSiteManageController implements Initializable {
         List prepaContent = webContentServices.webcontentList();
         ObservableList<Webcontent> listContent = FXCollections.observableArrayList(prepaContent);
         return listContent;
+
+    }
+
+    //listWebsiteTheme()
+    public ObservableList<Websitetheme> showWebTheme(){
+        List prepaTheme = webSiteThemeServices.listWebsiteTheme();
+        ObservableList<Websitetheme> listTheme = FXCollections.observableArrayList(prepaTheme);
+        return listTheme;
+
+    }
+
+    /*
+    - Méthode qui prend les cb : cb.getSelected() ==> encapsuler en string
+    puis mon textArea .setText du string
+
+    au setAction : createPreference() :
+    - prendre le txtfield nom et le txt image : qui va créer ma préference
+    puis un webTheme avec le txtfield nom
+
+    - websitethemeApi : nouveau service va prendre l'id de mon webTheme créée puis crééer mon association entre
+    mon api puis le websitetheme Id
+
+    -websitetheme fonts : va faire pareil que le theme api
+     */
+     public void createPreference(){
 
     }
     
