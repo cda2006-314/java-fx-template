@@ -107,18 +107,18 @@ public class WebSiteManageController implements Initializable {
     }
 
     public ObservableList<Api> showApi(){  List listPrep = apiManageServices.listApi();
-        ObservableList list = (ObservableList) FXCollections.observableArrayList(listPrep);
+        ObservableList list =  FXCollections.observableArrayList(listPrep);
     return list;}
 
     public ObservableList<Fonts> showFonts(){
         List listPrepa = (List) fontsServices.fontsList();
-        ObservableList lista = (ObservableList) FXCollections.observableArrayList(listPrepa);
+        ObservableList lista =  FXCollections.observableArrayList(listPrepa);
         return lista;
     }
 
     public ObservableList<Picture> showPictures(){
         List listPrepar = (List) pictureServices.pictureList();
-        ObservableList listar = (ObservableList) FXCollections.observableArrayList(listPrepar);
+        ObservableList listar = FXCollections.observableArrayList(listPrepar);
         return listar;
     }
 
