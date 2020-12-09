@@ -5,6 +5,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "MEMBER_HAS_PREFERENCES", schema = "dbo")
+
 @IdClass(MemberHasPreferencesPK.class)
 public class MemberHasPreferences {
     private int memberId;

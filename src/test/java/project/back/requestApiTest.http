@@ -12,3 +12,19 @@ GET http://localhost:8080/api/v2/media/display/5fc601dcf1782d1bbd4d4e26
 
 ###
 GET http://localhost:8080/api/v2/media/download/5fc4e30a62d0f53bac878fbd
+
+###
+GET http://localhost:8080/preferenceByMemberId/{{memberId}}
+
+###
+
+GET http://localhost:8080/api/admin/memberByEmail/{email}
+
+###
+
+GET http://localhost:8080/listApiId
+
+
+###
+
+GET http://localhost:8080/api/admin/allApiWebsiteTheme/1

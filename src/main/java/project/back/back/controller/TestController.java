@@ -2,6 +2,7 @@ package project.back.back.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import project.back.back.model.Api;
@@ -25,6 +26,8 @@ import java.util.List;
 public class TestController {
 
     @Autowired
+    MemberHasPreferencesService memberHasPreferencesService;
+    @Autowired
     TeamServices teamServices;
     @Autowired
     MemberServices memberServices;
@@ -40,6 +43,24 @@ WebSitethemeHasApiServices webSitethemeHasApiServices;
         return "List"  + list ;
 
     }*/
+
+    @GetMapping("/preferenceByMemberId/{memberId}")
+    public String getPreferenceByMemberId(@PathVariable("memberId") int memberId){
+
+        return " " + memberHasPreferencesService.listMemberPreferences(memberId);
+    }
+    @GetMapping("/addPreferences")
+    public String returnTheNewPreferences(){
+        Member member = memberServices.getByEmail("Ali26@nowhere.com");
+        memberHasPreferencesService.memberAddPreferences(member, 2);
+
+        return "tes"  ;
+    }
+
+    @GetMapping("/listApiId")
+    public String getApiIdfromWebSiteThemeApi(){
+        return "" +webSitethemeHasApiServices.giveApiId(2);
+    }
 
     @GetMapping("/memberEmail")
     public String getMember(){
