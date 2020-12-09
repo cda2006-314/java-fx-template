@@ -5,9 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import project.back.back.model.Api;
-import project.back.back.model.Member;
-import project.back.back.model.Team;
+import project.back.back.model.*;
+import project.back.back.repository.MemberHasPreferencesRepository;
 import project.back.back.services.*;
 
 import java.util.List;
@@ -35,6 +34,8 @@ public class TestController {
 WebSitethemeHasApiServices webSitethemeHasApiServices;
     @Autowired
     ApiManageServices apiManageServices;
+    @Autowired
+    MemberHasPreferencesRepository memberHasPreferencesRepository;
 /*
     @GetMapping("/allApi")
     public String apiList(){
@@ -44,16 +45,25 @@ WebSitethemeHasApiServices webSitethemeHasApiServices;
 
     }*/
 
+
     @GetMapping("/preferenceByMemberId/{memberId}")
     public String getPreferenceByMemberId(@PathVariable("memberId") int memberId){
 
-        return " " + memberHasPreferencesService.listMemberPreferences(memberId);
-    }
-    @GetMapping("/addPreferences")
-    public String returnTheNewPreferences(){
-        Member member = memberServices.getByEmail("Ali26@nowhere.com");
-        memberHasPreferencesService.memberAddPreferences(member, 2);
 
+
+        return " "  + memberHasPreferencesService.listMemberPreferences(memberId);
+    }
+    @GetMapping("{memberId}/addPreferences/{preferenceId}")
+    public String returnTheNewPreferences(@PathVariable("memberId") int memberId, @PathVariable("preferenceId") int preferenceId) {
+       // Member member = memberServices.getByEmail("Ali26@nowhere.com");
+       // memberHasPreferencesService.memberAddPreferences(member, 2);
+        MemberHasPreferences memberHasPreferences = new MemberHasPreferences();
+        memberHasPreferences.setMemberId(2);
+        memberHasPreferences.setPreferenceId(2);
+        MemberHasPreferencesPK memberHasPreferencesPK = new MemberHasPreferencesPK();
+        memberHasPreferencesPK.setMemberId(2);
+        memberHasPreferencesPK.setPreferenceId(2);
+        memberHasPreferencesRepository.save(memberHasPreferences);
         return "tes"  ;
     }
 

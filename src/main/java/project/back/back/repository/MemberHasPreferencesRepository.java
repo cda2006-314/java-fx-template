@@ -1,5 +1,6 @@
 package project.back.back.repository;
 
+import org.hibernate.HibernateException;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import project.back.back.model.MemberHasPreferences;
 import project.back.back.model.MemberHasPreferencesPK;
 
+import java.io.Serializable;
 import java.util.List;
 
 
@@ -20,7 +22,7 @@ public interface MemberHasPreferencesRepository extends JpaRepository<MemberHasP
     @Override
     <S extends MemberHasPreferences> S save(S entity);
 
-    void save(MemberHasPreferencesPK memberHasPreferencesPK);
-
     List<MemberHasPreferences> findAllByMemberId(int memberId);
+
+
 }

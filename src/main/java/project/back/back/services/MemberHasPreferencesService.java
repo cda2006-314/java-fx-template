@@ -3,6 +3,7 @@ package project.back.back.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import project.back.back.model.Member;
 import project.back.back.model.MemberHasPreferences;
 import project.back.back.model.MemberHasPreferencesPK;
@@ -24,19 +25,14 @@ public class MemberHasPreferencesService {
     @Autowired
     PreferenceRepository preferenceRepository;
 
+    @Transactional
     public void memberAddPreferences(Member member, int preferenceId){
         MemberHasPreferences memberHasPreferences = new MemberHasPreferences();
         memberHasPreferences.setMemberId(member.getMemberId());
         memberHasPreferences.setPreferenceId(preferenceId);
-memberHasPreferences.setMemberByMemberId(member);
-Optional<Preference> optionalPreference = preferenceRepository.findById(preferenceId);
-        Preference preference = new Preference();
-if(optionalPreference.isPresent()) {
-     preference = optionalPreference.get();
-}
-memberHasPreferences.setPreferenceByPreferenceId(preference);
-        MemberHasPreferencesPK memberHasPreferencesPK = new MemberHasPreferencesPK(member.getMemberId(), preferenceId);
-        memberHasPreferencesRepository.save(memberHasPreferencesPK);
+
+memberHasPreferencesRepository.save(memberHasPreferences);
+
 
     }
 

@@ -1,20 +1,21 @@
 package project.back.back.model;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
 import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Objects;
 
+
 public class MemberHasPreferencesPK implements Serializable {
+
     private int memberId;
-    private int preferenceId;
+   private int preferenceId;
 
     public MemberHasPreferencesPK(){}
 
-    public MemberHasPreferencesPK(int memberId, int preferenceId){
-        this.memberId = memberId;
-        this.preferenceId = preferenceId;
-    }
+
 
     @Column(name = "MEMBER_ID", insertable = false, updatable = false, nullable = false, precision = 0)
     @Id
