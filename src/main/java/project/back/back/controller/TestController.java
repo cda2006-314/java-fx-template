@@ -7,9 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import project.back.back.model.Api;
 import project.back.back.model.Member;
 import project.back.back.model.Team;
-import project.back.back.services.ApiManageServices;
-import project.back.back.services.MemberServices;
-import project.back.back.services.TeamServices;
+import project.back.back.services.*;
 
 import java.util.List;
 
@@ -30,7 +28,8 @@ public class TestController {
     TeamServices teamServices;
     @Autowired
     MemberServices memberServices;
-
+@Autowired
+WebSitethemeHasApiServices webSitethemeHasApiServices;
     @Autowired
     ApiManageServices apiManageServices;
 /*
@@ -41,6 +40,18 @@ public class TestController {
         return "List"  + list ;
 
     }*/
+
+    @GetMapping("/memberEmail")
+    public String getMember(){
+        return "" +memberServices.getByEmail("Ali26@nowhere.com");
+    }
+
+    @GetMapping("/memberId")
+    public String getMemberId(){
+        Member member = memberServices.getByEmail("Ali26@nowhere.com");
+        String id = String.valueOf(member.getMemberId());
+        return id;
+    }
 
     @GetMapping("/test")
     public String testTeam(){

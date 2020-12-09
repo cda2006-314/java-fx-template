@@ -44,4 +44,8 @@ public List<Memberstatus> listMemberStatus(){
 
     public Member getByLogin(String login){Member optionalMember = memberRepository.findMemberByMemberUsername(login);
 return  optionalMember;}
+
+    public Member getByEmail(String email){return memberRepository.findMemberByMemberEmail( email);}
+
+
 }
