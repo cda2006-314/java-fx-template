@@ -21,13 +21,15 @@
                   <Label layoutX="47.0" layoutY="141.0" text="Fonts" />
                   <Label layoutX="46.0" layoutY="194.0" text="Images" />
                   <Label layoutX="47.0" layoutY="296.0" text="Pages" />
-                  <ComboBox fx:id="ManageWebSite_ShowApi_CB" layoutX="133.0" layoutY="69.0" prefWidth="150.0" />
-                  <ComboBox fx:id="ManageWebSite_ShowFont_CB" layoutX="133.0" layoutY="137.0" prefWidth="150.0" />
-                  <ComboBox fx:id="ManageWebSite_ShowImages_CB" layoutX="133.0" layoutY="190.0" prefWidth="150.0" />
+
+                  <ComboBox fx:id="ManageWebSite_ShowApi_CB" layoutX="133.0" layoutY="69.0" onAction="#addApi" prefWidth="150.0" />
+                  <ComboBox fx:id="ManageWebSite_ShowFont_CB" layoutX="133.0" layoutY="137.0" onAction="#addFonts" prefWidth="150.0" />
+                  <ComboBox fx:id="ManageWebSite_ShowImages_CB" layoutX="133.0" layoutY="202.0" prefWidth="150.0" />
                   <ComboBox fx:id="ManageWebSite_ShowPages_CB" layoutX="133.0" layoutY="292.0" prefWidth="150.0" />
                   <Button fx:id="Back_Button" layoutX="14.0" layoutY="11.0" mnemonicParsing="false" />
-                  <Label layoutX="28.0" layoutY="255.0" prefHeight="17.0" prefWidth="85.0" text="WebSiteTheme" />
-                  <ComboBox fx:id="webSiteManage_theme_Cb" layoutX="133.0" layoutY="251.0" prefWidth="150.0" />
+                  <Label layoutX="27.0" layoutY="263.0" prefHeight="17.0" prefWidth="70.0" text="Preference" />
+                  <ComboBox id="website_ShowPreference_Cb" layoutX="133.0" layoutY="251.0" prefWidth="150.0" />
+
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #FFFFF0;">
@@ -45,19 +47,21 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox layoutX="7.0" layoutY="113.0" prefHeight="100.0" prefWidth="438.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="0.0">
+
+                  <HBox layoutX="8.0" layoutY="113.0" prefHeight="100.0" prefWidth="430.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="7.0">
                      <children>
-                        <TextArea fx:id="webSiteManager_ReceiveChoice_TxtArea" prefHeight="100.0" prefWidth="431.0" />
+                        <TextArea fx:id="website_ReceiveApi_TextArea" prefHeight="100.0" prefWidth="450.0" />
                      </children></HBox>
-                  <HBox layoutX="-1.0" layoutY="381.0" prefHeight="38.0" prefWidth="445.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0">
+                  <HBox layoutX="-1.0" layoutY="371.0" prefHeight="48.0" prefWidth="445.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0">
                      <children>
                         <Label prefHeight="38.0" prefWidth="147.0" text="Nom préference" />
-                        <TextField fx:id="webSiteManager_ReceiveName_Txt" prefHeight="25.0" prefWidth="247.0" />
+                        <TextField fx:id="webManager_CreatePreference_Txt" prefHeight="25.0" prefWidth="247.0" />
                      </children>
                   </HBox>
-                  <HBox layoutX="9.0" layoutY="240.0" prefHeight="100.0" prefWidth="423.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="13.0">
+                  <HBox layoutX="8.0" layoutY="240.0" prefHeight="100.0" prefWidth="430.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="7.0">
                      <children>
-                        <TextArea fx:id="webSiteManage_ReceiveFontChoice_TxtArea" prefHeight="66.0" prefWidth="423.0" />
+                        <TextArea fx:id="website_ReceiveFonts_TextArea" prefHeight="100.0" prefWidth="449.0" />
+
                      </children></HBox>
                   <HBox layoutX="2.0" layoutY="213.0" prefHeight="27.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <children>
@@ -68,19 +72,25 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox layoutX="5.0" layoutY="330.0" prefHeight="25.0" prefWidth="439.0" />
-                  <Button fx:id="preference_Create_Button" layoutX="141.0" layoutY="507.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="187.0" text="Création" />
-                  <HBox layoutX="-1.0" layoutY="416.0" prefHeight="38.0" prefWidth="446.0">
+
+                  <HBox layoutX="5.0" layoutY="330.0" prefHeight="25.0" prefWidth="439.0">
                      <children>
-                        <Label prefHeight="32.0" prefWidth="147.0" text="Image" />
-                        <TextField fx:id="webSiteManage_ReceiveImage_Txt" prefHeight="25.0" prefWidth="248.0" />
+                        <Label alignment="CENTER" prefHeight="26.0" prefWidth="438.0" text="Créer la préference">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
                      </children>
                   </HBox>
-                  <Label alignment="CENTER" layoutX="-6.0" layoutY="346.0" prefHeight="27.0" prefWidth="452.0" text="Créer la préference">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
+                  <Button fx:id="preference_Create_Button" layoutX="141.0" layoutY="507.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="187.0" text="Création" />
+                  <HBox layoutX="-1.0" layoutY="406.0" prefHeight="48.0" prefWidth="446.0">
+                     <children>
+                        <Label prefHeight="32.0" prefWidth="147.0" text="Image" />
+                        <TextField fx:id="website_SearchImage_Txt" prefHeight="25.0" prefWidth="248.0" />
+                     </children>
+                  </HBox>
+                  <Button fx:id="website_SearchImage_Button" layoutX="235.0" layoutY="442.0" mnemonicParsing="false" text="Image" AnchorPane.leftAnchor="235.0" AnchorPane.rightAnchor="158.0" />
+
                </children>
             </AnchorPane>
         </items>

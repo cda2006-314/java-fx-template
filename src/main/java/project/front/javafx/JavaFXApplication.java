@@ -45,9 +45,10 @@ public class JavaFXApplication extends Application {
         AquaFx.style();
         // White screen issues (for some people) when this line is uncommented
         AquaFx.styleStage(stage, StageStyle.DECORATED);
-
+        stage.getProperties().put("hostServices", this.getHostServices());
         navigation.setStage(stage);
-        navigation.showWelcomeView();
+      //  navigation.showWelcomeView();
+        navigation.showLogin();
     }
 
 

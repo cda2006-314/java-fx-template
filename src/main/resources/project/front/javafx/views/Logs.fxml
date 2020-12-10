@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.Hyperlink?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="899.0" style="-fx-background-color: #FFFFF0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.front.javafx.controller.LogsController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="42.0" layoutY="40.0" prefHeight="53.0" prefWidth="847.0" text="Accès Logs " AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="10.0">
@@ -16,11 +17,11 @@
       <Button fx:id="Back_Button" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" />
       <HBox layoutX="17.0" layoutY="212.0" prefHeight="61.0" prefWidth="862.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="20.0">
          <children>
-            <Button fx:id="logs_GiveLogs_Button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="66.0" prefWidth="862.0" text="Voir les logs">
+            <Hyperlink fx:id="logs_GiveLogs_Button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="66.0" prefWidth="862.0" text="Voir les logs">
                <HBox.margin>
                   <Insets left="300.0" right="300.0" />
                </HBox.margin>
-            </Button>
+            </Hyperlink>
          </children>
       </HBox>
    </children>

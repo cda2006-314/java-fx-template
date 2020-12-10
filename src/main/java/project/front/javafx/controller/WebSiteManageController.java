@@ -1,5 +1,8 @@
  package project.front.javafx.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -16,6 +19,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -45,6 +53,22 @@ public class WebSiteManageController implements Initializable {
     private TreeView<?> ManageWebSite_AssocPreference_TreeView;
     @FXML
     private Button Back_Button;
+
+@FXML
+private TextArea website_ReceiveApi_TextArea;
+@FXML
+private TextArea website_ReceiveFonts_TextArea;
+@FXML
+private TextField webManager_CreatePreference_Txt;
+@FXML
+private TextField website_SearchImage_Txt;
+@FXML
+private Button website_SearchImage_Button;
+@FXML
+private Button preference_Create_Button;
+@FXML
+private ComboBox website_ShowPreference_Cb;
+
     @FXML
     private TextArea webSiteManager_ReceiveChoice_TxtArea;
      @FXML
@@ -72,6 +96,9 @@ public class WebSiteManageController implements Initializable {
      @Autowired
      WebSiteThemeServices webSiteThemeServices;
 
+     @Autowired
+     PreferenceServices preferenceServices;
+
 
     /**
      * Initializes the controller class.
@@ -79,9 +106,22 @@ public class WebSiteManageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        website_SearchImage_Button.setOnAction((ActionEvent event) -> {
+            searchImage();
+        });
+
+        preference_Create_Button.setOnAction((ActionEvent event) -> {
+            createPreference();
+            website_ShowPreference_Cb.setItems(showPreference());
+        });
+
+
+        //website_ShowPreference_Cb
+        website_ShowPreference_Cb.setItems(showPreference());
 
         //webSiteManage_theme_Cb
         webSiteManage_theme_Cb.setItems(showWebTheme());
+
 
         //ManageWebSite_ShowApi_CB
         ManageWebSite_ShowApi_CB.setItems(showApi());
@@ -136,6 +176,27 @@ public class WebSiteManageController implements Initializable {
 
     }
 
+     public ObservableList<Preference> showPreference(){
+         List prepaPref = preferenceServices.preferenceList();
+         ObservableList<Preference> listPreference = FXCollections.observableArrayList(prepaPref);
+         return listPreference;
+
+     }
+
+
+    @FXML
+     public  void  addApi(){
+        website_ReceiveApi_TextArea.setText(ManageWebSite_ShowApi_CB.getSelectionModel().getSelectedItem().toString() + "\n");
+
+    }
+
+    @FXML
+    public void addFonts(){
+        website_ReceiveFonts_TextArea.setText(ManageWebSite_ShowFont_CB.getSelectionModel().getSelectedItem().toString() + "\n");
+    }
+     /*
+
+
     //listWebsiteTheme()
     public ObservableList<Websitetheme> showWebTheme(){
         List prepaTheme = webSiteThemeServices.listWebsiteTheme();
@@ -145,6 +206,7 @@ public class WebSiteManageController implements Initializable {
     }
 
     /*
+
     - Méthode qui prend les cb : cb.getSelected() ==> encapsuler en string
     puis mon textArea .setText du string
 
@@ -157,8 +219,32 @@ public class WebSiteManageController implements Initializable {
 
     -websitetheme fonts : va faire pareil que le theme api
      */
-     public void createPreference(){
 
-    }
+
+     public void searchImage(){
+
+
+         FileChooser fileChooser = new FileChooser();
+         fileChooser.getExtensionFilters().addAll(//
+                 new FileChooser.ExtensionFilter("*", "*.*"),
+                 new FileChooser.ExtensionFilter("JPEG", "*.jpeg"),
+                 new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                 new FileChooser.ExtensionFilter("PNG", "*.png"));
+
+
+             File selectedDirectory = fileChooser.showOpenDialog(website_SearchImage_Button.getContextMenu());
+             String fileUrl = selectedDirectory.getAbsolutePath();
+             website_SearchImage_Txt.setText(selectedDirectory.getAbsolutePath());
+
+
+     }
+     public void createPreference(){
+Preference preference = new Preference();
+preference.setPreferenceLabel(webManager_CreatePreference_Txt.getText());
+preference.setPreferenceDescription(website_SearchImage_Txt.getText());
+         preferenceServices.createPreference(preference);
+     }
+
+
     
 }

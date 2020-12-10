@@ -16,7 +16,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,14 +36,15 @@ import project.front.javafx.Navigation;
 public class ManagePasswordController implements Initializable {
 
     @FXML
-    private PasswordField account_formerPassword_PasswordField;
+    private TextField account_formerPassword_PasswordField;
     @FXML
-    private PasswordField account_newPassword_PasswordField;
+    private TextField account_newPassword_PasswordField;
     @FXML
     private Button account_SubmitNewPassword_Button;
     @FXML
     private Button Back_Button;
-
+@FXML
+private Label account_Welcoming_Label;
 
      @Autowired
      Navigation navigation;
@@ -53,10 +56,9 @@ public class ManagePasswordController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
 
-
         AquaFx.createButtonStyler().setType(ButtonType.ROUND_RECT).style(account_SubmitNewPassword_Button);
-        AquaFx.createPasswordFieldStyler().style(account_formerPassword_PasswordField);
-        AquaFx.createPasswordFieldStyler().style(account_newPassword_PasswordField);
+        AquaFx.createTextFieldStyler().style(account_formerPassword_PasswordField);
+        AquaFx.createTextFieldStyler().style(account_newPassword_PasswordField);
 
         Button tbBack = Back_Button;
         AquaFx.createButtonStyler().setIcon(MacOSDefaultIcons.LEFT).setType(ButtonType.LEFT_PILL).style(tbBack);

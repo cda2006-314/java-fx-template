@@ -99,11 +99,13 @@ public class PictureManagerController implements Initializable {
                 File selectedDirectory = fileChooser.showOpenDialog(pictureManage_CreatePicture_Button.getContextMenu());
                 String fileUrl = selectedDirectory.getAbsolutePath();
                 pictureManage_create_TXT.setText(selectedDirectory.getAbsolutePath());
-                System.out.println(pictureManage_create_TXT.getText());
                 String urlImg = pictureManage_create_TXT.getText();
                 FileInputStream input = new FileInputStream(urlImg);
                 Image image = new Image(input);
                 ImageView imageView = new ImageView(image);
+                imageView.setFitHeight(100);
+                imageView.setFitWidth(100);
+
                 picture_ReceivePicture_AnchorPane.getChildren().setAll(imageView);
                 System.out.println(Thread.currentThread());
             } catch (FileNotFoundException e) {

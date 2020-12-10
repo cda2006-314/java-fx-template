@@ -1,5 +1,6 @@
 package project.back.back.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -240,6 +241,7 @@ public class Member {
     }
 
     @LazyCollection(LazyCollectionOption.FALSE)
+    @JsonIgnore
     @OneToMany(mappedBy = "memberByMemberId")
     public Collection<Comment> getCommentsByMemberId() {
         return commentsByMemberId;
@@ -249,6 +251,7 @@ public class Member {
         this.commentsByMemberId = commentsByMemberId;
     }
 
+    @JsonIgnore
     @OneToMany(mappedBy = "memberByMemberId")
     public Collection<EmployeeModeratesMember> getEmployeeModeratesMembersByMemberId() {
         return employeeModeratesMembersByMemberId;
@@ -258,6 +261,7 @@ public class Member {
         this.employeeModeratesMembersByMemberId = employeeModeratesMembersByMemberId;
     }
     @LazyCollection(LazyCollectionOption.FALSE)
+    @JsonIgnore
     @OneToMany(mappedBy = "memberByMemberId")
     public Collection<Event> getEventsByMemberId() {
         return eventsByMemberId;
@@ -268,6 +272,7 @@ public class Member {
     }
 
     @OneToMany(mappedBy = "memberByMemberId")
+    @JsonIgnore
     public Collection<InvitationTargetsMember> getInvitationTargetsMembersByMemberId() {
         return invitationTargetsMembersByMemberId;
     }
@@ -276,6 +281,7 @@ public class Member {
         this.invitationTargetsMembersByMemberId = invitationTargetsMembersByMemberId;
     }
 
+    @JsonIgnore
     @OneToMany(mappedBy = "memberByMemberId")
     public Collection<Library> getLibrariesByMemberId() {
         return librariesByMemberId;
@@ -285,6 +291,7 @@ public class Member {
         this.librariesByMemberId = librariesByMemberId;
     }
     @LazyCollection(LazyCollectionOption.FALSE)
+    @JsonIgnore
     @OneToMany(mappedBy = "memberByMember1Id")
     public Collection<MemberFollowsanotherMember> getMemberFollowsanotherMembersByMemberId() {
         return memberFollowsanotherMembersByMemberId;
@@ -294,6 +301,7 @@ public class Member {
         this.memberFollowsanotherMembersByMemberId = memberFollowsanotherMembersByMemberId;
     }
 
+    @JsonIgnore
     @OneToMany(mappedBy = "memberByMember2Id")
     public Collection<MemberFollowsanotherMember> getMemberFollowsanotherMembersByMemberId_0() {
         return memberFollowsanotherMembersByMemberId_0;
@@ -303,6 +311,7 @@ public class Member {
         this.memberFollowsanotherMembersByMemberId_0 = memberFollowsanotherMembersByMemberId_0;
     }
 
+    @JsonIgnore
     @OneToMany(mappedBy = "memberByMemberId")
     public Collection<MemberHasKeyword> getMemberHasKeywordsByMemberId() {
         return memberHasKeywordsByMemberId;
@@ -312,6 +321,7 @@ public class Member {
         this.memberHasKeywordsByMemberId = memberHasKeywordsByMemberId;
     }
 
+    @JsonIgnore
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "memberByMemberId")
     public Collection<MemberHasMemberstatus> getMemberHasMemberstatusesByMemberId() {
@@ -322,6 +332,7 @@ public class Member {
         this.memberHasMemberstatusesByMemberId = memberHasMemberstatusesByMemberId;
     }
 
+    @JsonIgnore
     @OneToMany(mappedBy = "memberByMemberId")
     public Collection<MemberHasPreferences> getMemberHasPreferencesByMemberId() {
         return memberHasPreferencesByMemberId;
@@ -331,6 +342,7 @@ public class Member {
         this.memberHasPreferencesByMemberId = memberHasPreferencesByMemberId;
     }
 
+    @JsonIgnore
     @OneToMany(mappedBy = "memberByMemberId")
     public Collection<MemberLikesComment> getMemberLikesCommentsByMemberId() {
         return memberLikesCommentsByMemberId;
@@ -340,6 +352,7 @@ public class Member {
         this.memberLikesCommentsByMemberId = memberLikesCommentsByMemberId;
     }
 
+    @JsonIgnore
     @OneToMany(mappedBy = "memberByMemberId")
     public Collection<MemberLikesEvent> getMemberLikesEventsByMemberId() {
         return memberLikesEventsByMemberId;
@@ -349,6 +362,7 @@ public class Member {
         this.memberLikesEventsByMemberId = memberLikesEventsByMemberId;
     }
 
+    @JsonIgnore
     @OneToMany(mappedBy = "memberByMemberId")
     public Collection<MemberReportsComment> getMemberReportsCommentsByMemberId() {
         return memberReportsCommentsByMemberId;
@@ -358,6 +372,7 @@ public class Member {
         this.memberReportsCommentsByMemberId = memberReportsCommentsByMemberId;
     }
 
+    @JsonIgnore
     @OneToMany(mappedBy = "memberByMemberId")
     public Collection<MemberReportsEvent> getMemberReportsEventsByMemberId() {
         return memberReportsEventsByMemberId;
@@ -367,6 +382,7 @@ public class Member {
         this.memberReportsEventsByMemberId = memberReportsEventsByMemberId;
     }
 
+    @JsonIgnore
     @OneToMany(mappedBy = "memberByMemberId")
     public Collection<MemberRevokesInvitation> getMemberRevokesInvitationsByMemberId() {
         return memberRevokesInvitationsByMemberId;
@@ -376,6 +392,7 @@ public class Member {
         this.memberRevokesInvitationsByMemberId = memberRevokesInvitationsByMemberId;
     }
 
+    @JsonIgnore
     @OneToMany(mappedBy = "memberByMemberId")
     public Collection<MemberSendsInvitation> getMemberSendsInvitationsByMemberId() {
         return memberSendsInvitationsByMemberId;
@@ -385,6 +402,7 @@ public class Member {
         this.memberSendsInvitationsByMemberId = memberSendsInvitationsByMemberId;
     }
 
+    @JsonIgnore
     @OneToMany(mappedBy = "memberByMemberId")
     public Collection<Messagebox> getMessageboxesByMemberId() {
         return messageboxesByMemberId;
@@ -394,6 +412,7 @@ public class Member {
         this.messageboxesByMemberId = messageboxesByMemberId;
     }
 
+    @JsonIgnore
     @OneToMany(mappedBy = "memberByMemberId")
     public Collection<MessageboxListsMember> getMessageboxListsMembersByMemberId() {
         return messageboxListsMembersByMemberId;
@@ -403,6 +422,7 @@ public class Member {
         this.messageboxListsMembersByMemberId = messageboxListsMembersByMemberId;
     }
 
+    @JsonIgnore
     @OneToMany(mappedBy = "memberByMemberId")
     public Collection<Team> getTeamsByMemberId() {
         return teamsByMemberId;

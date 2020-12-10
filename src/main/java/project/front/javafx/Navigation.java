@@ -35,6 +35,7 @@ public class Navigation {
     private static final String UserTheResults_VIEW= "views/UserTheResults.fxml";
     private static final String WebSiteManage_VIEW = "views/WebSiteManage.fxml";
     private static final String WebContent_VIEW = "views/WebContentManager.fxml";
+    private static final String Login_View = "views/login.fxml";
     private Stage stage;
 
     @Autowired
@@ -61,7 +62,7 @@ public class Navigation {
     @Autowired WebSiteManageController webSiteManageController;
     @Autowired PictureManagerController pictureManagerController;
     @Autowired WebContentManagerController webContentManagerController;
-
+    @Autowired LoginController loginController;
    //Méthode d'affichage des views FXML
 
     public void showWelcomeView() {
@@ -85,6 +86,8 @@ public class Navigation {
     public void showWebSiteManagerView(){show(WebSiteManage_VIEW);}
     public void showPictureManagerView(){show(PictureManageMain_VIEW);}
     public void showWebContentView(){show(WebContent_VIEW);}
+    public void showLogin(){show(Login_View);}
+
 
 
     private void show(String view) {
@@ -124,7 +127,7 @@ public class Navigation {
             case WebSiteManage_VIEW: return webSiteManageController;
             case PictureManageMain_VIEW: return pictureManagerController;
             case WebContent_VIEW: return webContentManagerController;
-
+            case Login_View: return loginController;
             default:
                 return fxmlDocumentController;
         }

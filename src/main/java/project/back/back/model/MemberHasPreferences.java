@@ -1,12 +1,17 @@
 package project.back.back.model;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "MEMBER_HAS_PREFERENCES", schema = "dbo")
+
 @IdClass(MemberHasPreferencesPK.class)
 public class MemberHasPreferences {
+
+
     private int memberId;
     private int preferenceId;
     private Member memberByMemberId;
@@ -47,7 +52,7 @@ public class MemberHasPreferences {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "MEMBER_ID", referencedColumnName = "MEMBER_ID", nullable = false)
+    @JoinColumn(name = "MEMBER_ID", referencedColumnName = "MEMBER_ID", nullable = true)
     public Member getMemberByMemberId() {
         return memberByMemberId;
     }
@@ -57,7 +62,7 @@ public class MemberHasPreferences {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "PREFERENCE_ID", referencedColumnName = "PREFERENCE_ID", nullable = false)
+    @JoinColumn(name = "PREFERENCE_ID", referencedColumnName = "PREFERENCE_ID", nullable = true)
     public Preference getPreferenceByPreferenceId() {
         return preferenceByPreferenceId;
     }

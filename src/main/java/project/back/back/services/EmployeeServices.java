@@ -41,7 +41,21 @@ public class EmployeeServices {
 
     public Websitetheme manageWebSiteTheme(){return new Websitetheme();}
 
-    public boolean checkLogin(){return checkLogin();}
+    public boolean checkLogin(String login, String password){
+
+        Optional<Employee> rechercheEmployee = employeeRepository.findEmployeeByEmployeeLogin(login);
+        if(rechercheEmployee.isPresent()){
+            Employee employeeVerif = rechercheEmployee.get();
+            String passwordCheck = employeeVerif.getEmployeePassword();
+
+            if(password.equals(passwordCheck)){
+                return true;
+            }
+        return false;
+        }
+        return false;
+
+       }
 
     public void accessSystem(){}
 
