@@ -119,8 +119,7 @@ private ComboBox website_ShowPreference_Cb;
         //website_ShowPreference_Cb
         website_ShowPreference_Cb.setItems(showPreference());
 
-        //webSiteManage_theme_Cb
-        webSiteManage_theme_Cb.setItems(showWebTheme());
+
 
 
         //ManageWebSite_ShowApi_CB
