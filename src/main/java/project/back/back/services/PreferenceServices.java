@@ -7,6 +7,7 @@ import project.back.back.repository.PreferenceRepository;
 import project.back.back.util.MultipartFileUploadClient;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PreferenceServices {
@@ -33,4 +34,12 @@ public class PreferenceServices {
 
     public List<Preference> preferenceList(){ return preferenceRepository.findAll();}
 
+    public Preference getPreferenceById(int preferenceId){
+        Optional<Preference> optionalPreference = preferenceRepository.findById(preferenceId);
+        if(optionalPreference.isPresent()){
+            Preference preference = optionalPreference.get();
+            return preference;
+        }
+        return null;
+    }
 }

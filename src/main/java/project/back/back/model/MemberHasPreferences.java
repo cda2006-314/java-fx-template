@@ -1,5 +1,7 @@
 package project.back.back.model;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import javax.persistence.*;
 import java.util.Objects;
 
