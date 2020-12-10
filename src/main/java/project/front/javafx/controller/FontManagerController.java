@@ -88,6 +88,7 @@ private ComboBox fontManage_return_CB;
         });
         fontManage_CreateFont_Button.setOnAction((ActionEvent event) -> {
         createFont();
+            fontManage_return_CB.setItems(giveListFonts());
         });
 
         fontManager_DropImage_Button.setOnAction((ActionEvent event) -> {

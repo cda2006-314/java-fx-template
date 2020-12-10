@@ -34,39 +34,50 @@ import project.front.javafx.Navigation;
  @Component
 public class ManageAccountController implements Initializable {
 
-    @FXML
-    private Button account_UpdatingPassword_Button;
-    @FXML
-    private Label account_Welcoming_Label;
-    @FXML
-    private AnchorPane account_ReceiveChangePasswd_Pane;
-    @FXML
-    private Button Back_Button;
+     @FXML
+     private Button account_UpdatingPassword_Button;
+     @FXML
+     private Label account_Welcoming_Label;
+     @FXML
+     private AnchorPane account_ReceiveChangePasswd_Pane;
+     @FXML
+     private Button Back_Button;
 
 
      @Autowired
      Navigation navigation;
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+     /**
+      * Initializes the controller class.
+      */
+     @Override
+     public void initialize(URL url, ResourceBundle rb) {
 
+         account_Welcoming_Label.setText(LoginController.usernameManager);
 
-        AquaFx.createButtonStyler().setType(ButtonType.ROUND_RECT).style(account_UpdatingPassword_Button);
+         AquaFx.createButtonStyler().setType(ButtonType.ROUND_RECT).style(account_UpdatingPassword_Button);
 
-        Button tbBack = Back_Button;
-        AquaFx.createButtonStyler().setIcon(MacOSDefaultIcons.LEFT).setType(ButtonType.LEFT_PILL).style(tbBack);
-        Back_Button.setOnAction((ActionEvent event) -> {
-            try {
-                Stage stage = (Stage) Back_Button.getScene().getWindow();
-                navigation.setStage(stage);
-                navigation.showWelcomeView();
-            } catch (Exception ex) {
-                Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
-    }    
-    
-}
+         Button tbBack = Back_Button;
+         AquaFx.createButtonStyler().setIcon(MacOSDefaultIcons.LEFT).setType(ButtonType.LEFT_PILL).style(tbBack);
+         Back_Button.setOnAction((ActionEvent event) -> {
+             try {
+                 Stage stage = (Stage) Back_Button.getScene().getWindow();
+                 navigation.setStage(stage);
+                 navigation.showWelcomeView();
+             } catch (Exception ex) {
+                 Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         });
+
+         account_UpdatingPassword_Button.setOnAction((ActionEvent event) -> {
+             try {
+                 Stage stage = (Stage) Back_Button.getScene().getWindow();
+                 navigation.setStage(stage);
+                 navigation.showManagePasswordView();
+             } catch (Exception ex) {
+                 Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         });
+
+     }
+ }

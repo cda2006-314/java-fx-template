@@ -47,7 +47,8 @@ public class JavaFXApplication extends Application {
         AquaFx.styleStage(stage, StageStyle.DECORATED);
 
         navigation.setStage(stage);
-        navigation.showWelcomeView();
+      //  navigation.showWelcomeView();
+        navigation.showLogin();
     }
 
 

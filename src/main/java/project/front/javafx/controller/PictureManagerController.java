@@ -120,6 +120,7 @@ public class PictureManagerController implements Initializable {
         String url = pictureManage_create_TXT.getText();
         System.out.println(pictureManage_create_TXT.getText());
         pictureServices.createPicture(url);
+        pictureManage_return_CB.setItems(listPicture());
     }
 
     public ObservableList<Picture> listPicture(){

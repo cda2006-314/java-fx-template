@@ -14,17 +14,18 @@
             <Image url="bag.jpg" />
          </image>
       </ImageView> -->
-      <AnchorPane layoutX="116.0" layoutY="80.0" prefHeight="240.0" prefWidth="378.0" style="-fx-background-color: #0000CD;">
+      <AnchorPane layoutX="116.0" layoutY="80.0" prefHeight="240.0" prefWidth="378.0" style="-fx-background-color: #0000CD;" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="116.0" AnchorPane.rightAnchor="106.0" AnchorPane.topAnchor="80.0">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="11.0" layoutY="15.0" prefHeight="51.0" prefWidth="348.0" text="Login" textFill="WHITE">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="11.0" layoutY="15.0" prefHeight="51.0" prefWidth="348.0" text="Login" textFill="WHITE" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="19.0">
                <font>
                   <Font size="35.0" />
                </font>
             </Label>
-            <TextField fx:id="login_Txt" layoutX="47.0" layoutY="108.0"  prefHeight="25.0" prefWidth="297.0" promptText="login" style="-fx-background-radius: 30;" />
-            <PasswordField fx:id="password_Txt" layoutX="47.0" layoutY="158.0" prefHeight="25.0" prefWidth="297.0" promptText="mot de passe" style="-fx-background-radius: 30;" />
-            <Button layoutX="121.0" layoutY="201.0" mnemonicParsing="false"  prefHeight="25.0" prefWidth="131.0" style="-fx-background-radius: 40; -fx-background-color: #6495ED;" text="Login" />
+            <TextField fx:id="login_Txt" layoutX="47.0" layoutY="108.0" prefHeight="25.0" prefWidth="297.0" promptText="login" style="-fx-background-radius: 30;" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="34.0" />
+            <TextField fx:id="password_Txt" layoutX="47.0" layoutY="158.0" prefHeight="25.0" prefWidth="297.0" promptText="mot de passe" style="-fx-background-radius: 30;" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="34.0" />
+            <Button fx:id="login_Check_ManagerButton" layoutX="121.0" layoutY="201.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="131.0" style="-fx-background-radius: 40; -fx-background-color: #6495ED;" text="Login" AnchorPane.leftAnchor="121.0" AnchorPane.rightAnchor="126.0" />
          </children>
       </AnchorPane>
+      <Label fx:id="login_Error_Label" layoutX="169.0" layoutY="338.0" prefHeight="17.0" prefWidth="239.0" text="Label" AnchorPane.leftAnchor="169.0" AnchorPane.rightAnchor="192.0" />
    </children>
 </AnchorPane>
