@@ -23,16 +23,14 @@ public class FontsServices {
         MultipartFileUploadClient multipartFileUploadClient = new MultipartFileUploadClient();
 
         multipartFileUploadClient.sendFile(fontImage);
-        String envoiImage = multipartFileUploadClient.getResponse_media_upload();
+        String idImage = multipartFileUploadClient.getResponse_media_upload();
         System.out.println("1er Id Image");
-        String idImage = envoiImage.substring(25,49);
-        fonts.setFontsUrl("http://localhost:8090/api/v1/media/display/" + idImage + "?api-key=");
+        fonts.setFontsUrl("http://localhost:8080/api/v2/media/display/" + idImage);
 
         multipartFileUploadClient.sendFile(contenu);
-        String reponseContenu = multipartFileUploadClient.getResponse_media_upload();
+        String idContenu = multipartFileUploadClient.getResponse_media_upload();
         System.out.println("Retour contenu");
-        String idContenu= reponseContenu.substring(25,49);
-        fonts.setFontsContenu(idContenu);
+        fonts.setFontsContenu("http://localhost:8080/api/v2/media/download/" + idContenu);
         fonts.setFontsLabel(fontLabel);
         fontsRepository.save(fonts);
     }

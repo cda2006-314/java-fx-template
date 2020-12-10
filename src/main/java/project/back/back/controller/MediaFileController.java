@@ -42,7 +42,7 @@ public class MediaFileController {
         response.flushBuffer();
     }
 
-/*
+
     @PostMapping("/upload")
     public ResponseEntity<String> uploadData(@RequestParam("file") MultipartFile file) throws Exception {
 
@@ -68,7 +68,7 @@ public class MediaFileController {
         // Do processing with uploaded file data in Service layer
         return new ResponseEntity<String>(response, HttpStatus.OK);
     }
-*/
+
     @GetMapping("/display/{id}")
     public void display(@PathVariable("id") String imageID, HttpServletResponse response) throws IOException {
 

@@ -19,9 +19,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
+
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -51,6 +53,7 @@ public class WebSiteManageController implements Initializable {
     private TreeView<?> ManageWebSite_AssocPreference_TreeView;
     @FXML
     private Button Back_Button;
+
 @FXML
 private TextArea website_ReceiveApi_TextArea;
 @FXML
@@ -66,6 +69,19 @@ private Button preference_Create_Button;
 @FXML
 private ComboBox website_ShowPreference_Cb;
 
+    @FXML
+    private TextArea webSiteManager_ReceiveChoice_TxtArea;
+     @FXML
+     private TextArea webSiteManage_ReceiveFontChoice_TxtArea;
+    @FXML
+    private TextField webSiteManager_ReceiveName_Txt;
+    @FXML
+    private Button webSiteManage_preference_Create_Button;
+    @FXML
+    private TextField webSiteManage_ReceiveImage_Txt;
+    @FXML
+    private ComboBox<Websitetheme> webSiteManage_theme_Cb;
+
      @Autowired
      Navigation navigation;
 
@@ -79,8 +95,10 @@ private ComboBox website_ShowPreference_Cb;
      WebContentServices webContentServices;
      @Autowired
      WebSiteThemeServices webSiteThemeServices;
+
      @Autowired
      PreferenceServices preferenceServices;
+
 
     /**
      * Initializes the controller class.
@@ -97,8 +115,13 @@ private ComboBox website_ShowPreference_Cb;
             website_ShowPreference_Cb.setItems(showPreference());
         });
 
+
         //website_ShowPreference_Cb
         website_ShowPreference_Cb.setItems(showPreference());
+
+        //webSiteManage_theme_Cb
+        webSiteManage_theme_Cb.setItems(showWebTheme());
+
 
         //ManageWebSite_ShowApi_CB
         ManageWebSite_ShowApi_CB.setItems(showApi());
@@ -131,18 +154,18 @@ private ComboBox website_ShowPreference_Cb;
     }
 
     public ObservableList<Api> showApi(){  List listPrep = apiManageServices.listApi();
-        ObservableList list = (ObservableList) FXCollections.observableArrayList(listPrep);
+        ObservableList list =  FXCollections.observableArrayList(listPrep);
     return list;}
 
     public ObservableList<Fonts> showFonts(){
         List listPrepa = (List) fontsServices.fontsList();
-        ObservableList lista = (ObservableList) FXCollections.observableArrayList(listPrepa);
+        ObservableList lista =  FXCollections.observableArrayList(listPrepa);
         return lista;
     }
 
     public ObservableList<Picture> showPictures(){
         List listPrepar = (List) pictureServices.pictureList();
-        ObservableList listar = (ObservableList) FXCollections.observableArrayList(listPrepar);
+        ObservableList listar = FXCollections.observableArrayList(listPrepar);
         return listar;
     }
 
@@ -152,6 +175,7 @@ private ComboBox website_ShowPreference_Cb;
         return listContent;
 
     }
+
      public ObservableList<Preference> showPreference(){
          List prepaPref = preferenceServices.preferenceList();
          ObservableList<Preference> listPreference = FXCollections.observableArrayList(prepaPref);
@@ -171,6 +195,18 @@ private ComboBox website_ShowPreference_Cb;
         website_ReceiveFonts_TextArea.setText(ManageWebSite_ShowFont_CB.getSelectionModel().getSelectedItem().toString() + "\n");
     }
      /*
+
+
+    //listWebsiteTheme()
+    public ObservableList<Websitetheme> showWebTheme(){
+        List prepaTheme = webSiteThemeServices.listWebsiteTheme();
+        ObservableList<Websitetheme> listTheme = FXCollections.observableArrayList(prepaTheme);
+        return listTheme;
+
+    }
+
+    /*
+
     - Méthode qui prend les cb : cb.getSelected() ==> encapsuler en string
     puis mon textArea .setText du string
 
@@ -208,5 +244,7 @@ preference.setPreferenceLabel(webManager_CreatePreference_Txt.getText());
 preference.setPreferenceDescription(website_SearchImage_Txt.getText());
          preferenceServices.createPreference(preference);
      }
+
+
     
 }

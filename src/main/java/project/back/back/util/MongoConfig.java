@@ -17,7 +17,9 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @EnableMongoRepositories(basePackages = "project.back.back.repository")
 public class MongoConfig extends AbstractMongoClientConfiguration {
 
-    @Value("timeline")
+
+    @Value("${spring.data.mongodb.database}")
+
     private String dbName;
 
     @Autowired

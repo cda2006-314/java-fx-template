@@ -17,11 +17,10 @@ public void createPicture(String urlFile){
     Picture picture = new Picture();
     MultipartFileUploadClient uploadClient = new MultipartFileUploadClient();
     uploadClient.sendFile(urlFile);
-    String reponse = uploadClient.getResponse_media_upload();
+    String idPicture = uploadClient.getResponse_media_upload();
 
-    String idPicture = reponse.substring(25,49);
     picture.setPictureLabel(idPicture);
-    picture.setPictureUrl("http://localhost:8090/api/v1/media/display/" + idPicture + "?api-key=");
+    picture.setPictureUrl("http://localhost:8080/api/v2/media/display/" + idPicture);
     pictureRepository.save(picture);
     System.out.println(picture);}
 
@@ -30,10 +29,10 @@ public void createPicture(String label, String urlFile){
     Picture picture = new Picture();
     MultipartFileUploadClient uploadClient = new MultipartFileUploadClient();
     uploadClient.sendFile(urlFile);
-    String reponse = uploadClient.getResponse_media_upload();
-    String idPicture = reponse.substring(25,49);
+    String idPicture = uploadClient.getResponse_media_upload();
+
     picture.setPictureLabel(label);
-    picture.setPictureUrl("http://localhost:8090/api/v1/media/display/" + idPicture + "?api-key=");
+    picture.setPictureUrl("http://localhost:8080/api/v2/media/display/"  + idPicture);
     pictureRepository.save(picture);
 }
 
