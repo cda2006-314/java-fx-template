@@ -56,7 +56,6 @@ private Label account_Welcoming_Label;
     public void initialize(URL url, ResourceBundle rb) {
 
 
-        account_Welcoming_Label.setText(LoginController.usernameManager);
         AquaFx.createButtonStyler().setType(ButtonType.ROUND_RECT).style(account_SubmitNewPassword_Button);
         AquaFx.createTextFieldStyler().style(account_formerPassword_PasswordField);
         AquaFx.createTextFieldStyler().style(account_newPassword_PasswordField);
