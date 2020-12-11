@@ -103,8 +103,8 @@ public class PictureManagerController implements Initializable {
                 FileInputStream input = new FileInputStream(urlImg);
                 Image image = new Image(input);
                 ImageView imageView = new ImageView(image);
-                imageView.setFitHeight(100);
-                imageView.setFitWidth(100);
+                imageView.setFitHeight(200);
+                imageView.setFitWidth(300);
 
                 picture_ReceivePicture_AnchorPane.getChildren().setAll(imageView);
                 System.out.println(Thread.currentThread());

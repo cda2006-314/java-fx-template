@@ -91,6 +91,7 @@ Navigation navigation;
 
         all_Received_TB_HB.getChildren().add(toggleSwitch);
 
+
         AquaFx.createLabelStyler().setSizeVariant(ControlSizeVariant.REGULAR).style(labelD);
         AquaFx.createLabelStyler().setSizeVariant(ControlSizeVariant.REGULAR).style(labelDD);
         AquaFx.createLabelStyler().setSizeVariant(ControlSizeVariant.REGULAR).style(labelU);

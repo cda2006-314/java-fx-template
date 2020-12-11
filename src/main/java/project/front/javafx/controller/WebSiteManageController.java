@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -64,7 +65,7 @@ private Button website_SearchImage_Button;
 @FXML
 private Button preference_Create_Button;
 @FXML
-private ComboBox website_ShowPreference_Cb;
+private ComboBox<Preference> website_ShowPreference_Cb;
 
      @Autowired
      Navigation navigation;
@@ -81,7 +82,7 @@ private ComboBox website_ShowPreference_Cb;
      WebSiteThemeServices webSiteThemeServices;
      @Autowired
      PreferenceServices preferenceServices;
-
+private List<String> apiFonts = new ArrayList<>();
     /**
      * Initializes the controller class.
      */
@@ -92,11 +93,13 @@ private ComboBox website_ShowPreference_Cb;
             searchImage();
         });
 
+        /*
         preference_Create_Button.setOnAction((ActionEvent event) -> {
             createPreference();
             website_ShowPreference_Cb.setItems(showPreference());
-        });
+        });*/
 
+        preference_Create_Button.setDisable(true);
         //website_ShowPreference_Cb
         website_ShowPreference_Cb.setItems(showPreference());
 
@@ -168,7 +171,12 @@ private ComboBox website_ShowPreference_Cb;
 
     @FXML
     public void addFonts(){
-        website_ReceiveFonts_TextArea.setText(ManageWebSite_ShowFont_CB.getSelectionModel().getSelectedItem().toString() + "\n");
+
+        apiFonts.add(ManageWebSite_ShowFont_CB.getSelectionModel().getSelectedItem().toString());
+        for (String fonts: apiFonts) {
+            website_ReceiveFonts_TextArea.setText(fonts + "\n");
+        }
+
     }
      /*
     - Méthode qui prend les cb : cb.getSelected() ==> encapsuler en string
@@ -206,6 +214,8 @@ private ComboBox website_ShowPreference_Cb;
 Preference preference = new Preference();
 preference.setPreferenceLabel(webManager_CreatePreference_Txt.getText());
 preference.setPreferenceDescription(website_SearchImage_Txt.getText());
+preference.setPreferenceDescription(webManager_CreatePreference_Txt.getText());
+preference.setWebsitethemeId(1);
          preferenceServices.createPreference(preference);
      }
     
